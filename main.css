@@ -91,4 +91,7 @@ a.headline {
   .headline.code-404::before, .headline.code-404::after {
     content: "404";
   }
+  .headline.code-403::before, .headline.code-403::after {
+    content: "403";
+  }
 }
