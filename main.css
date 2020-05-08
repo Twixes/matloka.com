@@ -48,7 +48,7 @@ a.headline {
   line-height: 1.6;
 }
 
-@media screen and (min-height: 150vw), screen and (max-height: 50rem) {
+@media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
   .headline {
     font-size: 18vw;
   }
@@ -59,6 +59,24 @@ a.headline {
 
   .profession {
     font-size: 8vw;
+  }
+
+  .e-mail {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-aspect-ratio: 3/2) and (max-height: 40rem) {
+  .headline {
+    font-size: 22vh;
+  }
+
+  .headline.error {
+    font-size: 34vh;
+  }
+
+  .profession {
+    font-size: 11vh;
   }
 }
 
