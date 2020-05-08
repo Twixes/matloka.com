@@ -1,0 +1,94 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  font-family: "Poppins", "Helvetica Neue", "Helvetica", "Arial Black", sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+a.headline {
+  text-decoration: none;
+}
+
+.headline {
+  position: relative;
+  margin: 0;
+  line-height: 1.01;
+  font-size: 8vh;
+  font-weight: 800;
+}
+
+.headline.error {
+  font-size: 14vh;
+}
+
+.profession {
+  color: inherit;
+  line-height: 1.4;
+  font-size: 4vh;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.e-mail {
+  color: inherit;
+  font: 600 1.5rem "Zilla Slab", monospace;
+  line-height: 1.6;
+}
+
+@media screen and (min-height: 150vw), screen and (max-height: 50rem) {
+  .headline {
+    font-size: 18vw;
+  }
+
+  .headline.error {
+    font-size: 34vw;
+  }
+
+  .profession {
+    font-size: 8vw;
+  }
+}
+
+@supports (mix-blend-mode: multiply) {
+  .headline {
+    color: magenta;
+    mix-blend-mode: multiply;
+  }
+  .headline::before, .headline::after {
+    content: "Michał Matłoka";
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+  }
+  .headline::before {
+    transform: translate(-0.15em, -0.15em);
+    color: yellow;
+  }
+  .headline::after {
+    transform: translate(0.15em, 0.15em);
+    color: cyan;
+  }
+  .headline:hover::before, .headline:hover::after {
+    transform: none;
+  }
+  .headline.code-404::before, .headline.code-404::after {
+    content: "404";
+  }
+}
