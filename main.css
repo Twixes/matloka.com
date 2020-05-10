@@ -1,3 +1,9 @@
+:root {
+  --transition-duration: 0.4s;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --layer-offset: 0.15em;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -87,7 +93,7 @@ a.headline {
   }
   .headline::before, .headline::after {
     content: "Michał Matłoka";
-    transition: transform 500ms cubic-bezier(0.6, 0, 0.4, 1);
+    transition: transform var(--transition-duration) var(--transition-timing-function);
     position: absolute;
     top: 0;
     left: 0;
@@ -96,11 +102,11 @@ a.headline {
     mix-blend-mode: multiply;
   }
   .headline::before {
-    transform: translate(-0.15em, -0.15em);
+    transform: translate(calc(-1 * var(--layer-offset)), calc(-1 * var(--layer-offset)));
     color: yellow;
   }
   .headline::after {
-    transform: translate(0.15em, 0.15em);
+    transform: translate(var(--layer-offset), var(--layer-offset));
     color: cyan;
   }
   .headline:hover::before, .headline:hover::after {
