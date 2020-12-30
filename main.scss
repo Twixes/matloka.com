@@ -1,3 +1,6 @@
+---
+---
+
 :root {
   --transition-duration: 0.4s;
   --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -22,10 +25,9 @@ body {
 
 a {
   color: inherit;
-}
-
-a.headline {
-  text-decoration: none;
+  &.headline {
+    text-decoration: none;
+  }
 }
 
 .headline {
@@ -34,10 +36,9 @@ a.headline {
   line-height: 1.01;
   font-size: 8vh;
   font-weight: 800;
-}
-
-.headline.error {
-  font-size: 14vh;
+  &.error {
+    font-size: 14vh;
+  }
 }
 
 .profession {
@@ -57,10 +58,9 @@ a.headline {
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
   .headline {
     font-size: 18vw;
-  }
-
-  .headline.error {
-    font-size: 34vw;
+    &.error {
+      font-size: 34vw;
+    }
   }
 
   .profession {
@@ -75,10 +75,9 @@ a.headline {
 @media screen and (min-aspect-ratio: 3/2) and (max-height: 40rem) {
   .headline {
     font-size: 22vh;
-  }
-
-  .headline.error {
-    font-size: 34vh;
+    &.error {
+      font-size: 34vh;
+    }
   }
 
   .profession {
@@ -90,32 +89,33 @@ a.headline {
   .headline {
     color: magenta;
     mix-blend-mode: multiply;
+    &::before, &::after {
+      content: "Michał Matłoka";
+      transition: transform var(--transition-duration) var(--transition-timing-function);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: multiply;
+    }
+    &::before {
+      transform: translate(calc(-1 * var(--layer-offset)), calc(-1 * var(--layer-offset)));
+      color: yellow;
+    }
+    &::after {
+      transform: translate(var(--layer-offset), var(--layer-offset));
+      color: cyan;
+    }
+    &:hover {
+      &::before, &::after {
+        transform: none;
+      }
+    }
   }
-  .headline::before, .headline::after {
-    content: "Michał Matłoka";
-    transition: transform var(--transition-duration) var(--transition-timing-function);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    mix-blend-mode: multiply;
-  }
-  .headline::before {
-    transform: translate(calc(-1 * var(--layer-offset)), calc(-1 * var(--layer-offset)));
-    color: yellow;
-  }
-  .headline::after {
-    transform: translate(var(--layer-offset), var(--layer-offset));
-    color: cyan;
-  }
-  .headline:hover::before, .headline:hover::after {
-    transform: none;
-  }
-  .headline.code-404::before, .headline.code-404::after {
-    content: "404";
-  }
-  .headline.code-403::before, .headline.code-403::after {
-    content: "403";
+  &.code-404 {
+    &::before, &::after {
+      content: "404";
+    }
   }
 }
