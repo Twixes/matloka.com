@@ -112,10 +112,10 @@ a {
         transform: none;
       }
     }
-  }
-  &.code-404 {
-    &::before, &::after {
-      content: "404";
+    &.code-404 {
+      &::before, &::after {
+        content: "404";
+      }
     }
   }
 }
