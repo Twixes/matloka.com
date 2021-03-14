@@ -25,12 +25,10 @@ body {
 
 a {
   color: inherit;
-  &.headline {
-    text-decoration: none;
-  }
+  text-decoration: none;
 }
 
-.headline {
+h1 {
   position: relative;
   margin: 0;
   line-height: 1.01;
@@ -41,52 +39,70 @@ a {
   }
 }
 
-.profession {
+h2 {
+  margin: 0.25rem 0;
   color: inherit;
   line-height: 1.4;
-  font-size: 4vh;
+  font-size: 5vh;
   font-weight: 600;
   font-style: italic;
 }
 
-.e-mail {
-  color: inherit;
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   font: 600 1.5rem "Zilla Slab", monospace;
   line-height: 1.6;
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+  a {
+    text-decoration: underline;
+  }
 }
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
-  .headline {
-    font-size: 18vw;
+  h1 {
+    font-size: 19vw;
     &.error {
       font-size: 34vw;
     }
   }
 
-  .profession {
-    font-size: 8vw;
+  h2 {
+    font-size: 9vw;
   }
 
-  .e-mail {
-    font-size: 1.25rem;
+  nav {
+    gap: 0;
+    flex-direction: column;
+    a {
+      font-size: 1.25rem;
+    }
+  }
+
+  .separator {
+    display: none;
   }
 }
 
 @media screen and (min-aspect-ratio: 3/2) and (max-height: 40rem) {
-  .headline {
+  h1 {
     font-size: 22vh;
     &.error {
       font-size: 34vh;
     }
   }
 
-  .profession {
+  h2 {
     font-size: 11vh;
   }
 }
 
 @supports (mix-blend-mode: multiply) {
-  .headline {
+  h1 {
     color: magenta;
     mix-blend-mode: multiply;
     &::before, &::after {
