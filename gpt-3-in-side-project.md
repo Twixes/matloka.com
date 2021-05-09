@@ -21,10 +21,10 @@ So I abondoned the topic of a chatbot of my own, hoping for better times when th
 
 ## Welcome
 
-A few months passed, I did some pretty cool stuff at work (shout out to [PostHog](https://posthog.com)), added a few relatively "dumb" (but useful) features to the bot, watched its usage grow, also started a new side project…
+A few months passed, I shipped pretty cool stuff at work (shout out to [PostHog](https://posthog.com)), added a few relatively "dumb" (but useful) features to the bot, watched its usage grow, started a new side project…
 
 Then, I noticed a new email in my inbox:
 
 ![Welcome to the OpenAI API beta](./welcome.png)
 
-What a pleasant surprise! It took 5 months, but GPT-3 was now only one account to create away. I did that and everything went smoothly. I was plopped into
+A surprise to be sure, but a welcome one. After a 5 months' wait, GPT-3 was now only one account to create away. I did that and everything went smoothly. I was plopped into
