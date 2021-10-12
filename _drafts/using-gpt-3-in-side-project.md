@@ -1,4 +1,8 @@
-# Using GPT-3 in a Side Project - a Story
+---
+layout: post
+title: Using GPT-3 in a Side Project - a Story
+date: 2021-10-12
+---
 
 ## Why
 
@@ -10,7 +14,7 @@ However, there's one ability it's always lacked: to chat.
 
 Then, right after 2021 kicked off, I got a thought: why not make the bot an actual _chat_bot too – now that'd be super.  
 The obvious thought, and a trendy one for sure, was "GPT-3 FTW". The new OpenAI text-processing machine learning
-model of 2020 made the rounds around the internet. It's proven itself to be imperfect… but still a _fantastic_ achievement (dangerously so even, maybe).
+model of 2020 made the rounds around the internet. It's proven itself to be imperfect… but still a \_fantastic_ achievement (dangerously so even, maybe).
 
 Only problem: it was (and still is almost a year after relase) in private beta. As a solo developer without
 great cause, there's no fast track. You have to submit your request along with lots of other people and hope that eventually it gets accepted. I did that – after all, why not – but without much hope for quick access.
@@ -25,7 +29,7 @@ I turned to some libraries implementing a variety of ML approaches. Python excel
 But for an actual chat bot resembling a human even approximately, and _particularly_ non-English
 (this is Polish we're talking about), nothing was up to par. Not even GPT-2. I mean, I could get some responses even, but nothing resembling coherent human speech. Not without training on a **massive** amount of relevant and varied data, that we carbon-based lifeforms take years to soak in.
 
-No way for me to match GPT-3, even for all its imperfections. And I still have heard nothing from OpenAI.
+No way for me to match GPT-3, even for all its imperfections. And I've still heard nothing from OpenAI.
 
 So I abondoned the topic of a chatbot of my own, hoping for better times when this may be more feasible without massive resources.
 

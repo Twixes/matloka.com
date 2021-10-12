@@ -1,0 +1,153 @@
+---
+---
+
+@import "syntax-highlighting";
+
+:root {
+  --transition-duration: 0.4s;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --layer-offset: 0.15em;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  font-family: "Poppins", "Helvetica Neue", "Helvetica", "Arial Black",
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    position: relative;
+    margin: 0;
+    line-height: 1.01;
+    font-size: 8vh;
+    font-weight: 800;
+    &.error {
+      font-size: 14vh;
+    }
+
+    @supports (mix-blend-mode: multiply) {
+      color: magenta;
+      mix-blend-mode: multiply;
+      &::before,
+      &::after {
+        content: "Michael Matloka";
+        transition: transform var(--transition-duration)
+          var(--transition-timing-function);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: multiply;
+      }
+      &::before {
+        transform: translate(
+          calc(-1 * var(--layer-offset)),
+          calc(-1 * var(--layer-offset))
+        );
+        color: yellow;
+      }
+      &::after {
+        transform: translate(var(--layer-offset), var(--layer-offset));
+        color: cyan;
+      }
+      &:hover {
+        &::before,
+        &::after {
+          transform: none;
+        }
+      }
+      &.code-404 {
+        &::before,
+        &::after {
+          content: "404";
+        }
+      }
+    }
+  }
+
+  h2 {
+    margin: 0.25rem 0;
+    color: inherit;
+    line-height: 1.4;
+    font-size: 5vh;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font: 600 1.5rem "Zilla Slab", monospace;
+    line-height: 1.6;
+    div {
+      display: flex;
+      gap: 1rem;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
+    h1 {
+      font-size: 19vw;
+      &.error {
+        font-size: 34vw;
+      }
+    }
+
+    h2 {
+      font-size: 9vw;
+    }
+
+    nav {
+      gap: 0;
+      flex-direction: column;
+      a {
+        font-size: 1.25rem;
+      }
+    }
+
+    .separator {
+      display: none;
+    }
+  }
+
+  @media screen and (min-aspect-ratio: 3/2) and (max-height: 40rem) {
+    h1 {
+      font-size: 22vh;
+      &.error {
+        font-size: 34vh;
+      }
+    }
+
+    h2 {
+      font-size: 11vh;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+title: Michael Matloka
+email: michal@matloka.com
+tagline: Software engineer and a person
+description: Hey, I'm Michael. I'm a software engineer, and a person. This is my dungeon. Retweets ARE endorsements.
+url: matloka.com
+repository: Twixes/matloka.com
+twitter:
+  username: MatlokaM
+  card: summary_large_image
+image:
+  path: /assets/banner.png
+  height: 640
+  width: 1280
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+collections:
+  posts:
+    output: true
+    permalink: /:title
+
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
