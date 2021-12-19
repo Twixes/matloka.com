@@ -5,23 +5,22 @@ description: Hey, I'm Michael. I'm a software engineer, and a person.
 url: matloka.com
 repository: Twixes/matloka.com
 twitter:
-  username: MatlokaM
-  card: summary_large_image
+    username: MatlokaM
+    card: summary_large_image
 image:
-  path: /assets/banner.png
-  height: 640
-  width: 1280
+    path: /assets/banner.png
+    height: 640
+    width: 1280
 
 plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+    - jekyll-feed
+    - jekyll-sitemap
+    - jekyll-seo-tag
 
 collections:
-  posts:
-    output: true
-    permalink: /:title
-
+    posts:
+        output: true
+        permalink: /:title
 # exclude:
 #   - .sass-cache/
 #   - .jekyll-cache/

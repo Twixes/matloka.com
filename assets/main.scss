@@ -1,191 +1,196 @@
 ---
 ---
 
-@import "syntax-highlighting";
+@import 'syntax-highlighting';
 
 :root {
-  --transition-duration: 0.4s;
-  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --background: white;
-  --text-color: black;
-  --text-color-muted: rgba(0, 0, 0, 0.6);
-  --font-headline: "Poppins", "Helvetica Neue", "Helvetica", "Arial Black", sans-serif;
-  --font-body: "Zilla Slab", sans-serif;
+    --transition-duration: 0.4s;
+    --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --background: white;
+    --text-color: black;
+    --text-color-muted: rgba(0, 0, 0, 0.6);
+    --font-headline: 'Poppins', 'Helvetica Neue', 'Helvetica', 'Arial Black', sans-serif;
+    --font-body: 'Zilla Slab', sans-serif;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 ::selection {
-  background: var(--text-color);
-  color: var(--background);
+    background: var(--text-color);
+    color: var(--background);
 }
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  background: var(--background);
-  color: var(--text-color);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    color: var(--text-color);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 4rem 4rem 2rem 4rem;
-  max-width: 54rem;
-  text-rendering: optimizeLegibility;
-  font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 4rem 4rem 2rem 4rem;
+    max-width: 54rem;
+    text-rendering: optimizeLegibility;
+    font-family: var(--font-body);
 }
 
 .content-wrapper {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 a {
-  transition: opacity 200ms ease;
-  color: magenta;
-  &:hover {
-    opacity: 0.75;
-  }
+    transition: opacity 200ms ease;
+    color: magenta;
+    &:hover {
+        opacity: 0.75;
+    }
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
 }
 
-h1, h2 {
-  a {
-    color: inherit;
-  }
+h1,
+h2 {
+    a {
+        color: inherit;
+    }
 }
 
 h1 {
-  margin: 0;
-  line-height: 1.2;
-  font-family: var(--font-headline);
-  font-size: 5.5rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  white-space: pre;
+    margin: 0;
+    line-height: 1.2;
+    font-family: var(--font-headline);
+    font-size: 5.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    white-space: pre;
 }
 
 h2 {
-  margin: 0.25rem 0;
-  line-height: 1.2;
-  font-family: var(--font-headline);
-  font-size: 1.75rem;
-  font-weight: 600;
+    margin: 0.25rem 0;
+    line-height: 1.2;
+    font-family: var(--font-headline);
+    font-size: 1.75rem;
+    font-weight: 600;
 }
 
 h3 {
-  margin: 1.5rem 0;
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.2;
+    margin: 1.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 p {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 footer {
-  display: flex;
-  color: var(--text-color-muted);
-> * {
-  a {
-    color: inherit;
-  }
-  &:not(:first-child) {
-    margin-left: 0.75rem;
-    &::before {
-      content: "|";
-      margin-right: 0.75rem;
+    display: flex;
+    color: var(--text-color-muted);
+    > * {
+        a {
+            color: inherit;
+        }
+        &:not(:first-child) {
+            margin-left: 0.75rem;
+            &::before {
+                content: '|';
+                margin-right: 0.75rem;
+            }
+        }
     }
-  }
-}
 }
 
 .links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  margin: 2rem 0;
-  font-size: 2.25rem;
-  > a {
     display: flex;
-    color: inherit;
-  }
+    gap: 2rem;
+    align-items: center;
+    margin: 2rem 0;
+    font-size: 2.25rem;
+    > a {
+        display: flex;
+        color: inherit;
+    }
 }
 
 .cmyk {
-  display: inline-block;
-  position: relative;
-  color: black; // Fallback for browsers that don't support multiplying colors
-  --layer-offset: 0.15em;
-  @supports (mix-blend-mode: multiply) {
-    color: magenta;
-    mix-blend-mode: multiply;
-    &::before,
-    &::after {
-      content: attr(content);
-      transition: transform var(--transition-duration)
-        var(--transition-timing-function);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      mix-blend-mode: multiply;
+    display: inline-block;
+    position: relative;
+    color: black; // Fallback for browsers that don't support multiplying colors
+    --layer-offset: 0.15em;
+    @supports (mix-blend-mode: multiply) {
+        color: magenta;
+        mix-blend-mode: multiply;
+        &::before,
+        &::after {
+            content: attr(content);
+            transition: transform var(--transition-duration) var(--transition-timing-function);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: multiply;
+        }
+        &::before {
+            transform: translate(calc(-1 * var(--layer-offset)), calc(-1 * var(--layer-offset)));
+            color: yellow;
+        }
+        &::after {
+            transform: translate(var(--layer-offset), var(--layer-offset));
+            color: cyan;
+        }
+        &:hover {
+            &::before,
+            &::after {
+                transform: none;
+            }
+        }
     }
-    &::before {
-      transform: translate(
-        calc(-1 * var(--layer-offset)),
-        calc(-1 * var(--layer-offset))
-      );
-      color: yellow;
-    }
-    &::after {
-      transform: translate(var(--layer-offset), var(--layer-offset));
-      color: cyan;
-    }
-    &:hover {
-      &::before,
-      &::after {
-        transform: none;
-      }
-    }
-  }
 }
 
 .posts {
-  margin: 2rem 0;
-  padding: 0;
-  li {
-    display: block;
-  }
+    margin: 2rem 0;
+    padding: 0;
+    li {
+        display: block;
+    }
 }
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
-  // Mobile
-  body {
-    padding: 1rem;
-  }
-  h1 {
-    font-size: 4rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-  }
-  h3 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-  }
-  .links {
-    margin: 1.25rem 0;
-  }
+    // Mobile
+    body {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 4rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+    }
+    .links {
+        margin: 1.25rem 0;
+    }
 }
