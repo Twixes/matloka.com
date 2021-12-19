@@ -1,0 +1,14 @@
+<ul class="posts">
+  {%- for post in site.posts -%}
+  <li>
+    {%- assign date_format = "%-d %b %Y" -%}
+    <h3>
+      <a href="{{ post.url | relative_url }}">
+        {{ post.title | escape }}
+      </a>
+    </h3>
+    <span>{{ post.date | date: date_format }}</span>
+    {{ post.excerpt }}
+  </li>
+  {%- endfor -%}
+</ul>
