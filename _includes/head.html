@@ -2,18 +2,15 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Michael Matloka</title>
+  <title>{{ site.title }}</title>
   {%- seo title=false -%}
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
   <link rel="mask-icon" href="/favicon.svg" color="#000000" />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Poppins:600i,800|Zilla+Slab:600&amp;subset=latin-ext"
+    href="https://fonts.googleapis.com/css?family=Poppins:600i,800,800i|Zilla+Slab:600&amp;subset=latin-ext"
   />
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-  {%- endif -%}
 </head>
