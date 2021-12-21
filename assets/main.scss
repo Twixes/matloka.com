@@ -81,8 +81,8 @@ h2 {
 h1 {
     margin: 2rem 0 0 0;
     font-family: var(--font-headline);
-    font-size: 2.75rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 700;
     letter-spacing: -0.01em;
 }
 
@@ -203,12 +203,15 @@ footer {
     li {
         display: block;
         margin-top: 2rem;
-        p {
-            margin-top: 0;
-        }
-        .meta {
-            margin-top: 0.25rem;
-        }
+    }
+    h2 {
+        font-weight: 700;
+    }
+    p {
+        margin-top: 0;
+    }
+    .meta {
+        margin-top: 0.25rem;
     }
 }
 
@@ -237,9 +240,6 @@ article {
     }
     h1 {
         font-size: 2.25rem;
-    }
-    h2 {
-        font-size: 1.5rem;
     }
     h4 {
         margin: 1rem 0;
