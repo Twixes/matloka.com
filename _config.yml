@@ -12,6 +12,8 @@ image:
     height: 640
     width: 1280
 
+date_format: '%-d %b %Y'
+
 plugins:
     - jekyll-feed
     - jekyll-sitemap

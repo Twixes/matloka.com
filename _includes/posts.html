@@ -1,0 +1,16 @@
+<ul class="posts">
+    {%- for post in site.posts -%}
+    <li>
+        <h2>
+            <a href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
+        </h2>
+        <div class="meta">
+            #{{ post.ordinal }} —
+            <time class="dt-published" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ post.date | date: site.date_format }}
+            </time>
+        </div>
+        <p>{{ post.lead }}</p>
+    </li>
+    {%- endfor -%}
+</ul>

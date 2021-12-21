@@ -1,39 +1,20 @@
 ---
-layout: default
+layout: subpage
 ---
 
-<article
-  class="post h-entry"
-  itemscope
-  itemtype="http://schema.org/BlogPosting"
->
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">
-      {{ page.title | escape }}
-    </h1>
-    <p class="post-meta">
-      <time
-        class="dt-published"
-        datetime="{{ page.date | date_to_xmlschema }}"
-        itemprop="datePublished"
-      >
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y"
-        -%} {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%} •
-      <span itemprop="author" itemscope itemtype="http://schema.org/Person"
-        ><span class="p-author h-card" itemprop="name"
-          >{{ page.author }}</span
-        ></span
-      >
-      {%- endif -%}
-    </p>
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
-
-  {%- if site.disqus.shortname -%} {%- include disqus_comments.html -%} {%-
-  endif -%}
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 itemprop="name headline">{{ page.title | escape }}</h1>
+    <div class="meta">
+        #{{ page.ordinal }} —
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: site.date_format }}
+        </time>
+    </div>
+    <div class="post-content" itemprop="articleBody">{{ content }}</div>
+    <h5>
+        Thanks for reading this post!<br />If you enjoyed it, <i>don't</i> consider subscribing to my newsletter because
+        I don't have one. Instead <a href="https://www.eff.org/">donate to EFF</a>,
+        <a href="https://en.wikipedia.org/wiki/Special:Random">read a random Wikipedia article</a>, or just have a great
+        day!
+    </h5>
 </article>

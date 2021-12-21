@@ -1,14 +1,12 @@
 ---
 layout: post
-title: Using GPT-3 in a Side Project - a Story
-date: 2021-10-12
+title: Using GPT-3 in a side project
+lead: Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+date: 2021-10-09
+ordinal: 1
 ---
 
-## Why
-
-Hey! I'm Michael. I'm Polish, a software engineer, a fan of Discord _and_ I enjoy building software tools in my free time.
-
-You'll surely be surprised then that I run a [Polish Discord bot called Somsiad](https://somsiad.net) ([open source, written in Python](https://github/com/Twixes/somsiad)), which is now used on well over 3 000 servers. It has a ton of features – they would be incredibly tedious to event list here.
+I'm Polish, a software engineer, a fan of Discord _and_ I enjoy building software tools in my free time. You'll surely be surprised then that I run a [Polish Discord bot called Somsiad](https://somsiad.net) ([open source, written in Python](https://github/com/Twixes/somsiad)), which is now used on well over 3 000 servers. It has a ton of features – they would be incredibly tedious to event list here.
 
 However, there's one ability it's always lacked: to chat.
 

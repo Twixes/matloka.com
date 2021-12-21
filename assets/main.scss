@@ -4,8 +4,8 @@
 @import 'syntax-highlighting';
 
 :root {
-    --transition-duration: 0.4s;
-    --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-duration-long: 0.5s;
+    --transition-duration-short: 0.25s;
     --background: white;
     --text-color: black;
     --text-color-muted: rgba(0, 0, 0, 0.6);
@@ -24,21 +24,21 @@
     color: var(--background);
 }
 
-html,
-body {
+html {
     width: 100%;
     height: 100%;
     background: var(--background);
     color: var(--text-color);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    min-height: 100%;
     margin: 0 auto;
-    padding: 4rem 4rem 2rem 4rem;
+    padding: 2rem 4rem;
     max-width: 54rem;
     text-rendering: optimizeLegibility;
     font-family: var(--font-body);
@@ -46,24 +46,29 @@ body {
 
 .content-wrapper {
     flex-grow: 1;
+    margin-bottom: 4rem;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
 }
 
 a {
-    transition: opacity 200ms ease;
     color: magenta;
-    &:hover {
-        opacity: 0.75;
-    }
 }
 
-p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    overflow-wrap: break-word;
+    line-height: 1.2;
 }
 
 h1,
@@ -74,32 +79,44 @@ h2 {
 }
 
 h1 {
-    margin: 0;
-    line-height: 1.2;
+    margin: 2rem 0 0 0;
     font-family: var(--font-headline);
-    font-size: 5.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: -0.01em;
-    white-space: pre;
 }
 
 h2 {
-    margin: 0.25rem 0;
-    line-height: 1.2;
+    margin: 2rem 0 0;
     font-family: var(--font-headline);
     font-size: 1.75rem;
     font-weight: 600;
 }
 
-h3 {
-    margin: 1.5rem 0;
+h4 {
+    margin: 1.5rem 0 0;
     font-size: 1.75rem;
     font-weight: 600;
-    line-height: 1.2;
+}
+
+h5 {
+    margin: 1.25rem 0 0;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 p {
+    margin: 1rem 0 0;
     font-size: 1.25rem;
+    text-align: justify;
+    text-align-last: left;
+}
+
+header {
+    h1 {
+        font-size: 5.5rem;
+        white-space: pre;
+    }
 }
 
 footer {
@@ -126,8 +143,12 @@ footer {
     margin: 2rem 0;
     font-size: 2.25rem;
     > a {
+        transition: transform var(--transition-duration-short) ease;
         display: flex;
         color: inherit;
+        &:hover {
+            transform: translateY(-0.125rem);
+        }
     }
 }
 
@@ -135,20 +156,28 @@ footer {
     display: inline-block;
     position: relative;
     color: black; // Fallback for browsers that don't support multiplying colors
+    cursor: default;
     --layer-offset: 0.15em;
+    a {
+        text-decoration: none;
+        &:hover {
+            opacity: inherit;
+        }
+    }
     @supports (mix-blend-mode: multiply) {
         color: magenta;
         mix-blend-mode: multiply;
         &::before,
         &::after {
             content: attr(content);
-            transition: transform var(--transition-duration) var(--transition-timing-function);
+            transition: transform var(--transition-duration-long) cubic-bezier(0.4, 0, 0.2, 1);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             mix-blend-mode: multiply;
+            pointer-events: none;
         }
         &::before {
             transform: translate(calc(-1 * var(--layer-offset)), calc(-1 * var(--layer-offset)));
@@ -168,11 +197,28 @@ footer {
 }
 
 .posts {
-    margin: 2rem 0;
+    margin: 6rem 0 2rem;
     padding: 0;
     li {
         display: block;
+        margin-top: 2rem;
+        p {
+            margin-top: 0;
+        }
+        .meta {
+            margin-top: 0.25rem;
+        }
     }
+}
+
+.meta {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+article {
+    margin-top: 2rem;
 }
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
@@ -180,17 +226,27 @@ footer {
     body {
         padding: 1rem;
     }
+    .content-wrapper {
+        margin-bottom: 2rem;
+    }
+    header {
+        h1 {
+            font-size: 4.25rem;
+        }
+    }
     h1 {
-        font-size: 4rem;
+        font-size: 2.25rem;
     }
     h2 {
         font-size: 1.5rem;
     }
-    h3 {
+    h4 {
         margin: 1rem 0;
-        font-size: 1.5rem;
     }
     .links {
         margin: 1.25rem 0;
+    }
+    .posts {
+        margin-top: 4rem;
     }
 }
