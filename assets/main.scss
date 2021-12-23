@@ -11,6 +11,8 @@
     --text-color-muted: rgba(0, 0, 0, 0.6);
     --font-headline: 'Poppins', 'Helvetica Neue', 'Helvetica', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
+    --font-code: 'Fira Code', 'SF Mono', 'Monaco', sans-serif;
+    --light-gray: #efefef;
 }
 
 *,
@@ -110,6 +112,14 @@ p {
     font-size: 1.25rem;
     text-align: justify;
     text-align-last: left;
+}
+
+code {
+  padding: 0.125rem;
+  border-radius: 0.25rem;
+  background: var(--light-gray);
+  font-family: var(--font-code);
+  font-size: 1rem;
 }
 
 header {
