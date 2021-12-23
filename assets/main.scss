@@ -212,7 +212,7 @@ footer {
     padding: 0;
     li {
         display: block;
-        margin-top: 2rem;
+        margin-top: 3rem;
     }
     h2 {
         font-weight: 700;
@@ -227,7 +227,7 @@ footer {
 
 .meta {
     margin-top: 1rem;
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 600;
 }
 
@@ -255,6 +255,9 @@ article {
         margin: 1.25rem 0;
     }
     .posts {
-        margin-top: 4rem;
+        margin: 4rem 0 0;
+        li {
+            margin-top: 2rem;
+        }
     }
 }
