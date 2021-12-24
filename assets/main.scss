@@ -1,7 +1,7 @@
 ---
 ---
 
-@import 'syntax-highlighting';
+@import 'syntax';
 
 :root {
     --transition-duration-long: 0.5s;
@@ -11,8 +11,8 @@
     --text-color-muted: rgba(0, 0, 0, 0.6);
     --font-headline: 'Poppins', 'Helvetica Neue', 'Helvetica', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
-    --font-code: 'Fira Code', 'SF Mono', 'Monaco', sans-serif;
-    --light-gray: #efefef;
+    --font-code: 'SF Mono', Menlo, Monaco, 'Cascadia Code', 'Cascadia Mono', Consolas, 'Fira Code', 'Liberation Mono', 'Courier New', monospace;
+    --grayish: #f6f7f9;
 }
 
 *,
@@ -117,9 +117,13 @@ p {
 code {
     padding: 0.125rem;
     border-radius: 0.25rem;
-    background: var(--light-gray);
+    background: var(--grayish);
     font-family: var(--font-code);
     font-size: 1rem;
+    pre & {
+      display: block;
+      padding: 0.75rem 1rem;
+    }
 }
 
 header {
