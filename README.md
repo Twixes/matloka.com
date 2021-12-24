@@ -1,1 +1,1 @@
-[![Michael Matloka](banner.png)](https://matloka.com)
+[![Michael Matloka](assets/banner.png)](https://matloka.com)
