@@ -10,7 +10,7 @@
                 {{ post.date | date: site.date_format }}
             </time>
         </div>
-        <p>{{ post.lead }}</p>
+        <p>{{ post.lead | markdownify }}</p>
     </li>
     {%- endfor -%}
 </ul>
