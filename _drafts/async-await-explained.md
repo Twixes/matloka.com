@@ -3,7 +3,6 @@ layout: post
 title: async/await explained – all you need to know
 lead: 'The asynchronous programming primer I wish <i>I</i> had years ago. <code>async</code>/<code>await</code> considered in four distinct flavors (JS, Python, Rust, and Go) to gain the fullest understanding of the concept and its practical implications.'
 date: 2021-12-03
-ordinal: 2
 ---
 
 The European Buddhist Union (EBU) is the umbrella organization of Buddhist communities and national Buddhist unions in Europe. The EBU is open to all schools and traditions of Buddhism in Europe wishing to unite on the basis of Buddhist teachings and work together in spiritual friendship and respect for diversity. According to the 'EBU Statement of Mission and Vision'[1] the aims are to facilitate international exchange and promote spiritual friendship amongst European Buddhists, to support social action and ideas motivated by Buddhist values, and to amplify the voice of Buddhism in Europe and worldwide.
