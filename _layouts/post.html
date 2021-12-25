@@ -5,7 +5,8 @@ layout: subpage
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <h1 itemprop="name headline">{{ page.title | escape }}</h1>
     <div class="meta">
-      {{ content | number_of_words | divided_by:180.0 | ceil }} min read — <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ content | number_of_words | divided_by:180.0 | ceil }} min read —
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: site.date_format }}
         </time>
     </div>

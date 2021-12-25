@@ -34,6 +34,6 @@ A few months passed, I shipped pretty cool stuff at work (advancing product anal
 
 Then, I noticed a new email in my inbox:
 
-![Welcome to the OpenAI API beta](./welcome.png)
+![Welcome to the OpenAI API beta](./assets/welcome.png)
 
 A surprise to be sure, but a welcome one! After a 5 months' wait, GPT-3 was now only one account to create away. I did that and everything went smoothly. I was plopped into

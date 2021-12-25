@@ -5,7 +5,8 @@
             <a href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
         </h2>
         <div class="meta">
-            {{ content | number_of_words | divided_by:180.0 | ceil }} min read — <time class="dt-published" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ content | number_of_words | divided_by:180.0 | ceil }} min read —
+            <time class="dt-published" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: site.date_format }}
             </time>
         </div>
