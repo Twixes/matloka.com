@@ -63,6 +63,9 @@ svg {
 
 a {
     color: magenta;
+    &::selection {
+        color: yellow;
+    }
 }
 
 h1,
@@ -72,13 +75,6 @@ h4,
 h5,
 h6 {
     line-height: 1.2;
-}
-
-h1,
-h2 {
-    a {
-        color: inherit;
-    }
 }
 
 h1 {
@@ -108,11 +104,31 @@ h5 {
     font-weight: 600;
 }
 
+ul,
+ol {
+    padding-left: 2rem;
+    margin-top: 0.5rem;
+}
+
+li {
+    font-size: 1.25rem;
+}
+
 p {
     margin: 1rem 0 0;
     font-size: 1.25rem;
     text-align: justify;
     text-align-last: left;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+blockquote {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    background: var(--grayish);
 }
 
 code {
@@ -121,6 +137,7 @@ code {
     background: var(--grayish);
     font-family: var(--font-code);
     font-size: 1rem;
+    overflow: auto;
     pre & {
         display: block;
         padding: 0.75rem 1rem;
@@ -139,15 +156,24 @@ footer {
     display: flex;
     color: var(--text-color-muted);
     > * {
-        a {
-            color: inherit;
-        }
         &:not(:first-child) {
             margin-left: 0.75rem;
             &::before {
                 content: '|';
                 margin-right: 0.75rem;
             }
+        }
+    }
+}
+
+h1,
+h2,
+footer {
+    // Make links in h1, h2, and footer monochromatic
+    a {
+        color: inherit;
+        &::selection {
+            color: white;
         }
     }
 }
@@ -238,6 +264,10 @@ footer {
 
 article {
     margin-top: 2rem;
+}
+
+.post-content {
+    margin-top: 1rem;
 }
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
