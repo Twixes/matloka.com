@@ -32,7 +32,7 @@ html {
     height: 100%;
     background: var(--background);
     color: var(--text-color);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 body {
@@ -248,6 +248,9 @@ footer {
     li {
         display: block;
         margin-top: 3rem;
+    }
+    h2 {
+        max-width: 32ch;
     }
     p {
         margin-top: 0;
