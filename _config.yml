@@ -1,18 +1,12 @@
 title: Michael Matloka
-email: michal@matloka.com
 tagline: Engineering software. Full stack.
 description: Hey, I'm Michael. I'm a software engineer, and a person.
-author:
-    name: Michael Matloka
-    twitter: MatlokaM
 repository: Twixes/matloka.com
+email: michal@matloka.com
 twitter:
     username: MatlokaM
     card: summary_large_image
-image:
-    path: /assets/banner.png
-    height: 640
-    width: 1280
+logo: /assets/logo.png
 
 date_format: '%-d %b %Y'
 
@@ -33,3 +27,6 @@ defaults:
           type: 'posts'
       values:
           layout: 'post'
+          author:
+              name: Michael Matloka
+              twitter: MatlokaM
