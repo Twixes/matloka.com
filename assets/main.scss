@@ -7,13 +7,16 @@
     --transition-duration-long: 0.5s;
     --transition-duration-short: 0.25s;
     --background: white;
-    --text-color: black;
-    --text-color-muted: rgba(0, 0, 0, 0.6);
+    --foreground: black;
+    --grayish: #f6f7f9;
+    --composite-color-1: yellow;
+    --composite-color-2: magenta;
+    --composite-color-3: cyan;
+    --composite-blend-mode: multiply;
     --font-headline: 'Poppins', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
     --font-code: 'SF Mono', Menlo, Monaco, 'Cascadia Code', 'Cascadia Mono', Consolas, 'Fira Code', 'Liberation Mono',
         'Courier New', monospace;
-    --grayish: #f6f7f9;
 }
 
 *,
@@ -23,7 +26,7 @@
 }
 
 ::selection {
-    background: var(--text-color);
+    background: var(--foreground);
     color: var(--background);
 }
 
@@ -31,7 +34,7 @@ html {
     width: 100%;
     height: 100%;
     background: var(--background);
-    color: var(--text-color);
+    color: var(--foreground);
     line-height: 1.6;
 }
 
@@ -158,16 +161,9 @@ header {
 
 footer {
     display: flex;
-    color: var(--text-color-muted);
-    > * {
-        &:not(:first-child) {
-            margin-left: 0.75rem;
-            &::before {
-                content: '|';
-                margin-right: 0.75rem;
-            }
-        }
-    }
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0.6;
 }
 
 h1,
@@ -177,7 +173,7 @@ footer {
     a {
         color: inherit;
         &::selection {
-            color: white;
+            color: var(--background);
         }
     }
 }
@@ -198,10 +194,18 @@ footer {
     }
 }
 
-.cmyk {
+.light-dark-mode {
+    background: url('https://fonts.gstatic.com/s/i/materialiconsoutlined/light_mode/v4/20px.svg');
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-left: 1rem;
+    cursor: help;
+}
+
+.composite {
     display: inline-block;
     position: relative;
-    color: black; // Fallback for browsers that don't support multiplying colors
+    color: var(--foreground); // Fallback for browsers that don't support multiplying colors
     cursor: default;
     --layer-offset: 0.15em;
     a {
@@ -211,8 +215,8 @@ footer {
         }
     }
     @supports (mix-blend-mode: multiply) {
-        color: magenta;
-        mix-blend-mode: multiply;
+        color: var(--composite-color-2);
+        mix-blend-mode: var(--composite-blend-mode);
         &::before,
         &::after {
             content: attr(content);
@@ -222,16 +226,16 @@ footer {
             left: 0;
             width: 100%;
             height: 100%;
-            mix-blend-mode: multiply;
+            mix-blend-mode: var(--composite-blend-mode);
             pointer-events: none;
         }
         &::before {
             transform: translate(calc(-1 * var(--layer-offset)), calc(-1 * var(--layer-offset)));
-            color: yellow;
+            color: var(--composite-color-1);
         }
         &::after {
             transform: translate(var(--layer-offset), var(--layer-offset));
-            color: cyan;
+            color: var(--composite-color-3);
         }
         &:hover {
             &::before,
@@ -298,5 +302,25 @@ article {
         li {
             margin-top: 2rem;
         }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    // Dark mode
+    :root {
+        --background: #0e0e0e;
+        --foreground: white;
+        --grayish: #1f2228;
+        --composite-color-1: #00f;
+        --composite-color-2: #0f0;
+        --composite-color-3: #f00;
+        --composite-blend-mode: screen;
+    }
+    a::selection {
+        color: #00f;
+    }
+    .light-dark-mode {
+        background: url('https://fonts.gstatic.com/s/i/materialiconsoutlined/dark_mode/v4/20px.svg');
+        filter: invert(1);
     }
 }
