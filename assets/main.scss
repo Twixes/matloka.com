@@ -278,10 +278,17 @@ article {
     margin-top: 1rem;
 }
 
+.post-scriptum {
+    margin-top: 2rem;
+}
+
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
     // Mobile
     body {
         padding: 1rem;
+    }
+    .content-wrapper {
+        margin-bottom: 2rem;
     }
     header {
         h1 {
