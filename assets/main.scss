@@ -282,6 +282,10 @@ article {
     margin-top: 2rem;
 }
 
+.anchorjs-link {
+    line-height: 1.1 !important;
+}
+
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
     // Mobile
     body {
