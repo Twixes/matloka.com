@@ -45,7 +45,7 @@ body {
     min-height: 100%;
     margin: 0 auto;
     padding: 2rem 4rem;
-    max-width: 54rem;
+    max-width: 60rem;
     text-rendering: optimizeLegibility;
     font-family: var(--font-body);
 }
@@ -251,10 +251,7 @@ footer {
     padding: 0;
     li {
         display: block;
-        margin-top: 3rem;
-    }
-    h2 {
-        max-width: 32ch;
+        margin-top: 2.5rem;
     }
     p {
         margin-top: 0;
@@ -296,7 +293,7 @@ article {
     }
     header {
         h1 {
-            font-size: 4.25rem;
+            font-size: 4.5rem;
         }
     }
     h1 {
@@ -319,9 +316,9 @@ article {
 @media (prefers-color-scheme: dark) {
     // Dark mode
     :root {
-        --background: #0e0e0e;
+        --background: #0f0f0f;
         --foreground: white;
-        --grayish: #1f2228;
+        --grayish: #1f2023;
         --composite-color-1: #00f;
         --composite-color-2: #0f0;
         --composite-color-3: #f00;
