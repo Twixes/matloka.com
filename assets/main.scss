@@ -280,7 +280,8 @@ article {
 }
 
 .anchorjs-link {
-    line-height: 1 !important;
+    text-decoration: underline;
+    margin-left: -1.25em !important;
 }
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
