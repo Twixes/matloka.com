@@ -9,6 +9,7 @@
     --background: white;
     --foreground: black;
     --grayish: #f6f7f9;
+    --gray: #e6e8eb;
     --composite-color-1: yellow;
     --composite-color-2: magenta;
     --composite-color-3: cyan;
@@ -135,6 +136,9 @@ iframe {
   margin-top: 1rem;
   width: 100%;
   border: none;
+  animation: shimmer 1.4s ease infinite;
+  background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
+  background-size: 400% 100%;
 }
 
 blockquote {
@@ -330,6 +334,7 @@ article {
         --background: #0f0f0f;
         --foreground: white;
         --grayish: #1f2023;
+        --gray: #26272b;
         --composite-color-1: #00f;
         --composite-color-2: #0f0;
         --composite-color-3: #f00;
@@ -342,4 +347,12 @@ article {
         background: url('https://fonts.gstatic.com/s/i/materialiconsoutlined/dark_mode/v4/20px.svg');
         filter: invert(1);
     }
+}
+
+@keyframes shimmer {
+  0% {
+      background-position: 100% 50%
+  } 100% {
+      background-position: 0 50%
+  }
 }
