@@ -136,6 +136,7 @@ iframe {
   margin-top: 1rem;
   width: 100%;
   border: none;
+  border-radius: 0.25rem;
   animation: shimmer 1.4s ease infinite;
   background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
   background-size: 400% 100%;
