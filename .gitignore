@@ -2,3 +2,4 @@
 /google*.html
 .vscode/
 _site/
+vendor/
