@@ -8,16 +8,17 @@
     --transition-duration-short: 0.25s;
     --background: white;
     --foreground: black;
-    --grayish: #f6f7f9;
-    --gray: #e6e8eb;
+    --grayish: #f3f4f7;
+    --gray: #e8eaed;
     --composite-color-1: yellow;
     --composite-color-2: magenta;
     --composite-color-3: cyan;
     --composite-blend-mode: multiply;
     --font-headline: 'Poppins', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
-    --font-code: 'SF Mono', Menlo, Monaco, 'Cascadia Code', 'Cascadia Mono', Consolas, 'Fira Code', 'Liberation Mono',
-        'Courier New', monospace;
+    --font-code: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Consolas",
+      "Fira Code", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+      monospace;
 }
 
 *,
@@ -57,21 +58,20 @@ body {
 }
 
 img {
-    margin: 0 auto;
+    margin: 1rem auto;
 }
 
 img,
 picture,
 video,
-canvas,
-svg {
+canvas {
     display: block;
     max-width: 100%;
 }
 
 a {
     color: magenta;
-    &::selection {
+    &::selection, ::selection {
         color: yellow;
     }
 }
@@ -94,7 +94,7 @@ h1 {
 }
 
 h2 {
-    margin: 2rem 0 0;
+    margin: 1.75rem 0 0;
     font-family: var(--font-headline);
     font-size: 1.75rem;
     font-weight: 700;
@@ -114,25 +114,26 @@ h5 {
 
 ul,
 ol {
-    padding-left: 2rem;
+    padding-left: 1.75rem;
     margin-top: 0.5rem;
 }
 
 li {
     font-size: 1.25rem;
+    margin-top: 0.25rem;
 }
 
 p {
-    margin: 1rem 0 0;
+    margin: 0.5rem 0 0;
     font-size: 1.25rem;
     text-align: justify;
-    text-align-last: left;
     &:first-child {
         margin-top: 0;
     }
 }
 
 iframe {
+  display: block;
   margin-top: 1rem;
   width: 100%;
   border: none;
@@ -140,17 +141,22 @@ iframe {
   animation: shimmer 1.4s ease infinite;
   background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
   background-size: 400% 100%;
+  user-select: none;
 }
 
 blockquote {
-    margin: 0;
-    padding: 0.75rem 1rem;
+    margin: 1rem 0 0;
+    padding: 1rem 1.5rem;
     border-radius: 0.25rem;
     background: var(--grayish);
 }
 
+pre {
+  margin: 1rem 0;
+}
+
 code {
-    padding: 0.125rem;
+    padding: 0.25rem;
     border-radius: 0.25rem;
     background: var(--grayish);
     font-family: var(--font-code);
