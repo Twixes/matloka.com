@@ -50,19 +50,21 @@ Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Sci
   Because the significand's leading digit is always<a href="#the-tiny-gap" style="text-decoration: none">*</a> 1, that digit in fact totally omitted from the binary representation – if the significand is, say, `0b1.001` (that's binary for 1.125), only the `001` part ends up being stored. A significand with this implicit leading digit of 1 is called _normalized_.
   The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in double.
 
-See for yourself how this all comes together using the widget below! Toggle the bits by clicking on them and see what number comes out, or enter a number to see what it looks like in your computer's memory:
+See for yourself how this all comes together using the calculator below! Toggle the bits by clicking on them and see what number comes out, or enter a number to see what it looks like in your computer's memory:
 
-<p style="text-align: right"><iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172"></iframe><a href="https://codepen.io/Twixes/pen/xxpKxZw">Play with this widget's code on CodePen</a></p>
+<p style="text-align: right; margin-bottom: -1em;"><iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172"></iframe><a href="https://codepen.io/Twixes/pen/xxpKxZw">Play with this widget's code on CodePen</a></p>
 
-## The Denormalized
-
-We've left a gap in the explanation though. With the expression `(-1)^sign * significand * 2^exponent`
+## The Zero(s)
 
 We've missed something though: how to represent 0? Mathematically, the only way to do that is to set the significand to 0… but that implicit leading 1 is standing in the way.
 
-Here's the trick: a biased exponent value of 0 is a special case – it makes the significand's leading digit _also_ 0. Set both the exponent and significand to 0s and _voilà_, 0 as a result.
+Here's the trick: a biased exponent value of 0 is a special case – it makes the significand's leading digit _also_ 0. Set both the biased exponent and significand to 0s and _voilà_, 0 as a result. That's a useful number to have.
 
-This still leaves us with a gap. Absolute differences between neighboring floating-point values get smaller as the values themselves do so too – after all, precision is defined here in terms of significant binary digits, not a constant interval. Using the tool above, we can see that the interval between numbers on the order of 2^62 is 1000, while for those on the order of 2^3 it's 0.000000000000002.
+Hmm, what if we set the sign to 1 at the same time? It's quite obviously ridiculous for _zero_ to be neg– WHAT?! According to all sources (what sources now) we _do_ actually get -0 this way. It's not even as absurd as it seems at first glance: for almost all intents and purposes -0 == +0 and the cases where the difference is visible are logical. We'll get to those in TODO.
+
+## The Subnormal
+
+This still leaves us with a gap. Absolute differences between neighboring floating-point values get smaller as the values themselves do so too – after all, precision is defined here in terms of significant binary digits, not a constant interval. Using the calculator above, we can see that (assuming double-precision) the interval between numbers on the order of 2^62 is 1000, while for those on the order of 2^3 it's 0.000000000000002.
 
 Naturally, the absolute interval is tiniest at the bottom end of the exponent range. For values on the order of 2^(-1022) it's just 5e-324 – a minuscule number. Now, the bias in the double-precision format is -1023, so you might think -1023 should be the lowest possible exponent, but we've got to keep that special case with 0 in mind. There are 3 --
 
