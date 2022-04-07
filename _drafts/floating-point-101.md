@@ -15,7 +15,7 @@ This makes things a lot easier _and_ it's true. That standard's name?
 
 How's this so simple? I mean, we all know how attempts at standardization _really_ turn out.
 
-<a href="https://xkcd.com/927/"><img src="//imgs.xkcd.com/comics/standards.png" title="Fortunately, the charging one has been solved now that we've all standardized on mini-USB. Or is it micro-USB? Shit." alt="Standards" srcset="//imgs.xkcd.com/comics/standards_2x.png 2x" style="image-orientation:none" loading="lazy"></a>
+<a href="https://xkcd.com/927/"><img src="https://imgs.xkcd.com/comics/standards_2x.png" title="Fortunately, the charging one has been solved now that we've all standardized on mini-USB. Or is it micro-USB? Shit." alt="Standards" height="283" width="500" loading="lazy"></a>
 
 You'd be correct to think more than one format must have been invented. _Plenty_ were – in the early days of computing, practically every system with floating-point capabilities had its own. Later on, brand-specific formats emerged: IBM went for hexadecimal floating-point in their mainframes, Microsoft created Microsoft Binary Format for their BASIC products, DEC cooked up yet something else for the VAX architecture.
 
