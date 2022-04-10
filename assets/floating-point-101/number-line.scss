@@ -1,0 +1,78 @@
+---
+---
+
+.number-line {
+    width: 100%;
+}
+
+.number-line__axis {
+    position: relative;
+    display: flex;
+    padding: 0.5rem 0 1.5rem;
+    &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 0;
+        border: 0 solid #000;
+        border-top-width: 2px;
+        border-bottom-width: 2px;
+    }
+    &.number-line__axis--problematic {
+        padding-top: 2.5rem;
+    }
+}
+
+.number-line__marker {
+    z-index: 10;
+    position: relative;
+    height: 12px;
+    border-right: 2px solid #000;
+    margin-top: -4px;
+    white-space: nowrap;
+    font-weight: 600;
+    line-height: 1;
+    &.number-line__marker--power {
+        height: 20px;
+        margin-top: -8px;
+    }
+    &.number-line__marker--subnormal {
+        border-color: #f0f;
+    }
+    &.number-line__marker--problem::after {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 50%;
+        transform: translateX(-50%);
+        line-height: 0;
+        content: url('/assets/floating-point-101/problem.svg');
+    }
+    &.number-line__marker--0 {
+        flex-grow: 0;
+        border-left: 2px solid #f0f;
+        border-right: none;
+        span {
+            left: -1px;
+            right: unset;
+            transform: translateX(-50%);
+        }
+    }
+    &.number-line__marker--1 {
+        flex-grow: 1;
+    }
+    &.number-line__marker--2 {
+        flex-grow: 2;
+    }
+    &.number-line__marker--4 {
+        flex-grow: 4;
+    }
+    &.number-line__marker--8 {
+        flex-grow: 8;
+    }
+    span {
+        position: absolute;
+        top: 1.5rem;
+        right: -1px;
+        transform: translateX(50%);
+    }
+}

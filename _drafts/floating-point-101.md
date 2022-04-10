@@ -1,6 +1,7 @@
 ---
 title: Floating-point arithmetic – all you need to know, interactively
 image: /assets/floating-point-101/banner.png
+stylesheet: /assets/floating-point-101/number-line.css
 ---
 
 Software engineering keeps getting more abstract, but one thing is unchanging: the importance of floating-point arithmetic. _Every_ programmer is bound to work with numbers (they call them _computers_ for a reason), so it's genuinely useful to understand the way computers do math, no matter if your code is for a ride-hailing service, a stock exchange, or a to-do app. Let's explore how this works!
@@ -15,7 +16,10 @@ This makes things a lot easier _and_ it's true. That standard's name?
 
 How's this so simple? I mean, we all know how attempts at standardization _really_ turn out.
 
+<figure>
 <a href="https://xkcd.com/927/"><img src="https://imgs.xkcd.com/comics/standards_2x.png" title="Fortunately, the charging one has been solved now that we've all standardized on mini-USB. Or is it micro-USB? Shit." alt="Standards" height="283" width="500" loading="lazy"></a>
+<figcaption><i>fig. 1</i> — There's always a relevant XKCD.</figcaption>
+</figure>
 
 You'd be correct to think more than one format must have been invented. _Plenty_ were – in the early days of computing, practically every system with floating-point capabilities had its own. Later on, brand-specific formats emerged: IBM went for hexadecimal floating-point in their mainframes, Microsoft created Microsoft Binary Format for their BASIC products, DEC cooked up yet something else for the VAX architecture.
 
@@ -29,8 +33,8 @@ Let's get into the meat of it, starting with… value sizes in bits. This aspect
 
 Two floating-point sizes are in common use:
 
-- 32 bits, called **single-precision**. This can hold an absolute value of up to `3.403E+38` with 24 binary digits of precision.
-- 64 bits, called **double-precision**. This can hold an absolute value of up to `1.798E+308` with 53 binary digits of precision.
+-   32 bits, called **single-precision**. This can hold an absolute value of up to `3.403E+38` with 24 binary digits of precision.
+-   64 bits, called **double-precision**. This can hold an absolute value of up to `1.798E+308` with 53 binary digits of precision.
 
 Back in the day, double-precision was reserved for operations requiring exceptional precision or range. With 64-bit processor architectures becoming standard though, double is now often the default, as its performance penalty decreased significantly.
 
@@ -42,50 +46,108 @@ Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Sci
 (-1)^sign * significand * 2^exponent
 ```
 
-- The **sign** is a single bit – 0 if the number is positive, 1 if negative.
-- The **exponent** is a signed integer. In a way, it establishes the magnitude, e.g. an exponent of 8 means that the absolute value of the number must be in the range `(256,512]` (`(2^8,2^9]`).  
-  Curiously, despite the exponent being signed, it's stored not using [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) but as an unsigned integer, with the computer _knowing_ to subtract a known _bias_ to get the real value. The raw stored value is called the _biased exponent_. That bias is 127 in single-precision and 1023 in double.  
-  The exponent's size determines the _range_ of the type – 8 bits of it in single-precision and 11 in double.  
-- The **significand** (also called the _mantissa_) is a fixed-point number in the range `(1,2]` (e.g. 1 or 1.0625 or 1.984375). It "fine-tunes" the value within the working range set by the sign and exponent.  
-  Because the significand's leading digit always<a href="#the-zeros" style="text-decoration: none">*</a> is 1, that digit in fact totally omitted from the binary representation – if the significand is, say, `0b1.001` (that's binary for 1.125), only the `001` part ends up being stored. A significand with this implicit leading digit of 1 is called _normalized_.
-  The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in double.
+-   The **sign** is a single bit – 0 if the number is positive, 1 if negative.
+-   The **exponent** is a signed integer. In a way, it establishes the magnitude, e.g. an exponent of 8 means that the absolute value of the number must be in the range `(256,512]` (`(2^8,2^9]`).  
+    Curiously, despite the exponent being signed, it's stored not using [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) but as an unsigned integer, with the computer _knowing_ to subtract a known _bias_ to get the real value. The raw stored value is called the _biased exponent_. That bias is 127 in single-precision and 1023 in double.  
+    The exponent's size determines the _range_ of the type – 8 bits of it in single-precision and 11 in double.
+-   The **significand** (also called the *mantissa*) is a fixed-point number in the range `(1,2]` (e.g. 1 or 1.0625 or 1.984375). It "fine-tunes" the value within the working range set by the sign and exponent.  
+    Because the significand's leading digit always<a href="#the-zeros" style="text-decoration: none">\*</a> is 1, that digit in fact totally omitted from the binary representation – if the significand is, say, `0b1.001` (that's binary for 1.125), only the `001` part ends up being stored. A significand with this implicit leading digit of 1 is called _normalized_.
+    The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in double.
 
 See for yourself how this all comes together using the calculator below! Toggle the bits by clicking on them and see what number comes out, or enter a number to see what it looks like in your computer's memory:
 
-<p style="text-align: right; margin-bottom: -1em;"><iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172" title="IEEE 754 Floating Point Calculator"></iframe><a href="https://codepen.io/Twixes/pen/xxpKxZw">Play with this widget's code on CodePen</a></p>
+
+<figure class="number-line">
+<iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172" title="IEEE 754 Floating Point Calculator"></iframe>
+    <figcaption><i>fig. 2</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw">Play with this widget's code on CodePen!</a></figcaption>
+</figure>
 
 ## The Zero(s)
 
 We've missed something though: how to represent 0? Mathematically, the only way to do that is to set the significand to 0… but that implicit leading 1 is standing in the way.
 
-Here's the trick: a biased exponent value of 0 is a special case – it makes the significand's leading digit _also_ 0. Set both the biased exponent and significand to 0s and _voilà_, 0 as a result. That's a useful number to have.
+Here's the trick: when the significand is `0`, setting the biased exponent to `0` makes the significand's leading digit _also_ `0`. _Voilà_, `0` as a result! That's a useful number to have.
 
-Hmm, what if we set the sign to 1 at the same time? This signifies a negative value, but it's quite obviously ridiculous for _zero_ to be neg– WHAT?! According to all sources (what sources now) we _do_ actually get -0 this way. It's not even as absurd as it seems at first glance: for almost all intents and purposes -0 == +0 and the cases where the difference is visible are logical. We'll get to those in TODO.
+Hmm, what if we set the _sign_ to `1` at the same time? That signifies a negative value, but it's obviously ridiculous for _zero_ to be neg– WHAT?! According to all sources (what sources now) we _do_ actually get `-0` this way. It's not even as absurd as it seems at first glance: for practically all intents and purposes `-0 == +0`. There are a few edge cases where that doesn't hold, but they are quite logical. We'll get to those in TODO.
 
 ## The Subnormal
 
 This still leaves us with a gap. Absolute differences between neighboring floating-point values get smaller as the values themselves do so too – after all, precision is defined here in terms of significant binary digits, not a constant interval. Using the calculator above, we can see that (assuming double precision) the interval between numbers on the order of 2^62 is 1000, while for those on the order of 2^3 it's 0.000000000000002.
 
+
+<figure class="number-line">
+    <div class="number-line__axis number-line__axis--problematic">
+        <div class="number-line__marker number-line__marker--0 number-line__marker--power"><span>0</span></div>
+        <div class="number-line__marker number-line__marker--4 number-line__marker--power number-line__marker--problem"><span>2<sup>-1023</sup></span></div>
+        <div class="number-line__marker number-line__marker--1"></div>
+        <div class="number-line__marker number-line__marker--1"></div>
+        <div class="number-line__marker number-line__marker--1"></div>
+        <div class="number-line__marker number-line__marker--1 number-line__marker--power"><span>2<sup>-1022</sup></span></div>
+        <div class="number-line__marker number-line__marker--2"></div>
+        <div class="number-line__marker number-line__marker--2"></div>
+        <div class="number-line__marker number-line__marker--2"></div>
+        <div class="number-line__marker number-line__marker--2 number-line__marker--power"><span>2<sup>-1021</sup></span></div>
+        <div class="number-line__marker number-line__marker--4"></div>
+        <div class="number-line__marker number-line__marker--4"></div>
+        <div class="number-line__marker number-line__marker--4"></div>
+        <div class="number-line__marker number-line__marker--4 number-line__marker--power"><span>2<sup>-1020</sup></span></div>
+        <div class="number-line__marker number-line__marker--8"></div>
+        <div class="number-line__marker number-line__marker--8"></div>
+        <div class="number-line__marker number-line__marker--8"></div>
+        <div class="number-line__marker number-line__marker--8 number-line__marker--power"><span>2<sup>-1019</sup></span></div>
+    </div>
+    <figcaption><div class="recommendation recommendation--dont"></div><i>fig. 3</i> — Don't.</figcaption>
+</figure>
+
 Naturally, the absolute interval is smallest at the bottom end of the exponent range. For values on the order of 2^(-1022) it's just 5e-324 – a minuscule number. Now, the bias in the double-precision format is -1023, so you might think -1023 should be the lowest possible exponent, but we've got to keep that special case with 0 in mind. There are 3 --
 
+<figure class="number-line">
+    <div class="number-line__axis">
+        <div class="number-line__marker number-line__marker--0 number-line__marker--power"><span>0</span></div>
+        <div class="number-line__marker number-line__marker--2 number-line__marker--subnormal"></div>
+        <div class="number-line__marker number-line__marker--2 number-line__marker--subnormal"></div>
+        <div class="number-line__marker number-line__marker--2 number-line__marker--subnormal"></div>
+        <div class="number-line__marker number-line__marker--2 number-line__marker--power"><span>2<sup>-1022</sup></span></div>
+        <div class="number-line__marker number-line__marker--2"></div>
+        <div class="number-line__marker number-line__marker--2"></div>
+        <div class="number-line__marker number-line__marker--2"></div>
+        <div class="number-line__marker number-line__marker--2 number-line__marker--power"><span>2<sup>-1021</sup></span></div>
+        <div class="number-line__marker number-line__marker--4"></div>
+        <div class="number-line__marker number-line__marker--4"></div>
+        <div class="number-line__marker number-line__marker--4"></div>
+        <div class="number-line__marker number-line__marker--4 number-line__marker--power"><span>2<sup>-1020</sup></span></div>
+        <div class="number-line__marker number-line__marker--8"></div>
+        <div class="number-line__marker number-line__marker--8"></div>
+        <div class="number-line__marker number-line__marker--8"></div>
+        <div class="number-line__marker number-line__marker--8 number-line__marker--power"><span>2<sup>-1019</sup></span></div>
+    </div>
+    <figcaption><div class="recommendation recommendation--do"></div><i>fig. 4</i> — Do.</figcaption>
+</figure>
+
 ## The Guards
+
 Guard digits
 
 ## The Scales
+
 Fair rounding
 
 ## The Overflow
 
 ## The Fakes
- NaN != NaN
+
+NaN != NaN
 
 ## The Unknowns
+
 Undefined operations
 
 ## The Guarantees
 
 ## The Transformation
+
 Converting from double to single and vice versa
 
 ## The Surprises
+
 0.1 + 0.2
