@@ -16,9 +16,9 @@
     --composite-blend-mode: multiply;
     --font-headline: 'Poppins', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
-    --font-code: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Consolas",
-      "Fira Code", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
-      monospace;
+    --font-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Consolas',
+        'Fira Code', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New',
+        monospace;
 }
 
 *,
@@ -57,8 +57,27 @@ body {
     margin-bottom: 4rem;
 }
 
-img {
+figure {
+    width: fit-content;
     margin: 1rem auto;
+}
+
+figcaption {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0.25rem 0 0;
+}
+
+.recommendation {
+    width: 100%;
+    height: 0.75rem;
+    margin: 0.5rem 0;
+    &.recommendation--dont {
+        background: #f00;
+    }
+    &.recommendation--do {
+        background: #0f0;
+    }
 }
 
 img,
@@ -67,11 +86,13 @@ video,
 canvas {
     display: block;
     max-width: 100%;
+    height: auto;
 }
 
 a {
     color: magenta;
-    &::selection, ::selection {
+    &::selection,
+    ::selection {
         color: yellow;
     }
 }
@@ -133,15 +154,15 @@ p {
 }
 
 iframe {
-  display: block;
-  margin-top: 1rem;
-  width: 100%;
-  border: none;
-  border-radius: 0.25rem;
-  animation: shimmer 1.4s ease infinite;
-  background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
-  background-size: 400% 100%;
-  user-select: none;
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    animation: shimmer 1.4s ease infinite;
+    background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
+    background-size: 400% 100%;
+    user-select: none;
 }
 
 blockquote {
@@ -152,7 +173,7 @@ blockquote {
 }
 
 pre {
-  margin: 1rem 0;
+    margin: 1rem 0;
 }
 
 code {
@@ -322,7 +343,7 @@ article {
         margin: 1rem 0;
     }
     article {
-      margin-top: 1rem;
+        margin-top: 1rem;
     }
     .links {
         margin: 1.25rem 0;
@@ -357,9 +378,10 @@ article {
 }
 
 @keyframes shimmer {
-  0% {
-      background-position: 100% 50%
-  } 100% {
-      background-position: 0 50%
-  }
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }

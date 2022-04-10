@@ -12,11 +12,24 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
         <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Poppins:700,700i,800,800i|Zilla+Slab:400,400i,600,600i&subset=latin-ext&display=swap"
+            href="https://fonts.googleapis.com/css?family=Poppins:700,700i,800,800i|Zilla+Slab:400,400i,500,500i,600,600i&subset=latin-ext&display=swap"
         />
-        <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}"> {%- feed_meta -%}
-        <script defer data-domain="matloka.com" data-api="https://e.matloka.com/lambda" src="https://e.matloka.com/sigma.js"></script>
-        <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+        <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}"> {% if page.stylesheet %}
+        <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}" />
+        {% endif %} {%- feed_meta -%}
+        <script
+            defer
+            data-domain="matloka.com"
+            data-api="https://e.matloka.com/lambda"
+            src="https://e.matloka.com/sigma.js"
+        ></script>
+        <script>
+            window.plausible =
+                window.plausible ||
+                function () {
+                    ;(window.plausible.q = window.plausible.q || []).push(arguments)
+                }
+        </script>
     </head>
     <body onclick="">
         <div class="content-wrapper">{{ content }}</div>
