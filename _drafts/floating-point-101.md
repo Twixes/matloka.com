@@ -8,9 +8,9 @@ Software engineering keeps getting more abstract, but one thing is unchanging: t
 
 ## The Standard
 
-Let's start with one key assumption: in all the world, on every continent, there's one and one only way to do floating-point arithmetic.
+Let's start with one key assumption: in all the world, on every continent, there's one and one only way of doing floating-point arithmetic.
 
-This makes things a lot easier _and_ it's true. That standard's name?
+This makes things a lot easier _and_ it's true in practice. That standard's name?
 
 ~~Albert Ein~~ **IEEE 754**.
 
@@ -27,7 +27,7 @@ This changed when Intel decided in the late 70s to design the floating-point 
 
 > For a detailed look at historic floating-point formats, see [this great article by John Savard](http://www.quadibloc.com/comp/cp0201.htm).
 
-## The Sizing
+## The Sizes
 
 Let's get into the meat of it, starting with… value sizes in bits. This aspect informs the practical details of the scheme, but _can't_ really be worked out from first principles. Rather, the values we're using today are the result of a balancing act between precision, range, and hardware constraints (word size).
 
@@ -38,7 +38,7 @@ Two floating-point sizes are in common use:
 
 Back in the day, double-precision was reserved for operations requiring exceptional precision or range. With 64-bit processor architectures becoming standard though, double is now often the default, as its performance penalty decreased significantly.
 
-## The Notation
+## The Notation
 
 Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) (e.g. `6.022 * 10^23`) for expressing numbers of arbitrary magnitude in a standard way, computers under the hood store each floating-point value as three numbers cleverly put together. These numbers all fit into either 32 bits (for single-precision floating-point) or 64 bits (for double-precision).
 
@@ -48,18 +48,18 @@ Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Sci
 
 -   The **sign** is a single bit – 0 if the number is positive, 1 if negative.
 -   The **exponent** is a signed integer. In a way, it establishes the magnitude, e.g. an exponent of 8 means that the absolute value of the number must be in the range `(256,512]` (`(2^8,2^9]`).  
-    Curiously, despite the exponent being signed, it's stored not using [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) but as an unsigned integer, with the computer _knowing_ to subtract a known _bias_ to get the real value. The raw stored value is called the _biased exponent_. That bias is 127 in single-precision and 1023 in double.  
+    Curiously, despite the exponent being signed, it's stored not using [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) but as an unsigned integer, with the computer _knowing_ to subtract a known **bias** to get the real value. The raw stored value is called the **biased exponent**. That bias is 127 in single-precision and 1023 in double.  
     The exponent's size determines the _range_ of the type – 8 bits of it in single-precision and 11 in double.
 -   The **significand** (also called the *mantissa*) is a fixed-point number in the range `(1,2]` (e.g. 1 or 1.0625 or 1.984375). It "fine-tunes" the value within the working range set by the sign and exponent.  
-    Because the significand's leading digit always<a href="#the-zeros" style="text-decoration: none">\*</a> is 1, that digit in fact totally omitted from the binary representation – if the significand is, say, `0b1.001` (that's binary for 1.125), only the `001` part ends up being stored. A significand with this implicit leading digit of 1 is called _normalized_.
+    Because the significand's leading digit normally<a href="#the-zeros" style="text-decoration: none">\*</a> is 1 (**normal number** being the technical term for such a case), that digit in fact totally omitted from the binary representation – if the significand is, say, `0b1.001` (that's binary for 1.125), only the `001` part ends up being stored.  
     The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in double.
 
-See for yourself how this all comes together using the calculator below! Toggle the bits by clicking on them and see what number comes out, or enter a number to see what it looks like in your computer's memory:
+See for yourself how this all comes together using the calculator below! Toggle bits by clicking on them and see what number comes out, or enter a number to see what it looks like in your computer's memory:
 
 
 <figure class="number-line">
 <iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172" title="IEEE 754 Floating Point Calculator"></iframe>
-    <figcaption><i>fig. 2</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw">Play with this widget's code on CodePen!</a></figcaption>
+    <figcaption><i>fig. 2</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110">Play with this widget's code on CodePen!</a></figcaption>
 </figure>
 
 ## The Zero(s)
@@ -68,17 +68,19 @@ We've missed something though: how to represent 0? Mathematically, the only way 
 
 Here's the trick: when the significand is `0`, setting the biased exponent to `0` makes the significand's leading digit _also_ `0`. _Voilà_, `0` as a result! That's a useful number to have.
 
-Hmm, what if we set the _sign_ to `1` at the same time? That signifies a negative value, but it's obviously ridiculous for _zero_ to be neg– WHAT?! According to all sources (what sources now) we _do_ actually get `-0` this way. It's not even as absurd as it seems at first glance: for practically all intents and purposes `-0 == +0`. There are a few edge cases where that doesn't hold, but they are quite logical. We'll get to those in TODO.
+Hmm, what if we set the _sign_ to `1` at the same time? That signifies a negative value, but it's obviously ridiculous for _zero_ to be neg– WHAT?! According to all sources _(what sources now)_ we _do_ actually get `-0` this way. It's not even as absurd as it seems at first glance: for practically all intents and purposes `-0 == +0`, but there are a few logical edge cases where that doesn't hold. We'll get to those in TODO.
 
-## The Subnormal
+## The Almost Zero
 
-This still leaves us with a gap. Absolute differences between neighboring floating-point values get smaller as the values themselves do so too – after all, precision is defined here in terms of significant binary digits, not a constant interval. Using the calculator above, we can see that (assuming double precision) the interval between numbers on the order of 2^62 is 1000, while for those on the order of 2^3 it's 0.000000000000002.
+What should happen when the result of a calculation is a value so small that it can't be represented by a normal number? This situation is called **underflow** and it's more significant than it might sound – for mathematics to be reliable we need to handle _all_ of the number line predictably.
 
+Historically, underflow was handled by returning zero. This mechanism is called **flush-to-zero** and it's very obvious. It's not great for accuracy though. The issue is, absolute differences between neighboring floating-point values get smaller as the values themselves do so too, BUT because the significand's leading digit always is 1, the jump between 0 and the smallest representable value is MUCH larger than the jump between that smallest value and the _second_ smallest one. You can see this in figure 3, which shows what this'd look like for double precision. Note that 2<sup>-1023</sup> couldn't be achieved, because we'd go straight to 0.
+ 
 
 <figure class="number-line">
     <div class="number-line__axis number-line__axis--problematic">
         <div class="number-line__marker number-line__marker--0 number-line__marker--power"><span>0</span></div>
-        <div class="number-line__marker number-line__marker--4 number-line__marker--power number-line__marker--problem"><span>2<sup>-1023</sup></span></div>
+        <div class="number-line__marker number-line__marker--4 number-line__marker--power number-line__marker--problem number-line__marker--open"><span>2<sup>-1023</sup></span></div>
         <div class="number-line__marker number-line__marker--1"></div>
         <div class="number-line__marker number-line__marker--1"></div>
         <div class="number-line__marker number-line__marker--1"></div>
@@ -99,7 +101,7 @@ This still leaves us with a gap. Absolute differences between neighboring floati
     <figcaption><div class="recommendation recommendation--dont"></div><i>fig. 3</i> — Don't.</figcaption>
 </figure>
 
-Naturally, the absolute interval is smallest at the bottom end of the exponent range. For values on the order of 2^(-1022) it's just 5e-324 – a minuscule number. Now, the bias in the double-precision format is -1023, so you might think -1023 should be the lowest possible exponent, but we've got to keep that special case with 0 in mind. There are 3 --
+During development of IEEE 754 it turned out there's a verifiably better way. Remember how 0 is represented? It relies on the significand's leading digit being 0 when the biased exponent is 0. We can extend this to non-zero values of the significand – this way, there's no odd gap when going from 0 up. The gap has merely moved away from 0 though – to get rid of it, we can make it so that the unbiased exponent is the same for the biased exponent value of 0 as it is for 1. As you can see in figure 4, this way we trade away some precision at the bottom range of normal numbers… but what we get is a more continuous number line. Those extremely small values that have 0 as the significand's leading digit are called **<span style="color: magenta">subnormal numbers</span>** (or *denormalized*).
 
 <figure class="number-line">
     <div class="number-line__axis">
@@ -124,15 +126,13 @@ Naturally, the absolute interval is smallest at the bottom end of the exponent r
     <figcaption><div class="recommendation recommendation--do"></div><i>fig. 4</i> — Do.</figcaption>
 </figure>
 
-## The Guards
+## The Overflow
 
-Guard digits
 
 ## The Scales
 
 Fair rounding
 
-## The Overflow
 
 ## The Fakes
 

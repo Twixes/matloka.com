@@ -8,13 +8,13 @@
 .number-line__axis {
     position: relative;
     display: flex;
-    padding: 0.5rem 0 1.5rem;
+    padding: 1rem 0 1.5rem;
     &::after {
         position: absolute;
         content: '';
         width: 100%;
         height: 0;
-        border: 0 solid #000;
+        border: 0 solid var(--foreground);
         border-top-width: 2px;
         border-bottom-width: 2px;
     }
@@ -27,7 +27,7 @@
     z-index: 10;
     position: relative;
     height: 12px;
-    border-right: 2px solid #000;
+    border-right: 2px solid var(--foreground);
     margin-top: -4px;
     white-space: nowrap;
     font-weight: 600;
@@ -37,7 +37,10 @@
         margin-top: -8px;
     }
     &.number-line__marker--subnormal {
-        border-color: #f0f;
+        border-color: magenta;
+    }
+    &.number-line__marker--open {
+        border-right-style: dashed;
     }
     &.number-line__marker--problem::after {
         position: absolute;
@@ -49,7 +52,7 @@
     }
     &.number-line__marker--0 {
         flex-grow: 0;
-        border-left: 2px solid #f0f;
+        border-left: 2px solid var(--foreground);
         border-right: none;
         span {
             left: -1px;
