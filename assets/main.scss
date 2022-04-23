@@ -6,13 +6,13 @@
 :root {
     --transition-duration-long: 0.5s;
     --transition-duration-short: 0.25s;
-    --background: white;
-    --foreground: black;
-    --grayish: #f3f4f7;
-    --gray: #e8eaed;
-    --composite-color-1: yellow;
-    --composite-color-2: magenta;
-    --composite-color-3: cyan;
+    --background: #fff;
+    --foreground: #000;
+    --grayish: hsl(225deg 30% 30% / 5%);
+    --gray: hsl(225deg 20% 30% / 10%);
+    --composite-color-1: #ff0;
+    --composite-color-2: #f0f;
+    --composite-color-3: #0ff;
     --composite-blend-mode: multiply;
     --font-headline: 'Poppins', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
@@ -90,10 +90,10 @@ canvas {
 }
 
 a {
-    color: magenta;
+    color: #f0f;
     &::selection,
     ::selection {
-        color: yellow;
+        color: #ff0;
     }
 }
 
@@ -360,9 +360,9 @@ article {
     // Dark mode
     :root {
         --background: #0f0f0f;
-        --foreground: white;
-        --grayish: #1f2023;
-        --gray: #26272b;
+        --foreground: #fff;
+        --grayish: hsl(225deg 100% 95% / 8%);
+        --gray: hsl(225deg 100% 92% / 12%);
         --composite-color-1: #00f;
         --composite-color-2: #0f0;
         --composite-color-3: #f00;
