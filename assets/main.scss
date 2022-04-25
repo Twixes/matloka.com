@@ -232,6 +232,10 @@ footer {
     }
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 .light-dark-mode {
     background: url('https://fonts.gstatic.com/s/i/materialiconsoutlined/light_mode/v4/20px.svg');
     height: 1.25rem;
