@@ -10,15 +10,29 @@
     --foreground: #000;
     --grayish: hsl(225deg 30% 30% / 5%);
     --gray: hsl(225deg 20% 30% / 10%);
-    --composite-color-1: #ff0;
-    --composite-color-2: #f0f;
-    --composite-color-3: #0ff;
+    --cyan: #0ff;
+    --magenta: #f0f;
+    --yellow: #ff0;
+    --red: #f00;
+    --green: #0f0;
+    --blue: #00f;
+    --composite-color-1: var(--yellow);
+    --composite-color-2: var(--magenta);
+    --composite-color-3: var(--cyan);
     --composite-blend-mode: multiply;
     --font-headline: 'Poppins', 'Arial Black', sans-serif;
     --font-body: 'Zilla Slab', sans-serif;
     --font-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Consolas',
         'Fira Code', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New',
         monospace;
+    @supports (color: color(display-p3 1 1 1)) {
+        --cyan: color(display-p3 0 1 1);
+        --magenta: color(display-p3 1 0 1);
+        --yellow: color(display-p3 1 1 0);
+        --red: color(display-p3 1 0 0);
+        --green: color(display-p3 0 1 0);
+        --blue: color(display-p3 0 0 1);
+    }
 }
 
 *,
@@ -54,7 +68,7 @@ body {
 
 .content-wrapper {
     flex-grow: 1;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 figure {
@@ -73,10 +87,10 @@ figcaption {
     height: 0.75rem;
     margin: 0.5rem 0;
     &.recommendation--dont {
-        background: #f00;
+        background: var(--red);
     }
     &.recommendation--do {
-        background: #0f0;
+        background: var(--green);
     }
 }
 
@@ -90,10 +104,10 @@ canvas {
 }
 
 a {
-    color: #f0f;
+    color: var(--magenta);
     &::selection,
     ::selection {
-        color: #ff0;
+        color: var(--yellow);
     }
 }
 
@@ -166,10 +180,14 @@ iframe {
 }
 
 blockquote {
-    margin: 1rem 0 0;
+    margin: 1rem 0;
     padding: 1rem 1.5rem;
     border-radius: 0.25rem;
     background: var(--grayish);
+    line-height: 1.4;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 pre {
@@ -180,6 +198,7 @@ code {
     padding: 0.25rem;
     border-radius: 0.25rem;
     background: var(--grayish);
+    color: var(--foreground);
     font-family: var(--font-code);
     font-size: 1rem;
     overflow: auto;
@@ -367,13 +386,13 @@ article {
         --foreground: #fff;
         --grayish: hsl(225deg 100% 95% / 8%);
         --gray: hsl(225deg 100% 92% / 12%);
-        --composite-color-1: #00f;
-        --composite-color-2: #0f0;
-        --composite-color-3: #f00;
+        --composite-color-1: var(--blue);
+        --composite-color-2: var(--green);
+        --composite-color-3: var(--red);
         --composite-blend-mode: screen;
     }
     a::selection {
-        color: #00f;
+        color: var(--blue);
     }
     .light-dark-mode {
         background: url('https://fonts.gstatic.com/s/i/materialiconsoutlined/dark_mode/v4/20px.svg');
