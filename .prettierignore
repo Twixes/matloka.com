@@ -1,2 +1,6 @@
 _site/
 _sass/syntax.scss
+vendor/
+/google*.html
+.vscode/
+.mypy_cache/
