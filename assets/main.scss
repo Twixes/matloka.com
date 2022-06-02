@@ -8,8 +8,8 @@
     --transition-duration-short: 0.25s;
     --background: #fff;
     --foreground: #000;
-    --grayish: hsl(225deg 30% 30% / 5%);
-    --gray: hsl(225deg 20% 30% / 10%);
+    --grayish: hsl(225deg 30% 20% / 5%);
+    --gray: hsl(225deg 20% 20% / 10%);
     --cyan: #0ff;
     --magenta: #f0f;
     --yellow: #ff0;
@@ -180,14 +180,51 @@ iframe {
 }
 
 blockquote {
-    margin: 1rem 0;
-    padding: 1rem 1.5rem;
-    border-radius: 0.25rem;
-    background: var(--grayish);
+    position: relative;
+    margin: 1.125rem 0.125rem;
+    outline: 0.125rem solid var(--foreground);
+    padding: 0.75rem 1.25rem;
+    border-left: 0.5rem solid var(--composite-color-2);
     line-height: 1.4;
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      height: 33.3333%;
+      width: 0.5rem;
+    }
+    &::before {
+      top: 0;
+      background: var(--composite-color-3);
+    }
+    &::after {
+      bottom: 0;
+      background: var(--composite-color-1);
+    }
+    > *:first-child {
+      margin-top: 0;
+    }
     &:last-child {
         margin-bottom: 0;
     }
+}
+
+table {
+  margin: 1rem 0;
+  border-collapse: collapse;
+  font-size: 1.125rem;
+  tr {
+    > th {
+      text-align: left;
+    }
+  }
+  td, th {
+    border: 0.125rem solid var(--foreground);
+    padding: 0.5rem 0.75rem;
+  }
+  &:last-child {
+      margin-bottom: 0;
+  }
 }
 
 pre {
@@ -200,7 +237,7 @@ code {
     background: var(--grayish);
     color: var(--foreground);
     font-family: var(--font-code);
-    font-size: 1rem;
+    font-size: 0.8em;
     overflow: auto;
     pre & {
         display: block;
