@@ -25,6 +25,8 @@
     --font-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Consolas',
         'Fira Code', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New',
         monospace;
+    --border-thickness: 0.125rem;
+    --shadow-distance: 0.25rem;
     @supports (color: color(display-p3 1 1 1)) {
         --cyan: color(display-p3 0 1 1);
         --magenta: color(display-p3 1 0 1);
@@ -111,6 +113,10 @@ a {
     }
 }
 
+b, strong {
+  font-weight: 600;
+}
+
 h1,
 h2,
 h3,
@@ -169,10 +175,9 @@ p {
 
 iframe {
     display: block;
-    margin-top: 1rem;
+    margin: 1rem 0 0;
     width: 100%;
     border: none;
-    border-radius: 0.25rem;
     animation: shimmer 1.4s ease infinite;
     background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
     background-size: 400% 100%;
@@ -180,18 +185,21 @@ iframe {
 }
 
 blockquote {
+    --ribbon-width: 0.5rem;
     position: relative;
-    margin: 1.125rem 0.125rem;
-    outline: 0.125rem solid var(--foreground);
-    padding: 0.75rem 1.25rem;
-    border-left: 0.5rem solid var(--composite-color-2);
+    margin: calc(1rem + var(--border-thickness)) var(--border-thickness) calc(1rem + var(--border-thickness) + var(--shadow-distance));
+    outline: var(--border-thickness) solid var(--foreground);
+    padding: 0.75rem 1.25rem 0.75rem 1rem;
+    border-left: var(--ribbon-width) solid var(--composite-color-2);
+    font-weight: 500;
     line-height: 1.4;
+    box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) var(--foreground);
     &::before, &::after {
       content: '';
       position: absolute;
-      left: -0.5rem;
+      left: calc(var(--ribbon-width) * -1);
       height: 33.3333%;
-      width: 0.5rem;
+      width: var(--ribbon-width);
     }
     &::before {
       top: 0;
@@ -210,25 +218,25 @@ blockquote {
 }
 
 table {
-  margin: 1rem 0;
+  display: block;
+  overflow-x: auto;
+  max-width: fit-content;
+  margin: 1rem 0 calc(1rem + var(--shadow-distance));
   border-collapse: collapse;
   font-size: 1.125rem;
+  box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground);
   tr {
     > th {
       text-align: left;
     }
   }
   td, th {
-    border: 0.125rem solid var(--foreground);
+    border: var(--border-thickness) solid var(--foreground);
     padding: 0.5rem 0.75rem;
   }
   &:last-child {
       margin-bottom: 0;
   }
-}
-
-pre {
-    margin: 1rem 0;
 }
 
 code {
@@ -238,10 +246,21 @@ code {
     color: var(--foreground);
     font-family: var(--font-code);
     font-size: 0.8em;
+}
+
+pre {
+    margin: 1rem 0 calc(1rem + var(--shadow-distance));
+    padding: 1rem;
+    font-size: 1.25rem;
+    background: var(--foreground);
+    color: var(--background);
+    box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--magenta);
     overflow: auto;
-    pre & {
+    code {
         display: block;
-        padding: 0.75rem 1rem;
+        padding: 0;
+        background: unset;
+        color: unset;
     }
 }
 
@@ -283,7 +302,7 @@ footer {
         display: flex;
         color: inherit;
         &:hover {
-            transform: translateY(-0.125rem);
+            transform: translateY(-0.1875rem);
         }
     }
 }
@@ -404,6 +423,12 @@ article {
     }
     article {
         margin-top: 1rem;
+    }
+    blockquote {
+      padding: 0.5rem 0.75rem;
+    }
+    pre {
+      padding: 0.75rem;
     }
     .links {
         margin: 1.25rem 0;
