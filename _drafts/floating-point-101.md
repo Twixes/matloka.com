@@ -10,7 +10,7 @@ genuinely useful to understand the way machines do math, no matter if your code
 a fridge. How are numbers actually stored? What special values exist? And why is 0.1 + 0.2 not equal to 0.3?
 Let's explore this all!
 
-## The Standard
+## The Standard
 
 Let's start with one key assumption: in all the world, on every continent, there's one and one only way of doing
 floating-point arithmetic.
@@ -19,7 +19,7 @@ This makes things a lot easier, _and_ it's true in practice. That standard's nam
 
 ~~Albert Ein~~ **IEEE 754**.
 
-How so? I mean, we all know how attempts at standardization _really_ turn out.
+How's this so simple? I mean, we all know how attempts at standardization _really_ turn out.
 
 <figure>
 <a href="https://xkcd.com/927/"><img src="https://imgs.xkcd.com/comics/standards_2x.png" title="Fortunately, the charging one has been solved now that we've all standardized on mini-USB. Or is it micro-USB? Shit." alt="Standards" height="283" width="500" loading="lazy"></a>
@@ -50,7 +50,7 @@ Let's get into the meat of it, starting with… value sizes in bits. This aspect
 scheme (range and precision), but _can't_ really be worked out from first principles. It's really just all about machine
 word sizes.
 
-At the same time, it's important to note
+At the same time, it's important to note that TODO
 
 Two floating-point sizes are in common use today:
 
@@ -62,11 +62,11 @@ Back in the day, double precision was reserved for operations requiring exceptio
 processor architectures becoming standard though, it's now often the default, as its performance penalty decreased
 significantly.
 
-## The Notation
+## The Notation
 
 Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) (e.g. `6.022 * 10^23`)
 for expressing numbers of arbitrary magnitude in a standard way, computers under the hood store each floating-point
-value as three numbers cleverly put together.
+value as three numbers cleverly put together:
 
 ```
 (-1)^sign * significand * 2^exponent
@@ -97,7 +97,7 @@ number comes out, or type in a number to see what it looks like in your computer
     <figcaption><i>fig. 2</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this widget's code on CodePen!</a></figcaption>
 </figure>
 
-## The Precision
+## The Precision
 
 Since value sizes are very much finite, their precision is too, and this means there's a minimum distance between two
 values. The thing is, this spacing is different depending on the magnitude (as defined by the exponent). In effect, for
@@ -119,7 +119,7 @@ bigger too, and for smaller values it might be surprisingly large in ULP terms. 
 rarely depends on the floating-point format of all things. In summary, you should almost always just use a custom
 epsilon value tuned for your specific application.
 
-## The Zero(s)
+## The Zero(s)
 
 We've omitted something though: how to represent 0? Mathematically, the only way to do that is to set the significand to
 0… but that implicit leading 1 is standing in the way.
@@ -132,9 +132,9 @@ for _zero_ to be neg– WHAT?! According to all sources _(what sources now)_ we 
 even as absurd as it seems at first glance: for practically all intents and purposes `-0 == +0` and this only doesn't
 hold when there's an important reason – we'll go into it in [The Enormous](#the-enormous).
 
-> **Zooming in:** See how the signed zero is stored in binary by trying `-0` in [the calculator](#calculator).
+> See how the signed zero is stored in binary by trying `-0` in [the calculator](#calculator).
 
-## The Undefined
+## The Undefined
 
 Some mathematical expressions simply cannot be evaluated. Take `0 / 0` for instance: the result of this is said to be
 _undefined_ in mathematics. This means there is no answer at all (not to be confused with JavaScript's `undefined`
@@ -144,7 +144,7 @@ Programs used to crash immediately whenever they encountered such expressions an
 happens with integers – integer formats don't have a way of safely representing an undefined value, so there's no
 recourse. Floating-point has a solution though: the **NaN** value, short for "not a number".
 
-> **Zooming in:** See how NaN is stored in binary by trying `NaN` in [the calculator](#calculator).
+> See how NaN is stored in binary by trying `NaN` in [the calculator](#calculator).
 
 Specifically, you get a NaN whenever:
 
@@ -171,7 +171,7 @@ matter if the special value is on the left or right side, or even if it's on _bo
 another NaN). On the other hand `!=` always comes out true. An important implication of the above is that `>=` _cannot_
 be implemented as just a negation of `<` for floating-point!
 
-## The Microscopic
+## The Microscopic
 
 When a result of a calculation is so tiny that it can't be represented by a normal number we see **underflow** occur.
 It's an edge case, but an important one. How it gets handled has significant implications for some operations. (TODO
@@ -241,9 +241,9 @@ underflow** and those extremely small values that have 0 as the significand's le
     <figcaption><div class="recommendation recommendation--do"></div><i>fig. 4</i> — Do.</figcaption>
 </figure>
 
-> **Zooming in:** See how subnormal numbers are represented by trying `8e-323` in [the calculator](#calculator).
+> See how subnormal numbers are stored in binary by trying `8e-323` in [the calculator](#calculator).
 
-## The Enormous
+## The Enormous
 
 On the other hand, when the result of a calculation is so _large_ that it can't be represented – a situation called
 **overflow** – another special value is returned: infinity. It can be positive or negative, depending on the direction
@@ -255,7 +255,7 @@ off by 1, or perhaps by orders of magnitude, with no way to tell. Infinity makes
 rules of calculations involving it are well-defined: basically, any such operation that doesn't produce a NaN (listed in
 [The Undefined](#the-undefined)) results in infinity (with sign rules applying, i.e. `Infinity * (-3) == -Infinity`).
 
-> **Zooming in:** See how infinity is stored in binary by trying `Infinity` in [the calculator](#calculator).
+> See how infinity is stored in binary by trying `Infinity` in [the calculator](#calculator).
 
 Interestingly, one extra case where you get infinity is division by 0. Ordinarily in such case the answer is considered
 to be undefined, but IEEE 754 stipulates that the sign ought to be preserved, which is why NaN only is returned if the
@@ -263,10 +263,10 @@ numerator is 0 too (0 divided by 0 – when there is no way to interpret the exp
 interpretation that's used is that the _limit_ of the expression is taken, approaching from either positive or negative
 numbers – here's where the sign of the zero uniquely plays a role. For instance: `123 / -0 == -Infinity`.
 
-## The More-or-Less
+## The More-or-Less
 
 In floating-point, what you see is usually not what you get. As outlined in [The Precision](#the-precision),
-bits don't grow on trees, so only a limited subset of points on the number line can be stored, and those points are all in base-2. This is a source of friction between computers and humans, which is kept at bay with an array of tricks.
+bits don't quite grow on trees, so only a limited subset of points on the number line can be stored, and those points are all in base-2. These two facts combined are a source of constant friction between humans and computers, kept at bay thanks to an array of tricks.
 
 Whether it's a user providing data or you hard-coding values, the starting point for many real numbers is
 a string of characters representing the decimal value. We can, for instance, parse `"0.2"` as a double. Print that back and you get `0.2` as expected. That's not exactly what's stored though. If we calculate the value a bit more accurately based on the binary data, using [The Notation](#the-notation), we get `0.2000000000000000111022...`. That's evidently off! But just fine really, considering that there _isn't_ such number as `0.2` in binary.
@@ -277,8 +277,8 @@ predicament is that **for a rational number `x` to be representable in base `b`,
 prime factor that isn't also a prime factor of `b`**. In the case of 1/3, the denominator's only prime factor is 3,
 while the prime factors of our target base, 10, are 2 and 5. That's a mismatch. In the same vein, binary means base-2, so it only is completely compatible with denominators that are a power of 2. `0.2`'s rational form is 1/5, and it is that 5 which precludes finite representation of the value in binary!
 
-> **Zooming in:** See how 0.2 is stored in binary by trying `0.2` in [the calculator](#calculator).  
-> The display shows the number's regular decimal representation, but the significand is extraordinarily precise
+> See how 0.2 is stored in binary by trying `0.2` in [the calculator](#calculator).  
+> The display shows the number's standard decimal representation, but the significand is extraordinarily precise
 > (specifically, it's shown with extra 5 digits of decimal precision thanks to being parsed with
 > [`decimal.js`](https://mikemcl.github.io/decimal.js/) instead of as a double), so that you can see how far the
 > floating-point value is from the original by pasting the decomposed form into a much more precise calculator.
@@ -289,13 +289,13 @@ There are some assurances to keep the errors in check. IEEE 754 requires that pa
 
 Define "closest" though. Oh, actually the standard includes that too. It describes five rounding modes:
 
-- `roundTowardPositive` – takes the floor (i.e. towards positive infinity), example: -12.3 → -2
-- `roundTowardNegative` – takes the ceiling (i.e. towards negative infinity), example: -12.3 → -3
-- `roundTowardZero` – truncates (i.e. towards zero), example: -2.1 → -2
-- `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero, example: -2.1 → -3
-- `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit (0)
+- `roundTowardPositive` – takes the floor (i.e. towards positive infinity),
+- `roundTowardNegative` – takes the ceiling (i.e. towards negative infinity),
+- `roundTowardZero` – truncates (i.e. towards zero),
+- `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero,
+- `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit.
 
-The table uses decimal values being rounded to integers to demonstrate how each mode works.
+The table below uses decimal values being rounded to integers to demonstrate how each mode works:
 
 <table style="text-align: right">
   <tr>
@@ -348,7 +348,7 @@ The table uses decimal values being rounded to integers to demonstrate how each 
   </tr>
 </table>
 
-The one you're using, even if you don't know about it yet, is `roundTiesToEven`. It's the default, because:
+The one you're using, even if you don't know it yet, is `roundTiesToEven`. It's the default, because:
 
 1. it takes the nearest value in the common case, which is almost always what you'd expect – this way the error cannot be greater than ±0.5 ULP; but also…
 2. when the **infinitely precise result** is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and _down_ in the other 50%, making the bias _zero_ on average.
@@ -365,13 +365,6 @@ Unfortunately, even tolerable errors add up. This can result in some odd results
 This equals `0.3`, right? Not in double precision, no, it doesn't. The actual result:
 `0.30000000000000004`.
 
-<figure>
-    <a href="https://xkcd.com/217/">
-        <img src="https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png" title="Also, I hear the 4th root of (9^2 + 19^2/22) is pi." alt="e to the pi Minus pi" height="264" width="700" loading="lazy">
-    </a>
-    <figcaption><i>fig. 5</i> — <em>Another</em> XKCD?</figcaption>
-</figure>
-
 Due to friction between bases 2 and 10 (explained in [The More-or-Less](#the-more-or-less), what you see as `0.1` in double-precision is more precisely (by a few digits)
 [`0.1000000000000000055511`](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281019-1023%29),
 and that `0.2` is rather
@@ -384,6 +377,13 @@ while the _next_ immediate value (i.e. exactly 1 ULP bigger) is approx.
 [`0.3000000000000000444089`](https://www.wolframalpha.com/input?i=1.2000000000000001776357+*+2%5E%281021-1023%29).
 Our result clearly is much closer to the latter! And that's how `0.30000000000000004` is deemed the correct result.
 
+<figure>
+    <a href="https://xkcd.com/217/">
+        <img src="https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png" title="Also, I hear the 4th root of (9^2 + 19^2/22) is pi." alt="e to the pi Minus pi" height="264" width="700" loading="lazy">
+    </a>
+    <figcaption><i>fig. 5</i> — <em>Another</em> XKCD?</figcaption>
+</figure>
+
 This category of errors, where parsing and arithmetic add up to a result a human would not expect, is why it's crucial
 NOT to use binary floating-point formats where this would be straight-up unacceptable. Prime example: finance. At the
 scale of institutions managing billions, those errors would be inevitable. The solution: **decimal floating-point
@@ -392,28 +392,27 @@ formats**.
 Two such formats are in fact part of IEEE 754: `decimal64` and `decimal128`. As you can infer from those technical
 names, they have a base of 10 instead of 2, and are respectively 64 and 128 bits long. Unfortunately, their adoption
 isn't nearly as universal as that of standardized binary formats. That's largely because hardware acceleration of
-decimal floating-point arithmetic is extremely niche, so it's practically always implemented in software – which means
-less pressure to use a standard _and also_ much poorer performance in comparison with binary arithmetic. Nevertheless,
+decimal floating-point arithmetic is extremely niche, so the math practically always is implemented in software – resulting in less pressure to use a standard _and also_ much poorer performance in comparison with binary arithmetic. Nevertheless,
 when correct handling decimal values is of utmost importance, there's no better way than decimal floating-point.
 
-## The There-and-Back-Again
+## The There-and-Back-Again
 
 Suppose you've got a float but need to convert it to a double. To perform this transmutation, just take the existing
-exponent and significand values and pad them with zeros. Simple enough! Beware of false precision though: we've found in [The Unexpected](#the-unexpected) that a parsed value is off by a bit (but less than 0.5 ULP) _immediately_, unless
+exponent and significand values and pad them with zeros. Simple enough! Beware of false precision though: we've found in [The More-or-Less](#the-more-or-less) that a parsed value is off by a bit (but less than 0.5 ULP) _immediately_, unless
 the denominator of the original value was a power of 2. So, say, `"5.9"` parsed as a float will be printed back as `5.9`, as expected. Cast that to a double though and what you see is… `5.9000000953674316`. Where did the processor get all this extra information from? Truth is, that's what a _lack_ of information looks like. The extra digits are simply the initial error, made glaring because of the ULP being orders of magnitude smaller in the more precise format.
 
 The other way around – from a higher-precision format to a lower-precision one – the situation is straightforward. Information is unambiguously lost
 as the least significant digits of the significand are cut. Just one thing to watch out for here is the exponent being
 outside the target format's range – that's an example of overflow, so infinity is the result.
 
-## The Speed
+## The Speed
 
 TODO:
 When summing up numbers, if there is a wide range, sum from smallest to largest.
 Perform multiplications before divisions whenever possible.
 When performing a comparison with a computed value, check to see if the values are “close” rather than identical.
 
-## The End
+## The End
 
 You've reached the finish line. Congratulations. I hope you feel enlightened, or at least marginally smarter than before
 opening this page. Now go and build great things using floating-point!
