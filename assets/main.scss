@@ -75,7 +75,9 @@ body {
 
 figure {
     width: fit-content;
+    max-width: 100%;
     margin: 1rem auto;
+    overflow-x: auto;
 }
 
 figcaption {
@@ -221,8 +223,7 @@ blockquote {
 
 table {
   display: block;
-  overflow-x: auto;
-  max-width: fit-content;
+  width: fit-content;
   margin: 0.25rem 0 calc(1rem + var(--shadow-distance));
   border-collapse: collapse;
   font-size: 1.125rem;
