@@ -92,7 +92,7 @@ number comes out, or type in a number to see what it looks like in your computer
 
 <figure id="calculator">
 <iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="188" title="IEEE 754 Floating Point Calculator"></iframe>
-    <figcaption><i>widget 1</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this tool's code on CodePen!</a></figcaption>
+    <figcaption><i>widget 1</i> — A handy calculator. <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this tool's code on CodePen!</a></figcaption>
 </figure>
 
 ## The Precision
@@ -297,7 +297,7 @@ Define "closest" though. Oh, actually the standard includes that too. It describ
 See table 1 for a demonstration of the mechanics of each mode (on decimal values being rounded to integers).
 
 <figure style="margin-left: 0">
-<figcaption><i>table 1</i> — IEEE 754-2008 rounding modes</figcaption>
+<figcaption><i>table 1</i> — IEEE 754-2008 rounding modes</figcaption>
 <table style="text-align: right">
   <tr>
     <th>Original</th>
