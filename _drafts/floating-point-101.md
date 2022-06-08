@@ -7,8 +7,8 @@ stylesheet: /assets/floating-point-101/number-line.css
 Software engineering keeps getting more abstract, but one thing is unchanging: the importance of floating-point
 arithmetic. _Every_ computer programmer is bound to work with numbers (they call them _computers_ for a reason), so it's
 genuinely useful to understand the way machines do math, no matter if your code is for a to-do app, a stock exchange, or
-a fridge. How are numbers stored exactly? What's the significance of special values? And why is 0.1 + 0.2 not equal to 0.3?
-Let's explore this all!
+a fridge. How are numbers stored exactly? What's the significance of special values? And why is 0.1 + 0.2 not equal to
+0.3? Let's explore this all!
 
 ## The Standard
 
@@ -34,10 +34,10 @@ products, DEC cooked up yet something else for the VAX architecture.
 This changed when Intel decided in the late 70s to design the floating-point chip to rule them all – which required a
 format to rule them all too, the best possible. The decision culminated in the Intel 8087 coprocessor of 1980, but even
 before that, other companies in the space caught wind of this work and set up
-[a common effort](https://www.researchgate.net/publication/2954891_IEEE_754_An_Interview_with_William_Kahan) at the Institute of Electrical and Electronics Engineers (IEEE) to
-standardize floating-point arithmetic – the IEEE 754 working group. Two competing drafts prevailed: the Intel 8087 spec
-vs. the DEC VAX one. After some more arguments and error analysis, in 1981 Intel's draft won out, rapidly got adopted by
-everyone,
+[a common effort](https://www.researchgate.net/publication/2954891_IEEE_754_An_Interview_with_William_Kahan) at the
+Institute of Electrical and Electronics Engineers (IEEE) to standardize floating-point arithmetic – the IEEE 754 working
+group. Two competing drafts prevailed: the Intel 8087 spec vs. the DEC VAX one. After some more arguments and error
+analysis, in 1981 Intel's draft won out, rapidly got adopted by everyone,
 and [the rest is history](https://www.intel.com/content/dam/www/public/us/en/documents/case-studies/floating-point-case-study.pdf)
 (though it took the committee another four years of bickering to publish that draft, of course).
 
@@ -46,9 +46,9 @@ and [the rest is history](https://www.intel.com/content/dam/www/public/us/en/d
 
 ## The Specs
 
-Let's get into the meat of it, starting with… value sizes. This aspect informs the practical details of the
-scheme (range and precision), but _can't_ really be worked out from first principles. It's really just all about machine
-word sizes.
+Let's get into the meat of it, starting with… value sizes. This aspect informs the practical details of the scheme
+(range and precision), but _can't_ really be worked out from first principles. It's really just all about machine word
+sizes.
 
 Two floating-point formats are in common use today, and they both use the binary numeral system:
 
@@ -177,11 +177,11 @@ It's an edge case, but an important one. How it gets handled has significant imp
 <!-- TODO? Examples of operations -->
 
 Historically, underflow was handled by returning zero – a solution called **flush-to-zero**. It's very straightforward,
-but not quite optimal for the accuracy of calculations taking place near zero. The issue is, the absolute difference between neighboring
-floating-point values (i.e. ULP) gets smaller as the values themselves do so too – but with the significand's leading
-digit always being 1, the jump between 0 and the smallest representable value is MUCH larger than the jump between that
-smallest value and the _second_-smallest one. You can see this in figure 2, which shows what this'd look like for double
-precision. Note that 2<sup>-1023</sup> couldn't be achieved, because we'd go straight to 0.
+but not quite optimal for the accuracy of calculations taking place near zero. The issue is, the absolute difference
+between neighboring floating-point values (i.e. ULP) gets smaller as the values themselves do so too – but with the
+significand's leading digit always being 1, the jump between 0 and the smallest representable value is MUCH larger than
+the jump between that smallest value and the _second_-smallest one. You can see this in figure 2, which shows what
+this'd look like for double precision. Note that 2<sup>-1023</sup> couldn't be achieved, because we'd go straight to 0.
 
 <figure class="number-line">
     <div class="number-line__axis number-line__axis--problematic">
@@ -264,17 +264,24 @@ numbers – here's where the sign of the zero uniquely plays a role. For instanc
 
 ## The More-or-Less
 
-In floating-point, what you see is usually not what you get. As outlined in [The Precision](#the-precision),
-bits don't quite grow on trees, so only a limited subset of points on the number line can be stored, and those points are all in base-2. These two facts combined are a source of constant friction between humans and computers, kept at bay thanks to an array of tricks.
+In floating-point, what you see is usually not what you get. As outlined in [The Precision](#the-precision), bits don't
+quite grow on trees, so only a limited subset of points on the number line can be stored, and those points are all in
+base-2. These two facts combined are a source of constant friction between humans and computers, kept at bay thanks to
+an array of tricks.
 
-Whether it's a user providing data or you hard-coding values, the starting point for many real numbers is
-a string of characters representing the decimal value. We can, for instance, parse `"0.2"` as a double. Print that back and you get `0.2` as expected. That's not exactly what's stored though. If we calculate the value a bit more accurately based on the binary data, using [The Notation](#the-notation), we get `0.2000000000000000111022...`. That's evidently off! But just fine really, considering that there _isn't_ such number as `0.2` in binary.
+Whether it's a user providing data or you hard-coding values, the starting point for many real numbers is a string of
+characters representing the decimal value. We can, for instance, parse `"0.2"` as a double. Print that back and you get
+`0.2` as expected. That's not exactly what's stored though. If we calculate the value a bit more accurately based on the
+binary data, using [The Notation](#the-notation), we get `0.2000000000000000111022...`. That's evidently off! But just
+fine really, considering that there _isn't_ such number as `0.2` in binary.
 
-As an illustration of the problem behind this, let's take 1/3. It doesn't have an
-_exact_ decimal counterpart, so we humans resort to limited approximations, such as 0.3333. The reason for this
-predicament is that **for a rational number `x` to be representable in base `b`, that `x`'s denominator cannot have any
-prime factor that isn't also a prime factor of `b`**. In the case of 1/3, the denominator's only prime factor is 3,
-while the prime factors of our target base, 10, are 2 and 5. That's a mismatch. In the same vein, binary means base-2, so it only is completely compatible with denominators that are a power of 2. `0.2`'s rational form is 1/5, and it is that 5 which precludes finite representation of the value in binary!
+As an illustration of the problem behind this, let's take 1/3. It doesn't have an _exact_ decimal counterpart, so we
+humans resort to limited approximations, such as 0.3333. The reason for this predicament is that **for a rational number
+`x` to be representable in base `b`, that `x`'s denominator cannot have any prime factor that isn't also a prime factor
+of `b`**. In the case of 1/3, the denominator's only prime factor is 3, while the prime factors of our target base, 10,
+are 2 and 5. That's a mismatch. In the same vein, binary means base-2, so it only is completely compatible with
+denominators that are a power of 2. `0.2`'s rational form is 1/5, and it is that 5 which precludes finite representation
+of the value in binary!
 
 > See how 0.2 is stored in binary by trying `0.2` in [the calculator](#calculator).  
 > The display shows the number's standard decimal representation, but the significand is extraordinarily precise
@@ -284,15 +291,17 @@ while the prime factors of our target base, 10, are 2 and 5. That's a mismatch. 
 > [Try this out in Wolfram Alpha](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281020-1023%29),
 > which is what I've done above.
 
-There are some assurances to keep the errors in check. IEEE 754 requires that parsing a base-10 string representation of a number results in the closest binary representation possible. This same guarantee applies to results of elementary arithmetic operations: addition, subtraction, multiplication, division, and square root.
+There are some assurances to keep the errors in check. IEEE 754 requires that parsing a base-10 string representation of
+a number results in the closest binary representation possible. This same guarantee applies to results of elementary
+arithmetic operations: addition, subtraction, multiplication, division, and square root.
 
 Define "closest" though. Oh, actually the standard includes that too. It describes five rounding modes:
 
-- `roundTowardPositive` – takes the floor (i.e. towards positive infinity),
-- `roundTowardNegative` – takes the ceiling (i.e. towards negative infinity),
-- `roundTowardZero` – truncates (i.e. towards zero),
-- `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero,
-- `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit.
+-   `roundTowardPositive` – takes the floor (i.e. towards positive infinity),
+-   `roundTowardNegative` – takes the ceiling (i.e. towards negative infinity),
+-   `roundTowardZero` – truncates (i.e. towards zero),
+-   `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero,
+-   `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit.
 
 See table 1 for a demonstration of the mechanics of each mode (on decimal values being rounded to integers).
 
@@ -352,28 +361,30 @@ See table 1 for a demonstration of the mechanics of each mode (on decimal values
 
 The one you're using, even if you don't know it yet, is `roundTiesToEven`. It's the default, because:
 
-1. it takes the nearest value in the common case, which is almost always what you'd expect – this way the error cannot be greater than ±0.5 ULP; but also…
-2. when the result is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and _down_ in the other 50%, making the bias _zero_ on average.
+1. it takes the nearest value in the common case, which is almost always what you'd expect – this way the error cannot
+   be greater than ±0.5 ULP; but also…
+2. when the result is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and
+   _down_ in the other 50%, making the bias _zero_ on average.
 
 ## The Unexpected
 
 Unfortunately, even tolerable errors add up. This can result in some odd results, like in the (in)famous case of…
 `0.1 + 0.2`.
 
-This equals `0.3`, right? Not in double precision, no, it doesn't. The actual result:
-`0.30000000000000004`.
+This equals `0.3`, right? Not in double precision, no, it doesn't. The actual result: `0.30000000000000004`.
 
-Due to friction between bases 2 and 10 (explained in [The More-or-Less](#the-more-or-less), what you see as `0.1` in double-precision is more precisely (by a few digits)
-[`0.1000000000000000055511`](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281019-1023%29),
-and that `0.2` is rather
-[`0.2000000000000000111022`](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281020-1023%29).
-Now, when you add those in binary, approx.
+Due to friction between bases 2 and 10 (explained in [The More-or-Less](#the-more-or-less), what you see as `0.1` in
+double-precision is more precisely (by a few digits)
+[`0.1000000000000000055511`](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281019-1023%29), and
+that `0.2` is rather
+[`0.2000000000000000111022`](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281020-1023%29). Now,
+when you add those in binary, approx.
 [`0.3000000000000000444089`](https://www.wolframalpha.com/input?i=1.2000000000000001776356839400+*+2%5E%281021-1023%29)
 ensues. Close enough? Not so fast. `0.3` is stored as approx.
-[`0.2999999999999999888978`](https://www.wolframalpha.com/input?i=1.199999999999999955591+*+2%5E%281021-1023%29),
-while the _next_ immediate value (i.e. exactly 1 ULP bigger) is approx.
-[`0.3000000000000000444089`](https://www.wolframalpha.com/input?i=1.2000000000000001776357+*+2%5E%281021-1023%29).
-Our result clearly is much closer to the latter! And that's how `0.30000000000000004` is deemed the correct result.
+[`0.2999999999999999888978`](https://www.wolframalpha.com/input?i=1.199999999999999955591+*+2%5E%281021-1023%29), while
+the _next_ immediate value (i.e. exactly 1 ULP bigger) is approx.
+[`0.3000000000000000444089`](https://www.wolframalpha.com/input?i=1.2000000000000001776357+*+2%5E%281021-1023%29). Our
+result clearly is much closer to the latter! And that's how `0.30000000000000004` is deemed the correct result.
 
 <figure>
     <a href="https://xkcd.com/217/">
@@ -390,18 +401,25 @@ formats**.
 Two such formats are in fact part of IEEE 754: `decimal64` and `decimal128`. As you can infer from those technical
 names, they have a base of 10 instead of 2, and are respectively 64 and 128 bits long. Unfortunately, their adoption
 isn't nearly as universal as that of standardized binary formats. That's largely because hardware acceleration of
-decimal floating-point arithmetic is extremely niche, so the math practically always is implemented in software – resulting in less pressure to use a standard _and also_ much poorer performance in comparison with binary arithmetic. Nevertheless,
-when correct handling decimal values is of utmost importance, there's no better way than decimal floating-point.
+decimal floating-point arithmetic is extremely niche, so the math practically always is implemented in software –
+resulting in less pressure to use a standard _and also_ much poorer performance in comparison with binary arithmetic.
+Nevertheless, when correct handling decimal values is of utmost importance, there's no better way than decimal
+floating-point.
 
 ## The There-and-Back-Again
 
 Suppose you've got a float but need to convert it to a double. To perform this transmutation, just take the existing
-exponent and significand values and pad them with zeros. Simple enough! Beware of false precision though: we've found in [The More-or-Less](#the-more-or-less) that a parsed value is off by a bit (but less than 0.5 ULP) _immediately_, unless
-the denominator of the original value was a power of 2. So, say, `"5.9"` parsed as a float will be printed back as `5.9`, as expected. Cast that to a double though and what you see is… `5.9000000953674316`. Where did the processor get all this extra information from? Truth is, that's what a _lack_ of information looks like. The extra digits are simply the initial error, made glaring because of the ULP being orders of magnitude smaller in the more precise format.
+exponent and significand values and pad them with zeros. Simple enough! Beware of false precision though: we've found in
+[The More-or-Less](#the-more-or-less) that a parsed value is off by a bit (but less than 0.5 ULP) _immediately_, unless
+the denominator of the original value was a power of 2. So, say, `"5.9"` parsed as a float will be printed back as
+`5.9`, as expected. Cast that to a double though and what you see is… `5.9000000953674316`. Where did the processor get
+all this extra information from? Truth is, that's what a _lack_ of information looks like. The extra digits are simply
+the initial error, made glaring because of the ULP being orders of magnitude smaller in the more precise format.
 
-The other way around – from a higher-precision format to a lower-precision one – the situation is straightforward. Information is unambiguously lost
-as the least significant digits of the significand are cut. Just one thing to watch out for here is the exponent being
-outside the target format's range – that's an example of overflow, so infinity is the result.
+The other way around – from a higher-precision format to a lower-precision one – the situation is straightforward.
+Information is unambiguously lost as the least significant digits of the significand are cut. Just one thing to watch
+out for here is the exponent being outside the target format's range – that's an example of overflow, so infinity is the
+result.
 
 ## The End
 
