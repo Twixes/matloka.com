@@ -83,8 +83,9 @@ figure {
 figcaption {
     font-size: 1.25rem;
     font-weight: 500;
-    a + &, img + & {
-      margin-top: 0.25rem;
+    a + &,
+    img + & {
+        margin-top: 0.25rem;
     }
 }
 
@@ -117,8 +118,9 @@ a {
     }
 }
 
-b, strong {
-  font-weight: 600;
+b,
+strong {
+    font-weight: 600;
 }
 
 h1,
@@ -191,30 +193,33 @@ iframe {
 blockquote {
     --ribbon-width: 0.5rem;
     position: relative;
-    margin: calc(1rem + var(--border-thickness)) var(--border-thickness) calc(1rem + var(--border-thickness) + var(--shadow-distance));
+    margin: calc(1rem + var(--border-thickness)) var(--border-thickness)
+        calc(1rem + var(--border-thickness) + var(--shadow-distance));
     outline: var(--border-thickness) solid var(--foreground);
     padding: 0.75rem 1.25rem 0.75rem 1rem;
     border-left: var(--ribbon-width) solid var(--composite-color-2);
     font-weight: 500;
     line-height: 1.4;
-    box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) var(--foreground);
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      left: calc(var(--ribbon-width) * -1);
-      height: 33.3333%;
-      width: var(--ribbon-width);
+    box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
+        calc(var(--border-thickness) + var(--shadow-distance)) var(--foreground);
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        left: calc(var(--ribbon-width) * -1);
+        height: 33.3333%;
+        width: var(--ribbon-width);
     }
     &::before {
-      top: 0;
-      background: var(--composite-color-3);
+        top: 0;
+        background: var(--composite-color-3);
     }
     &::after {
-      bottom: 0;
-      background: var(--composite-color-1);
+        bottom: 0;
+        background: var(--composite-color-1);
     }
     > *:first-child {
-      margin-top: 0;
+        margin-top: 0;
     }
     &:last-child {
         margin-bottom: 0;
@@ -222,21 +227,23 @@ blockquote {
 }
 
 table {
-  display: block;
-  width: fit-content;
-  margin: 0.25rem 0 calc(1rem + var(--shadow-distance));
-  border-collapse: collapse;
-  font-size: 1.125rem;
-  box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground);
-  tr {
-    > th {
-      text-align: left;
+    display: block;
+    width: fit-content;
+    margin: 0.25rem 0 calc(1rem + var(--shadow-distance));
+    border-collapse: collapse;
+    font-size: 1.125rem;
+    box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
+        calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground);
+    tr {
+        > th {
+            text-align: left;
+        }
     }
-  }
-  td, th {
-    border: var(--border-thickness) solid var(--foreground);
-    padding: 0.5rem 0.75rem;
-  }
+    td,
+    th {
+        border: var(--border-thickness) solid var(--foreground);
+        padding: 0.5rem 0.75rem;
+    }
 }
 
 code {
@@ -254,7 +261,8 @@ pre {
     font-size: 1.25rem;
     background: var(--foreground);
     color: var(--background);
-    box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--magenta);
+    box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
+        calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--magenta);
     overflow: auto;
     code {
         display: block;
@@ -425,10 +433,10 @@ article {
         margin-top: 1rem;
     }
     blockquote {
-      padding: 0.5rem 0.75rem;
+        padding: 0.5rem 0.75rem;
     }
     pre {
-      padding: 0.75rem;
+        padding: 0.75rem;
     }
     .links {
         margin: 1.25rem 0;
