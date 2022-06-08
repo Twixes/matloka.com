@@ -7,7 +7,7 @@ stylesheet: /assets/floating-point-101/number-line.css
 Software engineering keeps getting more abstract, but one thing is unchanging: the importance of floating-point
 arithmetic. _Every_ computer programmer is bound to work with numbers (they call them _computers_ for a reason), so it's
 genuinely useful to understand the way machines do math, no matter if your code is for a to-do app, a stock exchange, or
-a fridge. How are numbers actually stored? What special values exist? And why is 0.1 + 0.2 not equal to 0.3?
+a fridge. How are numbers stored exactly? What's the significance of special values? And why is 0.1 + 0.2 not equal to 0.3?
 Let's explore this all!
 
 ## The Standard
@@ -39,20 +39,18 @@ standardize floating-point arithmetic – the IEEE 754 working group. Two compe
 vs. the DEC VAX one. After some more arguments and error analysis, in 1981 Intel's draft won out, rapidly got adopted by
 everyone,
 and [the rest is history](https://www.intel.com/content/dam/www/public/us/en/documents/case-studies/floating-point-case-study.pdf)
-(though it took the committee another four years of bickering to publish that draft, of course!).
+(though it took the committee another four years of bickering to publish that draft, of course).
 
 > For a detailed look at historic floating-point formats, see
 > [this great article by John Savard](http://www.quadibloc.com/comp/cp0201.htm).
 
-## The Binary
+## The Specs
 
-Let's get into the meat of it, starting with… value sizes in bits. This aspect informs the practical details of the
+Let's get into the meat of it, starting with… value sizes. This aspect informs the practical details of the
 scheme (range and precision), but _can't_ really be worked out from first principles. It's really just all about machine
 word sizes.
 
-At the same time, it's important to note that TODO
-
-Two floating-point sizes are in common use today:
+Two floating-point formats are in common use today, and they both use the binary numeral system:
 
 -   32 bits, technically named `binary32`, but commonly **single precision**. Values of this size are called **floats**.
 -   64 bits, technically named `binary64`, but commonly **double precision**. Values of this size are called
@@ -94,7 +92,7 @@ number comes out, or type in a number to see what it looks like in your computer
 
 <figure id="calculator">
 <iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="188" title="IEEE 754 Floating Point Calculator"></iframe>
-    <figcaption><i>fig. 2</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this widget's code on CodePen!</a></figcaption>
+    <figcaption><i>widget 1</i> — <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this tool's code on CodePen!</a></figcaption>
 </figure>
 
 ## The Precision
@@ -174,14 +172,15 @@ be implemented as just a negation of `<` for floating-point!
 ## The Microscopic
 
 When a result of a calculation is so tiny that it can't be represented by a normal number we see **underflow** occur.
-It's an edge case, but an important one. How it gets handled has significant implications for some operations. (TODO
-what operations?)
+It's an edge case, but an important one. How it gets handled has significant implications for some operations.
+
+<!-- TODO? Examples of operations -->
 
 Historically, underflow was handled by returning zero – a solution called **flush-to-zero**. It's very straightforward,
 but not quite optimal for the accuracy of calculations taking place near zero. The issue is, the absolute difference between neighboring
 floating-point values (i.e. ULP) gets smaller as the values themselves do so too – but with the significand's leading
 digit always being 1, the jump between 0 and the smallest representable value is MUCH larger than the jump between that
-smallest value and the _second_-smallest one. You can see this in figure 3, which shows what this'd look like for double
+smallest value and the _second_-smallest one. You can see this in figure 2, which shows what this'd look like for double
 precision. Note that 2<sup>-1023</sup> couldn't be achieved, because we'd go straight to 0.
 
 <figure class="number-line">
@@ -205,7 +204,7 @@ precision. Note that 2<sup>-1023</sup> couldn't be achieved, because we'd go str
         <div class="number-line__marker number-line__marker--8"></div>
         <div class="number-line__marker number-line__marker--8 number-line__marker--power"><span>2<sup>-1019</sup></span></div>
     </div>
-    <figcaption><div class="recommendation recommendation--dont"></div><i>fig. 3</i> — Don't.</figcaption>
+    <figcaption><div class="recommendation recommendation--dont"></div><i>fig. 2</i> — Don't.</figcaption>
 </figure>
 
 During development of IEEE 754 it turned out there's a
@@ -213,7 +212,7 @@ During development of IEEE 754 it turned out there's a
 relies on the significand's leading digit being 0 when the biased exponent is 0. We can extend this to non-zero values
 of the significand – this way, there's no odd gap when going from 0 up. The gap has merely moved away from 0 though – to
 get rid of it, we make it so that the unbiased exponent is the same for the biased exponent value of 0 as it is for 1.
-As you can see in figure 4, this way we trade away some precision at the bottom range of our number line… but we no
+As you can see in figure 3, this way we trade away some precision at the bottom range of our number line… but we no
 longer return 0 when the real result is (in relative terms) quite far away from 0. We call this solution **gradual
 underflow** and those extremely small values that have 0 as the significand's leading digit –
 **<span style="color: magenta">subnormal numbers</span>** (or _denormalized_).
@@ -238,7 +237,7 @@ underflow** and those extremely small values that have 0 as the significand's le
         <div class="number-line__marker number-line__marker--8"></div>
         <div class="number-line__marker number-line__marker--8 number-line__marker--power"><span>2<sup>-1019</sup></span></div>
     </div>
-    <figcaption><div class="recommendation recommendation--do"></div><i>fig. 4</i> — Do.</figcaption>
+    <figcaption><div class="recommendation recommendation--do"></div><i>fig. 3</i> — Do.</figcaption>
 </figure>
 
 > See how subnormal numbers are stored in binary by trying `8e-323` in [the calculator](#calculator).
@@ -295,8 +294,10 @@ Define "closest" though. Oh, actually the standard includes that too. It describ
 - `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero,
 - `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit.
 
-The table below uses decimal values being rounded to integers to demonstrate how each mode works:
+See table 1 for a demonstration of the mechanics of each mode (on decimal values being rounded to integers).
 
+<figure style="margin-left: 0">
+<figcaption><i>table 1</i> — IEEE 754-2008 rounding modes</figcaption>
 <table style="text-align: right">
   <tr>
     <th>Original</th>
@@ -347,15 +348,12 @@ The table below uses decimal values being rounded to integers to demonstrate how
     <td><code>-2</code></td>
   </tr>
 </table>
+</figure>
 
 The one you're using, even if you don't know it yet, is `roundTiesToEven`. It's the default, because:
 
 1. it takes the nearest value in the common case, which is almost always what you'd expect – this way the error cannot be greater than ±0.5 ULP; but also…
-2. when the **infinitely precise result** is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and _down_ in the other 50%, making the bias _zero_ on average.
-
-_Infinitely_ precise result – sounds like a bit of an exaggeration. All our problems stem from bits being finite! Here's one more trick: inside processor arithmetic logic units (ALUs), floating-point values are stored with a few _extra_ bits. Specifically, the significand gets extended with two **guard bits** and a **sticky bit**.
-
-TODO
+2. when the result is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and _down_ in the other 50%, making the bias _zero_ on average.
 
 ## The Unexpected
 
@@ -381,7 +379,7 @@ Our result clearly is much closer to the latter! And that's how `0.3000000000000
     <a href="https://xkcd.com/217/">
         <img src="https://imgs.xkcd.com/comics/e_to_the_pi_minus_pi.png" title="Also, I hear the 4th root of (9^2 + 19^2/22) is pi." alt="e to the pi Minus pi" height="264" width="700" loading="lazy">
     </a>
-    <figcaption><i>fig. 5</i> — <em>Another</em> XKCD?</figcaption>
+    <figcaption><i>fig. 4</i> — <em>Another</em> XKCD?</figcaption>
 </figure>
 
 This category of errors, where parsing and arithmetic add up to a result a human would not expect, is why it's crucial
@@ -405,25 +403,20 @@ The other way around – from a higher-precision format to a lower-precision on
 as the least significant digits of the significand are cut. Just one thing to watch out for here is the exponent being
 outside the target format's range – that's an example of overflow, so infinity is the result.
 
-## The Speed
-
-TODO:
-When summing up numbers, if there is a wide range, sum from smallest to largest.
-Perform multiplications before divisions whenever possible.
-When performing a comparison with a computed value, check to see if the values are “close” rather than identical.
-
 ## The End
 
 You've reached the finish line. Congratulations. I hope you feel enlightened, or at least marginally smarter than before
 opening this page. Now go and build great things using floating-point!
 
-But if you're yearning for more, there's a few topics I deemed not that relevant to the day-to-day of most programmers,
-which nonetheless can be useful or interesting. Venture out at your own discretion:
+If you're somehow yearning for more, there's a few topics I deemed less relevant to the day-to-day of most programmers,
+which nonetheless might be useful or interesting. Venture out at your own discretion with this non-exhaustive list:
 
+-   How hardware uses guard bits and the sticky bit to minimize calculation errors
+-   Tricks to squeeze the last bits of performance out of floating-point operations
+-   Minimizing error in implementations of arithmetic operations (e.g. Kahan summation algorithm)
 -   Quiet vs. signaling NaNs
 -   Not just NaNs - how status flags can be used to detect exceptions
 -   Managing exceptions manually with trap handlers
--   Minimizing error in implementations of arithmetic operations (e.g. Kahan summation algorithm)
 
 And finally, I could not end this without crediting David Goldberg and his classic
 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
