@@ -81,7 +81,9 @@ figure {
 figcaption {
     font-size: 1.25rem;
     font-weight: 500;
-    margin: 0.25rem 0 0;
+    a + &, img + & {
+      margin-top: 0.25rem;
+    }
 }
 
 .recommendation {
@@ -221,7 +223,7 @@ table {
   display: block;
   overflow-x: auto;
   max-width: fit-content;
-  margin: 1rem 0 calc(1rem + var(--shadow-distance));
+  margin: 0.25rem 0 calc(1rem + var(--shadow-distance));
   border-collapse: collapse;
   font-size: 1.125rem;
   box-shadow: calc(var(--border-thickness) + var(--shadow-distance)) calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground);
@@ -233,9 +235,6 @@ table {
   td, th {
     border: var(--border-thickness) solid var(--foreground);
     padding: 0.5rem 0.75rem;
-  }
-  &:last-child {
-      margin-bottom: 0;
   }
 }
 
