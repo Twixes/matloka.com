@@ -7,12 +7,13 @@
 
 .number-line {
     width: 100%;
+    overflow: visible;
 }
 
 .number-line__axis {
     position: relative;
     display: flex;
-    padding: 1rem 0 1.5rem;
+    padding: 0.5rem 0 1.5rem;
     &::after {
         position: absolute;
         content: '';

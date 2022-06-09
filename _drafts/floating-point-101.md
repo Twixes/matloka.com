@@ -303,9 +303,9 @@ Define "closest" though. Oh, actually the standard includes that too. It describ
 -   `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero,
 -   `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit.
 
-See table 1 for a demonstration of the mechanics of each mode (on decimal values being rounded to integers).
+See table 1 for a demonstration of each mode, on decimal values being rounded to integers.
 
-<figure style="margin-left: 0">
+<figure>
 <figcaption><i>table 1</i> — IEEE 754-2008 rounding modes</figcaption>
 <table style="text-align: right">
   <tr>
@@ -361,9 +361,9 @@ See table 1 for a demonstration of the mechanics of each mode (on decimal values
 
 The one you're using, even if you don't know it yet, is `roundTiesToEven`. It's the default, because:
 
-1. it takes the nearest value in the common case, which is almost always what you'd expect – this way the error cannot
+1. It takes the nearest value in the common case, which is almost always what you'd expect – this way the error cannot
    be greater than ±0.5 ULP; but also…
-2. when the result is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and
+2. When the result is smack-dab in the middle between two floating-point values, it rounds _up_ in 50% of cases and
    _down_ in the other 50%, making the bias _zero_ on average.
 
 ## The Unexpected
@@ -373,7 +373,7 @@ Unfortunately, even tolerable errors add up. This can result in some odd results
 
 This equals `0.3`, right? Not in double precision, no, it doesn't. The actual result: `0.30000000000000004`.
 
-Due to friction between bases 2 and 10 (explained in [The More-or-Less](#the-more-or-less), what you see as `0.1` in
+Due to friction between bases 2 and 10 (explained in [The More-or-Less](#the-more-or-less)), what you see as `0.1` in
 double-precision is more precisely (by a few digits)
 [`0.1000000000000000055511`](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281019-1023%29), and
 that `0.2` is rather

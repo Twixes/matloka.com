@@ -77,15 +77,17 @@ figure {
     width: fit-content;
     max-width: 100%;
     margin: 1rem auto;
-    overflow-x: auto;
 }
 
 figcaption {
     font-size: 1.25rem;
     font-weight: 500;
+    &:first-child {
+      margin-top: -0.5rem;
+    }
     a + &,
     img + & {
-        margin-top: 0.25rem;
+        margin: 0.25rem 0 -0.25rem;
     }
 }
 
@@ -229,11 +231,13 @@ blockquote {
 table {
     display: block;
     width: fit-content;
+    max-width: 100%;
     margin: 0.25rem 0 calc(1rem + var(--shadow-distance));
     border-collapse: collapse;
     font-size: 1.125rem;
     box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
         calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground);
+    overflow: auto;
     tr {
         > th {
             text-align: left;
