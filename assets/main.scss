@@ -118,6 +118,12 @@ a {
     }
 }
 
+dfn {
+  font-style: normal;
+  text-decoration: dotted underline;
+  text-underline-offset: 0.05em;
+}
+
 b,
 strong {
     font-weight: 600;
