@@ -71,13 +71,6 @@ value as three numbers cleverly put together:
 ```
 
 -   The **sign** is a single bit – 0 if the number is positive, 1 if negative.
--   The **exponent** is a signed integer. In a way, it establishes the magnitude, e.g. an exponent of 8 means that
-    the absolute value of the number must be in the range `(256,512]` (`(2^8,2^9]`).  
-    Curiously, despite the exponent being signed, it's stored not using
-    [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) but as an unsigned integer, with the computer
-    _knowing_ to subtract a known **bias** to get the real value. The raw stored value is called the **biased
-    exponent**. That bias is 127 in single-precision and 1023 in double.  
-    The exponent's size determines the _range_ of the type – 8 bits of it in single-precision and 11 in double.
 -   The **significand** (also called the *mantissa*) is a fixed-point number in the range `(1,2]` (e.g. 1 or 1.0625 or
     1.984375). It "fine-tunes" the value within the working range set by the sign and exponent.  
     Because the significand's leading digit normally<a href="#the-zeros" style="text-decoration: none">\*</a> is 1
@@ -86,6 +79,16 @@ value as three numbers cleverly put together:
     stored. This has the nice property of ensuring there's only one way to store a given a number.  
     The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in
     double.
+-   The **exponent** is a
+    <dfn title="Signed means the value can have a minus sign – so it can be positive OR negative.">signed</dfn> integer.
+    In a way, it establishes the magnitude, e.g. an exponent of 8 means that the absolute value of the number must be in
+    the range `(256, 512]`.  
+    Even though the exponent being signed, it's not stored using
+    [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) like regular signed integers. Instead, the
+    stored value is an _unsigned_ integer and the computer subtract a format-specific **bias** to obtain the true value.
+    The raw, pre-subtraction value is called the **biased exponent**. That bias is specifically `127` in
+    single-precision and `1023` in double.  
+    The exponent's size determines the _range_ of the type – 8 bits of it in single-precision and 11 in double.
 
 See for yourself how this all comes together using the calculator below! Toggle bits by clicking on them and see what
 number comes out, or type in a number to see what it looks like in your computer's memory:
@@ -119,8 +122,8 @@ epsilon value tuned for your specific application.
 
 ## The Zero(s)
 
-We've omitted something though: how to represent 0? Mathematically, the only way to do that is to set the significand to
-0… but that implicit leading 1 is standing in the way.
+We've omitted something though: how to represent `0`? Mathematically, the only way to do that is to set the significand
+to `0`… but that implicit leading `1` is standing in the way.
 
 Here's the trick: when the significand is `0`, setting the biased exponent to `0` makes the significand's leading digit
 _also_ `0`. _Voilà_, `0` as a result! That's a useful number to have.
@@ -248,7 +251,7 @@ On the other hand, when the result of a calculation is so _large_ that it can't 
 **overflow** – another special value is returned: infinity. It can be positive or negative, depending on the direction
 of overflow.
 
-Infinity obviously is never the correct result at all, but that's a feature, not a bug. Returning the maximum
+Infinity obviously almost never is the correct result at all, but that's a feature, not a bug. Returning the maximum
 representable number would be much more unsafe – you'd end up with a _seemingly_ normal value, that would actually be
 off by 1, or perhaps by orders of magnitude, with no way to tell. Infinity makes it evident an overflow happened and the
 rules of calculations involving it are well-defined: basically, any such operation that doesn't produce a NaN (listed in
