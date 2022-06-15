@@ -7,6 +7,7 @@
 
 .number-line {
     width: 100%;
+    margin: 1.25rem 0;
     overflow: visible;
 }
 
@@ -14,6 +15,7 @@
     position: relative;
     display: flex;
     padding: 0.5rem 0 1.5rem;
+    margin-bottom: 1rem;
     &::after {
         position: absolute;
         content: '';
@@ -24,7 +26,7 @@
         border-bottom-width: 2px;
     }
     &.number-line__axis--problematic {
-        padding-top: 2.5rem;
+        padding-top: 2rem;
     }
 }
 
@@ -79,8 +81,24 @@
     }
     span {
         position: absolute;
-        top: 1.5rem;
+        top: 125%;
         right: -1px;
         transform: translateX(50%);
     }
+}
+
+@media screen and (max-width: 40rem) {
+  .number-line__axis {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    &.number-line__axis--problematic {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .number-line__marker.number-line__marker--problem {
+    height: 36px;
+    &::after {
+      bottom: 2.25rem;
+    }
+  }
 }
