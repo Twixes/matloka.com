@@ -12,7 +12,7 @@ a fridge. How are numbers stored exactly? What's the significance of special val
 
 ## The Standard
 
-Let's start with one key assumption: in all the world, on every continent, there's one and one only way of doing
+Let's start with one key assumption: in all the world, on every continent, there's one and only one way of doing
 floating-point arithmetic.
 
 This makes things a lot easier, _and_ it's true in practice. That standard's name?
@@ -46,43 +46,61 @@ and [the rest is history](https://www.intel.com/content/dam/www/public/us/en/d
 
 ## The Specs
 
-Let's get into the meat of it, starting with… value sizes. This aspect informs the practical details of the scheme
-(range and precision), but _can't_ really be worked out from first principles. It's really just all about machine word
-sizes.
+When you type `let x = 0.5` (might be JavaScript, Rust, Swift, or perhaps something else), that `x` needs to be stored
+in a usable way. For a computer usable equals binary – ones and zeros. Were we talking about an integer, say,
+`let x = 5`, the solution would be simple – integers can be expressed in binary just as easily as in decimal, so a quick
+conversion of 5 to 101<sub>2</sub>, and we're all set.
 
-Two floating-point formats are in common use today, and they both use the binary numeral system:
+Things get trickier when we want to represent **real** numbers though. The difference there is arbitrary precision.
+Whole numbers are spaced uniformly apart on the number line, so between 0.5 and 2.5 there are exactly two integers: 1
+and 2. Real numbers also include _every_ number in-between, so there's an _infinite_ amount of points between 0.5 and
+2.5. (If you come up with a number with an insane amount of fractional digits, another digit can always be tacked on to
+get a brand-new value.)
 
--   32 bits, technically named `binary32`, but commonly **single precision**. Values of this size are called **floats**.
--   64 bits, technically named `binary64`, but commonly **double precision**. Values of this size are called
-    **doubles**.
+That's the mathematical theory in a nutshell. Sadly, computing capabilities are limited by the physical world, so
+infinite precision is out of the question. To be very pedestrian,
+[machine word](<https://en.wikipedia.org/wiki/Word_(computer_architecture)>) sizes are a major limitation – handling 32
+bit long values comes naturally to a 32-bit processor, but any longer than that and things become slow. Nowadays, 64-bit
+architectures rule the world, and this is reflected in the way floating-point is used. Two floating-point formats are
+generally used:
 
-Back in the day, double precision was reserved for operations requiring exceptional precision or range. With 64-bit
-processor architectures becoming standard though, it's now often the default, as its performance penalty decreased
-significantly.
+-   32 bits, technically named `binary32`, but commonly **single precision**.  
+    Values of this size are called **floats**.
+-   64 bits, technically named `binary64`, but commonly **double precision**.  
+    Values of this size are called **doubles**.
+
+With this introduction out of the way, let's venture into the workings of those formats.
 
 ## The Notation
 
-Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) (e.g. `6.022 * 10^23`)
-for expressing numbers of arbitrary magnitude in a standard way, computers under the hood store each floating-point
-value as three numbers cleverly put together:
+As the name suggests, floating-point values don't have a fixed number of integer and fractional digits – instead, the
+<dfn title="In base-10 the border between the integer and fractional part is called the decimal point. Radix point is the base-independent version of the same concept.">radix
+point</dfn> _floats_ so that there's rather a certain number of _significant digits_. This allows representing a wide
+range of magnitudes usefully.
+
+Much like how humans use [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) (an example:
+`6.022 * 10^23`) to express real numbers of arbitrary magnitude in a standard way, computers under the hood store each
+floating-point value as three numbers cleverly put together:
 
 ```
 (-1)^sign * significand * 2^exponent
 ```
 
 -   The **sign** is a single bit – 0 if the number is positive, 1 if negative.
--   The **significand** (also called the *mantissa*) is a fixed-point number in the range `(1,2]` (e.g. 1 or 1.0625 or
-    1.984375). It "fine-tunes" the value within the working range set by the sign and exponent.  
+-   The **significand** (also called the *mantissa*) is a fixed-point number in the range `(1, 2]`. It might be
+    something like 1, 1.0625 or 1.984375, but it _can't_ be 2. What it intuitively does is it "fine-tunes" the value
+    within the range set by the sign and exponent.  
     Because the significand's leading digit normally<a href="#the-zeros" style="text-decoration: none">\*</a> is 1
-    (**normal number** being the technical term for such a case), that digit is in fact totally omitted from the binary
-    representation – if the significand is, say, `0b1.001` (that's binary for 1.125), only the `001` part ends up being
-    stored. This has the nice property of ensuring there's only one way to store a given a number.  
+    (**normal number** being the technical term for such a case), **only the fractional part of the significand is
+    included in the binary representation** – if the significand is, say, 1.001<sub>2</sub> (that's binary for 1.125),
+    only the `001` part ends up being stored. This has the nice property of ensuring **there's only one way to store a
+    given a number**.  
     The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in
     double.
 -   The **exponent** is a
-    <dfn title="Signed means the value can have a minus sign – so it can be positive OR negative.">signed</dfn> integer.
-    In a way, it establishes the magnitude, e.g. an exponent of 8 means that the absolute value of the number must be in
-    the range `(256, 512]`.  
+    <dfn title="Signed means the value may have a minus sign – so it can be positive OR negative.">signed</dfn> integer.
+    In a way, it establishes the magnitude, for instance an exponent of 8 means that the absolute value of the number
+    must be in the range `(256, 512]` (`(2^8, 2^9]`).  
     Even though the exponent being signed, it's not stored using
     [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) like regular signed integers. Instead, the
     stored value is an _unsigned_ integer and the computer subtract a format-specific **bias** to obtain the true value.
@@ -102,12 +120,12 @@ number comes out, or type in a number to see what it looks like in your computer
 
 Since value sizes are very much finite, their precision is too, and this means there's a minimum distance between two
 values. The thing is, this spacing is different depending on the magnitude (as defined by the exponent). In effect, for
-small values the distance is tiny, while for larger ones it's roughly proportionally bigger.
+small values the distance is tiny in absolute terms, while for larger ones it's roughly proportionally bigger.
 
 A value's immediate neighbors are essentially a ±1 in its last significant digit away, and the difference such an
-addition/subtraction corresponds to is our measure of minimum distance – called **unit in the last place**, **ULP** in
-short. You can easily see how ULP size differs depending on the exponent in the calculator above. Simply change the
-exponent value around and you'll notice the size of the ULP when you toggle the last bit of the significand!
+increment makes is our measure of minimum distance – called **unit in the last place**, **ULP** in short. You can easily
+see how ULP size differs depending on the exponent in the calculator above. Simply change the exponent value around and
+you'll notice the size of the ULP when you toggle the last bit of the significand!
 
 ULP is the best way of defining floating-point precision as it's valid at any magnitude, but another related definition
 is **machine epsilon**. This one, as opposed to the abstract ULP, is a constant value – specifically, the ULP between 1
@@ -184,7 +202,8 @@ but not quite optimal for the accuracy of calculations taking place near zero. T
 between neighboring floating-point values (i.e. ULP) gets smaller as the values themselves do so too – but with the
 significand's leading digit always being 1, the jump between 0 and the smallest representable value is MUCH larger than
 the jump between that smallest value and the _second_-smallest one. You can see this in figure 2, which shows what
-this'd look like for double precision. Note that 2<sup>-1023</sup> couldn't be achieved, because we'd go straight to 0.
+this'd look like for double precision. Note that the 2<sup>-1023</sup> marker is dashed, because it couldn't be reached
+– we'd go straight to 0 instead.
 
 <figure class="number-line">
     <div class="number-line__axis number-line__axis--problematic">
@@ -275,8 +294,8 @@ an array of tricks.
 Whether it's a user providing data or you hard-coding values, the starting point for many real numbers is a string of
 characters representing the decimal value. We can, for instance, parse `"0.2"` as a double. Print that back and you get
 `0.2` as expected. That's not exactly what's stored though. If we calculate the value a bit more accurately based on the
-binary data, using [The Notation](#the-notation), we get `0.2000000000000000111022...`. That's evidently off! But just
-fine really, considering that there _isn't_ such number as `0.2` in binary.
+binary data, using [The Notation](#the-notation), we get `0.2000000000000000111022...`. That's evidently off! But there
+just _isn't_ such number as `0.2` in binary.
 
 As an illustration of the problem behind this, let's take 1/3. It doesn't have an _exact_ decimal counterpart, so we
 humans resort to limited approximations, such as 0.3333. The reason for this predicament is that **for a rational number
