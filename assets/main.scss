@@ -16,6 +16,7 @@
     --red: #f00;
     --green: #0f0;
     --blue: #00f;
+    --selection-accent: var(--yellow);
     --composite-color-1: var(--yellow);
     --composite-color-2: var(--magenta);
     --composite-color-3: var(--cyan);
@@ -94,7 +95,7 @@ figcaption {
 .recommendation {
     width: 100%;
     height: 0.75rem;
-    margin: 0.5rem 0;
+    margin: -0.25rem 0 0.5rem;
     &.recommendation--dont {
         background: var(--red);
     }
@@ -116,8 +117,12 @@ a {
     color: var(--magenta);
     &::selection,
     ::selection {
-        color: var(--yellow);
+        color: var(--selection-accent);
     }
+}
+
+sub, sup {
+  line-height: 0;
 }
 
 dfn {
@@ -274,6 +279,10 @@ pre {
     box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
         calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--magenta);
     overflow: auto;
+    ::selection {
+        background: var(--selection-accent);
+        color: var(--foreground);
+    }
     code {
         display: block;
         padding: 0;
@@ -470,6 +479,7 @@ article {
         --composite-color-2: var(--green);
         --composite-color-3: var(--red);
         --composite-blend-mode: screen;
+        --selection-accent: var(--blue);
     }
     a::selection {
         color: var(--blue);
