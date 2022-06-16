@@ -21,9 +21,14 @@
     --composite-color-2: var(--magenta);
     --composite-color-3: var(--cyan);
     --composite-blend-mode: multiply;
-    --font-headline: 'Poppins', 'Arial Black', sans-serif;
-    --font-body: 'Zilla Slab', sans-serif;
-    --font-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Consolas',
+    --font-size-hero: 5.5rem;
+    --font-size-title: 2.5rem;
+    --font-size-heading: 1.75rem;
+    --font-family-heading: 'Poppins', 'Arial Black', sans-serif;
+    --font-size-body: 1.25rem;
+    --font-size-post-scriptum: 1.5rem;
+    --font-family-body: 'Zilla Slab', sans-serif;
+    --font-family-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Consolas',
         'Fira Code', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New',
         monospace;
     --border-thickness: 0.125rem;
@@ -66,7 +71,7 @@ body {
     padding: 2rem 4rem;
     max-width: 60rem;
     text-rendering: optimizeLegibility;
-    font-family: var(--font-body);
+    font-family: var(--font-family-body);
 }
 
 .content-wrapper {
@@ -81,7 +86,7 @@ figure {
 }
 
 figcaption {
-    font-size: 1.25rem;
+    font-size: var(--font-size-body);
     font-weight: 500;
     &:first-child {
       margin-top: -0.5rem;
@@ -147,28 +152,28 @@ h6 {
 
 h1 {
     margin: 2rem 0 0 0;
-    font-family: var(--font-headline);
-    font-size: 2.5rem;
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-title);
     font-weight: 700;
     letter-spacing: -0.01em;
 }
 
 h2 {
-    margin: 1.75rem 0 0;
-    font-family: var(--font-headline);
-    font-size: 1.75rem;
+    margin: 1em 0 0;
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-heading);
     font-weight: 700;
 }
 
 h4 {
-    margin: 1.5rem 0 0;
-    font-size: 1.75rem;
+    margin: 0.875em 0 0;
+    font-size: var(--font-size-heading);
     font-weight: 600;
 }
 
 h5 {
-    margin: 1.25rem 0 0;
-    font-size: 1.5rem;
+    margin: 1em 0 0;
+    font-size: var(--font-size-post-scriptum);
     font-weight: 600;
 }
 
@@ -179,13 +184,13 @@ ol {
 }
 
 li {
-    font-size: 1.25rem;
+    font-size: var(--font-size-body);
     margin-top: 0.25rem;
 }
 
 p {
     margin: 0.5rem 0 0;
-    font-size: 1.25rem;
+    font-size: var(--font-size-body);
     text-align: justify;
     &:first-child {
         margin-top: 0;
@@ -266,14 +271,14 @@ code {
     border-radius: 0.25rem;
     background: var(--grayish);
     color: var(--foreground);
-    font-family: var(--font-code);
+    font-family: var(--font-family-code);
     font-size: 0.8em;
 }
 
 pre {
     margin: 1rem 0 calc(1rem + var(--shadow-distance));
     padding: 1rem;
-    font-size: 1.25rem;
+    font-size: var(--font-size-body);
     background: var(--foreground);
     color: var(--background);
     box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
@@ -293,7 +298,7 @@ pre {
 
 header {
     h1 {
-        font-size: 5.5rem;
+        font-size: var(--font-size-hero);
         font-weight: 800;
         white-space: pre;
     }
@@ -420,7 +425,7 @@ article {
 }
 
 .post-scriptum {
-    margin-top: 2rem;
+    margin-top: 1.5em;
 }
 
 .anchorjs-link {
@@ -430,20 +435,21 @@ article {
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
     // Mobile
+    :root {
+      --font-size-hero: 5rem;
+      --font-size-title: 2rem;
+      --font-size-heading: 1.5rem;
+      --font-size-body: 1.125rem;
+      --font-size-post-scriptum: 1.25rem;
+    }
     body {
         padding: 1rem;
     }
     .content-wrapper {
-        margin-bottom: 2rem;
-    }
-    header {
-        h1 {
-            font-size: 4.5rem;
-        }
+        margin-bottom: 2em;
     }
     h1 {
         margin-top: 1rem;
-        font-size: 2.25rem;
     }
     h4 {
         margin: 1rem 0;
@@ -460,11 +466,8 @@ article {
     .links {
         margin: 1.25rem 0;
     }
-    .posts {
-        margin-top: 5rem;
-        li {
-            margin-top: 2rem;
-        }
+    .posts li {
+        margin-top: 2rem;
     }
 }
 
