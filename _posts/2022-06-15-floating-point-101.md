@@ -322,8 +322,8 @@ arithmetic operations: addition, subtraction, multiplication, division, and squa
 
 Define "closest" though. Oh, actually the standard includes that too. It describes five rounding modes:
 
--   `roundTowardPositive` – takes the floor (i.e. towards positive infinity),
--   `roundTowardNegative` – takes the ceiling (i.e. towards negative infinity),
+-   `roundTowardPositive` – takes the floor (i.e. towards negative infinity),
+-   `roundTowardNegative` – takes the ceiling (i.e. towards positive infinity),
 -   `roundTowardZero` – truncates (i.e. towards zero),
 -   `roundTiesToAway` – chooses the nearest value, breaks ties by rounding away from zero,
 -   `roundTiesToEven` – chooses the nearest value, breaks ties by rounding to the value ending in an even digit.
