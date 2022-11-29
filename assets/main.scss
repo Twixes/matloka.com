@@ -20,6 +20,9 @@
     --composite-color-1: var(--yellow);
     --composite-color-2: var(--magenta);
     --composite-color-3: var(--cyan);
+    --composite-color-a: var(--blue);
+    --composite-color-b: var(--green);
+    --composite-color-c: var(--red);
     --composite-blend-mode: multiply;
     --font-size-hero: 5.5rem;
     --font-size-title: 2.5rem;
@@ -416,6 +419,26 @@ footer {
     font-weight: 600;
 }
 
+.tag {
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-style: italic;
+  letter-spacing: 0.0125em;
+  font-size: 1rem;
+  margin-left: 0.375rem;
+  cursor: help;
+}
+
+.tag--quick-byte {
+  background: var(--composite-color-c);
+}
+
+.tag--explained {
+  background: var(--composite-color-a);
+}
+
 article {
     margin-top: 2rem;
 }
@@ -481,6 +504,9 @@ article {
         --composite-color-1: var(--blue);
         --composite-color-2: var(--green);
         --composite-color-3: var(--red);
+        --composite-color-a: var(--yellow);
+        --composite-color-b: var(--magenta);
+        --composite-color-c: var(--cyan);
         --composite-blend-mode: screen;
         --selection-accent: var(--blue);
     }

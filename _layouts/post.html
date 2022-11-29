@@ -6,9 +6,10 @@ layout: subpage
     <h1 itemprop="name headline">{{ page.title | escape }}</h1>
     <div class="meta">
         {{ content | number_of_words | divided_by:220.0 | ceil }} min read —
-        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: site.date_format }}
         </time>
+        <span class="tag tag--{{ page.tag }}" title="{{ site.data.tags[page.tag].description }}">{{ site.data.tags[page.tag].display }}</span>
     </div>
     <div class="post-content" itemprop="articleBody">{{ content }}</div>
     <h5 class="post-scriptum">
