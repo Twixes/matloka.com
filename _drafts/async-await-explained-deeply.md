@@ -59,3 +59,9 @@ def bake_cake():
 ## Alternative: Preemptive concurrency with Goroutines
 
 ## IO vs CPU-bound
+
+## JavaScript
+
+### Tasks… aka macrotasks
+
+### Jobs… aka microtasks
