@@ -82,16 +82,6 @@ body {
     margin-bottom: 4rem;
 }
 
-img, video {
-  max-width: 100%;
-  max-height: min(75vh, 40rem);
-  object-fit: contain;
-  margin: 1rem auto;
-  &.with-shadow {
-    margin: 0 auto;
-  }
-}
-
 figure {
     width: fit-content;
     max-width: 100%;
@@ -123,12 +113,17 @@ figcaption {
 }
 
 img,
-picture,
 video,
 canvas {
     display: block;
     max-width: 100%;
+    max-height: min(75vh, 40rem);
     height: auto;
+    margin: 1rem auto;
+    object-fit: contain;
+    &.with-shadow {
+      margin: 0 auto;
+    }
 }
 
 a {
@@ -493,7 +488,7 @@ article {
         margin: 1rem 0;
     }
     article {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
     }
     blockquote {
         padding: 0.5rem 0.75rem;
