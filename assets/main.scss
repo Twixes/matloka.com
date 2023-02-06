@@ -22,10 +22,10 @@
     --composite-color-3: var(--cyan);
     --composite-blend-mode: multiply;
     --font-size-hero: 5.5rem;
-    --font-size-title: 2.5rem;
+    --font-size-title: 2.375rem;
     --font-size-heading: 1.75rem;
     --font-family-heading: 'Poppins', 'Arial Black', sans-serif;
-    --font-size-body: 1.25rem;
+    --font-size-body: 1.1875rem;
     --font-size-post-scriptum: 1.5rem;
     --font-family-body: 'Zilla Slab', sans-serif;
     --font-family-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Consolas',
@@ -77,6 +77,16 @@ body {
 .content-wrapper {
     flex-grow: 1;
     margin-bottom: 4rem;
+}
+
+img, video {
+  max-width: 100%;
+  max-height: min(75vh, 40rem);
+  object-fit: contain;
+  margin: 1rem auto;
+  &.with-shadow {
+    margin: 0 auto;
+  }
 }
 
 figure {
@@ -206,6 +216,11 @@ iframe {
     background: linear-gradient(90deg, var(--grayish) 25%, var(--gray) 37%, var(--grayish) 63%);
     background-size: 400% 100%;
     user-select: none;
+    &.giscus-frame {
+      background: none;
+      animation: none;
+      margin-top: 2rem;
+    }
 }
 
 blockquote {
@@ -417,7 +432,7 @@ footer {
 }
 
 article {
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .post-content {
@@ -430,7 +445,7 @@ article {
 
 .anchorjs-link {
     text-decoration: underline;
-    margin-left: -1.25em !important;
+    margin-left: -1.333em !important;
 }
 
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
@@ -465,6 +480,9 @@ article {
     }
     .links {
         margin: 1.25rem 0;
+    }
+    .posts {
+      margin-top: 4.5rem;
     }
     .posts li {
         margin-top: 2rem;
