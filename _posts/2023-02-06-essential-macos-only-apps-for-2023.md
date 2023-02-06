@@ -24,7 +24,7 @@ IMHO the best video player ever built. It's extremely versatile in terms of m
 
 _Free and open-source._
 
-<video alt="Screen recording of a window being maximized with Rectangle" width="900" class="lazy" autoplay muted playsinline loop preload="none" >
+<video alt="Screen recording of a window being maximized with Rectangle" width="887" height="576" class="lazy" autoplay muted playsinline loop preload="none" >
   <source data-src="/assets/essential-macos-only-apps-for-2023/Rectangle.webm" type="video/webm">
   <source data-src="/assets/essential-macos-only-apps-for-2023/Rectangle.mov" type="video/quicktime">
 </video>
@@ -39,7 +39,7 @@ If I could bring _just one_ feature of Windows into macOS, it'd be window snap
 
 _$16, adjusted to cost of living. Time-limited trial available._
 
-<video alt="Screen recording of a window being positioned with Swish" width="900" class="lazy" autoplay muted playsinline loop preload="none">
+<video alt="Screen recording of a window being positioned with Swish" width="887" height="576" class="lazy" autoplay muted playsinline loop preload="none">
   <source data-src="/assets/essential-macos-only-apps-for-2023/Swish.webm" type="video/webm">
   <source data-src="/assets/essential-macos-only-apps-for-2023/Swish.mov" type="video/quicktime">
 </video>
