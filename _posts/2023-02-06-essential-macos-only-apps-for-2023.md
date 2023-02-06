@@ -159,7 +159,7 @@ _Free and open-source._
     <img src="/assets/essential-macos-only-apps-for-2023/Transmission.png" alt="Screenshot of Transmission" width="611" height="325" class="with-shadow"/>
 </picture>
 
-The BitTorrent protocol is world-famous for its widespread use in the Linux community, where installation images are shared left-and-right completely in line with copyright law. Though mysteriously, it seems like a significant drop in peer-to-peer activity coincided with the rise of streaming services such as Netflix and Spotify. I consider myself part of the trend… yet, there's still some content (those _niche distros_) that remains very hard to find outside of torrents.
+The BitTorrent protocol is world-famous for its widespread use in the Linux community, where installation images are shared left-and-right completely in line with copyright law. Mysteriously, it seems like a significant drop in peer-to-peer activity coincided with the rise of streaming services such as Netflix and Spotify… I consider myself part of the trend, yet occasionally there's still some content (those _niche distros_) that remains very hard to find outside of torrents.
 
 This is where Transmission, the BitTorrent client, comes in. The app was first released for OS X 10.4 in 2005 and almost 18 years later the open-source project is still going strong. As opposed to the closed-source μTorrent, Transmission is free of ads and cryptocurrency miners, and its streamlined UI reigns supreme over qBittorrent's clunky experience. Since 2005 the app has gone multi-platform, but its UI and messaging clearly is still macOS-first, so I'm happy to include it here.
 
