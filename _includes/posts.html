@@ -6,9 +6,10 @@
         </h2>
         <div class="meta">
             {{ post.content | number_of_words | divided_by:220.0 | ceil }} min read —
-            <time class="dt-published" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+            <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: site.date_format }}
             </time>
+            <span class="tag tag--{{ post.tag }}" title="{{ site.data.tags[post.tag].description }}">{{ site.data.tags[post.tag].display }}</span>
         </div>
     </li>
     {%- endfor -%}

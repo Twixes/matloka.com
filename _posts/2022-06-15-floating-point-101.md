@@ -3,6 +3,7 @@ title: Floating-point arithmetic – all you need to know, explained interact
 description:
     'Software engineering keeps getting more abstract, but one thing is unchanging: the importance of floating-point
     arithmetic.'
+tag: explained
 image: /assets/floating-point-101/banner.png
 stylesheet: /assets/floating-point-101/number-line.css
 ---
