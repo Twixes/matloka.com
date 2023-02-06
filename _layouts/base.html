@@ -41,9 +41,17 @@
             <div class="light-dark-mode" title="System-wide light/dark mode preference is in use"></div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8/dist/lazyload.min.js"></script>
         <script>
             anchors.options = { placement: 'left', visible: 'hover', icon: '#' }
             anchors.add('article h2')
+            ll = new LazyLoad({
+              callback_loaded(el) {
+                el.addEventListener('click', () => {
+                  el.paused ? el.play() : el.pause() // Click to play/pause, no controls needed
+                })
+              }
+            })
         </script>
     </body>
 </html>
