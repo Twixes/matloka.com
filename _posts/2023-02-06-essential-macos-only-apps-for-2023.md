@@ -81,6 +81,8 @@ Now 2020 is water under the bridge, but the Zoom meetings have stayed with u
 
 The cherry on top is that you can make Dato a drop-in replacement for the built-in date+time menu bar item, which is what I've done above. Looks _exactly_ the same as the system indicator, except it's useful when you click it!
 
+> By the way, Dato is a tool by Sindre Sorhus, whose code you're certainly using already! He's extremely prolific as a developer and has authored [many useful macOS apps](https://sindresorhus.com/), but also [dozens of popular packages used by other software](https://github.com/sindresorhus?tab=repositories&q=&type=source&language=&sort=stargazers).
+
 [Official website](https://sindresorhus.com/dato) • [App Store page](https://apps.apple.com/app/id1470584107)
 
 ## 6. [Hand Mirror](https://handmirror.app/)
