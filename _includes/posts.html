@@ -9,7 +9,7 @@
             <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: site.date_format }}
             </time>
-            <span class="tag tag--{{ post.tag }}" title="{{ site.data.tags[post.tag].description }}">{{ site.data.tags[post.tag].display }}</span>
+            <!--span class="tag tag--{{ post.tag }}" title="{{ site.data.tags[post.tag].description }}">{{ site.data.tags[post.tag].display }}</span-->
         </div>
     </li>
     {%- endfor -%}

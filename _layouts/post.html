@@ -9,7 +9,7 @@ layout: subpage
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: site.date_format }}
         </time>
-        <span class="tag tag--{{ page.tag }}" title="{{ site.data.tags[page.tag].description }}">{{ site.data.tags[page.tag].display }}</span>
+        <!--span class="tag tag--{{ page.tag }}" title="{{ site.data.tags[page.tag].description }}">{{ site.data.tags[page.tag].display }}</span-->
     </div>
     <div class="post-content" itemprop="articleBody">{{ content }}</div>
     <h5 class="post-scriptum">
