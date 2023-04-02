@@ -187,8 +187,12 @@ html {
     align-items: flex-start;
 }
 
+.gsc-comment-box-markdown-hint {
+    align-items: center;
+}
+
 @media screen and (max-width: 40rem) {
-  html {
-    font-size: 1.125rem;
-  }
+    html {
+        font-size: 1.125rem;
+    }
 }
