@@ -191,6 +191,12 @@ html {
     align-items: center;
 }
 
+.btn[aria-selected=true] {
+  border-color: #000;
+  background: #000;
+  color: #fff;
+}
+
 @media screen and (max-width: 40rem) {
     html {
         font-size: 1.125rem;
