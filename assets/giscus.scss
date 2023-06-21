@@ -191,10 +191,30 @@ html {
     align-items: center;
 }
 
-.btn[aria-selected=true] {
-  border-color: #000;
-  background: #000;
-  color: #fff;
+.gsc-comment-content {
+    padding-top: 0.75rem;
+}
+
+.link-secondary {
+    text-decoration: underline;
+}
+
+.btn[aria-selected='true'] {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.markdown .highlight,
+.markdown blockquote,
+.markdown details,
+.markdown dl,
+.markdown ol,
+.markdown p,
+.markdown pre,
+.markdown table,
+.markdown ul {
+    margin-bottom: 0.25rem;
 }
 
 @media screen and (max-width: 40rem) {
