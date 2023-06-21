@@ -1,0 +1,24 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g style="mix-blend-mode:multiply">
+<g style="mix-blend-mode:multiply">
+<path d="M19 18L46 45H19V18Z" fill="#FFFF00"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M10 18L37 45H10V18Z" fill="#FF00FF"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M28 45L1 18L28 18L28 45Z" fill="#00FFFF"/>
+</g>
+</g>
+<g style="mix-blend-mode:multiply">
+<g style="mix-blend-mode:multiply">
+<path d="M37 18L64 45H37V18Z" fill="#FFFF00"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M28 18L55 45H28V18Z" fill="#FF00FF"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M46 45L19 18L46 18V45Z" fill="#00FFFF"/>
+</g>
+</g>
+</svg>
