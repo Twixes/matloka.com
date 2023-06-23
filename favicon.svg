@@ -1,24 +1,46 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+.c {
+fill: #0ff;
+}
+.m {
+fill: #f0f;
+}
+.y {
+fill: #ff0;
+}
+@media (color-gamut: p3) {
+.c {
+fill: color(display-p3 0 1 1);
+}
+.m {
+fill: color(display-p3 1 0 1);
+}
+.y {
+fill: color(display-p3 1 1 0);
+}
+}
+</style>
 <g style="mix-blend-mode:multiply">
 <g style="mix-blend-mode:multiply">
-<path d="M19 18L46 45H19V18Z" fill="#FFFF00"/>
+<path d="M19 18L46 45H19V18Z" class="y"/>
 </g>
 <g style="mix-blend-mode:multiply">
-<path d="M10 18L37 45H10V18Z" fill="#FF00FF"/>
+<path d="M10 18L37 45H10V18Z" class="m"/>
 </g>
 <g style="mix-blend-mode:multiply">
-<path d="M28 45L1 18L28 18L28 45Z" fill="#00FFFF"/>
+<path d="M28 45L1 18L28 18L28 45Z" class="c"/>
 </g>
 </g>
 <g style="mix-blend-mode:multiply">
 <g style="mix-blend-mode:multiply">
-<path d="M37 18L64 45H37V18Z" fill="#FFFF00"/>
+<path d="M37 18L64 45H37V18Z" class="y"/>
 </g>
 <g style="mix-blend-mode:multiply">
-<path d="M28 18L55 45H28V18Z" fill="#FF00FF"/>
+<path d="M28 18L55 45H28V18Z" class="m"/>
 </g>
 <g style="mix-blend-mode:multiply">
-<path d="M46 45L19 18L46 18V45Z" fill="#00FFFF"/>
+<path d="M46 45L19 18L46 18V45Z" class="c"/>
 </g>
 </g>
 </svg>
