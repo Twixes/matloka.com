@@ -353,17 +353,18 @@ footer {
 }
 
 .logo {
-    g {
+    display: block;
+    path {
         mix-blend-mode: var(--composite-blend-mode);
-    }
-    .logo__1 {
-        fill: var(--composite-color-1);
-    }
-    .logo__2 {
-        fill: var(--composite-color-2);
-    }
-    .logo__3 {
-        fill: var(--composite-color-3);
+        &:nth-child(3n+1) {
+            fill: var(--composite-color-1);
+        }
+        &:nth-child(3n+2) {
+            fill: var(--composite-color-2);
+        }
+        &:nth-child(3n+3) {
+            fill: var(--composite-color-3);
+        }
     }
 }
 
