@@ -27,9 +27,10 @@
     --font-size-hero: 5.25rem;
     --font-size-title: 2.375rem;
     --font-size-heading: 1.75rem;
-    --font-family-heading: 'Poppins', 'Futura', 'Avenir', 'Arial Black', sans-serif;
     --font-size-body: 1.1875rem;
+    --font-size-body-reduced: 1.125rem;
     --font-size-post-scriptum: 1.375rem;
+    --font-family-heading: 'Poppins', 'Futura', 'Avenir', 'Arial Black', sans-serif;
     --font-family-body: 'Zilla Slab', 'Roboto Slab', 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif;
     --font-family-code: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono',
         'Consolas', 'Fira Code', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono',
@@ -270,9 +271,9 @@ table {
     display: block;
     width: fit-content;
     max-width: 100%;
-    margin: 0.25rem 0 calc(1rem + var(--shadow-distance));
+    margin: 0.75rem 0 calc(1rem + var(--shadow-distance));
     border-collapse: collapse;
-    font-size: 1.125rem;
+    font-size: var(--font-size-body-reduced);
     box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
         calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground);
     overflow: auto;
@@ -448,12 +449,13 @@ footer {
     }
     .meta {
         margin-top: 0.25rem;
+        font-size: var(--font-size-body-reduced);
     }
 }
 
 .meta {
     margin-top: 1rem;
-    font-size: 1.125rem;
+    font-size: var(--font-size-body-reduced);
     font-weight: 600;
 }
 
@@ -506,6 +508,7 @@ article {
         --font-size-title: 1.625rem;
         --font-size-heading: 1.375rem;
         --font-size-body: 1.0625rem;
+        --font-size-body-reduced: 1rem;
         --font-size-post-scriptum: 1.25rem;
         --logo-unit-size: 1rem;
     }
