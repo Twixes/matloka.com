@@ -84,6 +84,12 @@ main {
     // /*! Extensions from @primer/css/alerts/flash.scss */
     // --color-social-reaction-bg-hover: var(--color-scale-gray-1);
     // --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+
+    --magenta: #f0f;
+
+    @supports (color: color(display-p3 1 1 1)) {
+        --magenta: color(display-p3 1 0 1);
+    }
 }
 
 /*! Dark mode */
@@ -195,6 +201,16 @@ html {
     padding-top: 0.75rem;
 }
 
+.gsc-reactions-popover.bottom {
+  inset-inline-start: 0;
+}
+.gsc-reactions-popover.open.left:before {
+  inset-inline-start: 3px
+}
+.gsc-reactions-popover.open.left:after {
+  inset-inline-start: 4px
+}
+
 .link-secondary {
     text-decoration: underline;
 }
@@ -217,8 +233,12 @@ html {
     margin-bottom: 0.25rem;
 }
 
+.markdown a {
+  color: var(--magenta);
+}
+
 @media screen and (max-width: 40rem) {
     html {
-        font-size: 1.125rem;
+        font-size: 1.0625rem;
     }
 }
