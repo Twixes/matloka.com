@@ -324,7 +324,7 @@ header {
         font-weight: 800;
         white-space: pre;
     }
-    img {
+    .logo {
         height: calc(var(--logo-unit-size) * 3);
         margin: 3.25rem 0 0 calc(-1 * var(--logo-unit-size));
     }
@@ -347,6 +347,21 @@ footer {
             color: var(--background);
         }
     }
+}
+
+.logo {
+  g {
+     mix-blend-mode: var(--composite-blend-mode);
+  }
+  .logo__1 {
+      fill: var(--composite-color-1);
+  }
+  .logo__2 {
+      fill: var(--composite-color-2);
+  }
+  .logo__3 {
+      fill: var(--composite-color-3);
+  }
 }
 
 .links {
