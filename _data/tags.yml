@@ -1,6 +1,6 @@
-quick-byte:
-    display: quick byte
-    description: Buzzfeed-style.
-explained:
-    display: explained
-    description: A dive into today's topic.
+blog:
+    color: a
+    description: Rambling on the keyboard.
+talk:
+    color: c
+    description: Rambling on the stage.

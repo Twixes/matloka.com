@@ -1,7 +1,7 @@
 ---
 title: async/await explained deeply – the primer I wish I had
 description: "The modern `async`/`await` syntax is a neat abstraction for concurrent programming – but without knowledge of what exactly is being abstracted away, it's hard to truly reason about and fully leverage concurrency. This post explains is it all, in six flavors: JS, Python, Rust, Swift, C#, and Go."
-tag: explained
+tag: blog
 ---
 
 The `async`/`await` syntax is all the rage these days. In recent years, it's been added to: C# ([2012](https://devblogs.microsoft.com/dotnet/async-in-4-5-worth-the-await/)), Python ([2015](https://www.python.org/dev/peps/pep-0492/)), JavaScript ([2017](https://262.ecma-international.org/8.0/#sec-async-function-definitions)), Rust ([2019](https://blog.rust-lang.org/2019/11/07/Async-await-stable.html)) or Swift ([2021](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md)). The goal of it all: making _concurrent programming_ as straightforward as possible, by abstracting away its intricacies. That's noble, as concurrency is in many domains key for achieving satisfying performance, and `async`/`await`-enabled APIs really are pleasant to use.

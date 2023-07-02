@@ -1,7 +1,7 @@
 ---
 title: Essential macOS-only apps for 2023
 description: macOS has a vibrant ecosystem of apps, but it's not easy to find the gems among them. Here's my top 10 as of 2023 to help you out with this.
-tag: quick-byte
+tag: blog
 image: /assets/essential-macos-only-apps-for-2023/banner.png
 ---
 

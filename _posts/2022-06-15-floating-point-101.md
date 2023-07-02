@@ -3,7 +3,7 @@ title: Floating-point arithmetic – all you need to know, explained interact
 description:
     'Software engineering keeps getting more abstract, but one thing is unchanging: the importance of floating-point
     arithmetic.'
-tag: explained
+tag: blog
 image: /assets/floating-point-101/banner.png
 stylesheet: /assets/floating-point-101/number-line.css
 ---
@@ -116,7 +116,7 @@ See for yourself how this all comes together using the calculator below! Toggle
 number comes out, or type in a number to see what it looks like in your computer's memory:
 
 <figure id="calculator">
-<iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172" title="IEEE 754 Floating Point Calculator"></iframe>
+<iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172" title="IEEE 754 Floating Point Calculator" frameborder="0"></iframe>
     <figcaption><i>widget 1</i> — A handy calculator. <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this tool's code on CodePen!</a></figcaption>
 </figure>
 
