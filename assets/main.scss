@@ -147,6 +147,7 @@ dfn {
     font-style: normal;
     text-decoration: dotted underline;
     text-underline-offset: 0.05em;
+    cursor: help;
 }
 
 b,
@@ -558,7 +559,7 @@ article {
 @media (prefers-color-scheme: dark) {
     // Dark mode
     :root {
-        --background: #0f0f0f;
+        --background: #000;
         --foreground: #fff;
         --grayish: hsl(225deg 100% 95% / 8%);
         --gray: hsl(225deg 100% 92% / 12%);
