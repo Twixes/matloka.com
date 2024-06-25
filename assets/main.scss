@@ -406,7 +406,6 @@ footer {
     display: inline-block;
     position: relative;
     color: var(--foreground); // Fallback for browsers that don't support multiplying colors
-    cursor: default;
     --layer-offset: 0.15em;
     a {
         text-decoration: none;
