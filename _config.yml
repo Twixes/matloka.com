@@ -2,6 +2,7 @@ title: Michael Matloka
 tagline: Bits and bytes.
 description: Hey! I'm Michael. I'm a software engineer, and a person.
 repository: Twixes/matloka.com
+# Some email obfuscation, inspired by https://spencermortensen.com/articles/email-obfuscation/
 email: '%4D%69%63%68%61%65%6C%20%4D%61%74%6C%6F%6B%61%20%3C%6D%69%63%68%61%65%6C%40%6D%61%74%6C%6F%6B%61%2E%63%6F%6D%3E'
 twitter:
     username: MatlokaM
