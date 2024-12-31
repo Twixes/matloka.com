@@ -263,6 +263,8 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  arm64-darwin-23
+  arm64-darwin-24
 
 DEPENDENCIES
   github-pages
@@ -273,4 +275,4 @@ DEPENDENCIES
   webrick
 
 BUNDLED WITH
-   2.4.10
+   2.6.2

@@ -4,7 +4,7 @@ Hey! I'm Michael. This is my harbor.
 
 ## Running the site locally
 
-1. Make sure you have [Ruby](https://www.ruby-lang.org/) installed, along with [Bundler](https://bundler.io/).
+1. Make sure you have Ruby 3.2 installed and linked, along with Bundler. (On macOS: `brew install ruby@3.2 && brew link ruby@3.2 && bundle update --bundler`)
 1. Run `bundle install` in this repo's directory to install dependencies.
 1. Then simply run `bundle exec jekyll serve` to start the development server.
     - Use flag `--drafts` to show draft articles.
