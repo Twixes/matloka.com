@@ -1,6 +1,6 @@
 blog:
     color: a
-    description: Rambling on the keyboard.
+    description: Rambling on the keyboard
 talk:
     color: c
-    description: Rambling on the stage.
+    description: Rambling on the stage
