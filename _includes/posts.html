@@ -2,7 +2,7 @@
     {%- for post in site.posts -%}
     <li>
         <h2>
-            <a href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
+            <a href="{{ post.url | relative_url }}" title="<i>{{ post.description }}</i>" data-tippy-placement="bottom">{{ post.title | escape }}</a>
         </h2>
         <div class="meta">
             {% if post.watch_time_min %}
