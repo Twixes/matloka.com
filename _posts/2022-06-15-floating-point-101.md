@@ -98,13 +98,13 @@ floating-point value as three numbers cleverly put together:
     (**normal number** being the technical term for such a case), **only the fractional part of the significand is
     included in the binary representation** – if the significand is, say, 1.001<sub>2</sub> (that's binary for 1.125),
     only the `001` part ends up being stored. This has the nice property of ensuring **there's only one way to store a
-    given a number**.  
+    given number**.  
     The significand's size determines the type's _precision_ – 24 significant bits of it in single-precision and 53 in
     double.
 -   The **exponent** is a
     <dfn title="Signed means the value may have a minus sign – so it can be positive OR negative.">signed</dfn> integer.
     In a way, it establishes the magnitude, for instance an exponent of 8 means that the absolute value of the number
-    must be in the range `(256, 512]` (`(2^8, 2^9]`).  
+    must be in the range `[256, 512)` (`[2^8, 2^9)`).  
     Even though the exponent being signed, it's not stored using
     [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) like regular signed integers. Instead, the
     stored value is an _unsigned_ integer and the computer subtract a format-specific **bias** to obtain the true value.
