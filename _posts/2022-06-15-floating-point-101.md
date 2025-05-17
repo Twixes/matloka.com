@@ -91,7 +91,7 @@ floating-point value as three numbers cleverly put together:
 ```
 
 -   The **sign** is a single bit – 0 if the number is positive, 1 if negative.
--   The **significand** (also called the *mantissa*) is a fixed-point number in the range `(1, 2]`. It might be
+-   The **significand** (also called the *mantissa*) is a fixed-point number in the range `[1, 2)`. It might be
     something like 1, 1.0625 or 1.984375, but it _can't_ be 2. What it intuitively does is it "fine-tunes" the value
     within the range set by the sign and exponent.  
     Because the significand's leading digit normally<a href="#the-zeros" style="text-decoration: none">\*</a> is 1
