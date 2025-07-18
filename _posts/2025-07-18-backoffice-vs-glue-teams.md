@@ -34,19 +34,19 @@ Billing? The ultimate glue. Money, systems, UI, all in one.
 
 These aren't back-office functions. They're product teams that happen to cut across features instead of owning vertical slices. They talk to users. They own product metrics.
 
-## The 200-person rule
+## Resist the urge
 
-Here's the uncomfortable truth: you can get away without back-office teams until you hit 200+ people, and you should.
+Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should.
 
-When building something new, the space of *possible* moves is infinite. The set of moves needed for success? Surprisingly small. It's all about separating what matters from distractions – and distance from users is a recipe for pure distraction. 
+When building something new, the space of *possible* moves is infinite. The set of moves needed for success? Surprisingly small. It's all about separating what matters from distractions – and distance from users is a recipe for pure distraction.
 
 I know. Engineers are complaining about CI. Everyone's clamoring for better internal tools.
 
-Tough love: at 50 people, distributed ownership solves this. One person improves the dev environment as a side quest. Someone else maintains the component library between feature work. It's not their full-time job because it shouldn't be yet.
+Tough love: at 50 people, distributed ownership solves this smoothly. Agency is all it takes: one person improves the dev environment as a side quest, someone else maintains the component library between feature work. It's not their full-time job, and it shouldn't be yet.
 
-At 100, ideas supporting teams start rolling. Still, keep that degree of separation from customers at zero. Say no to No game of telephone. No ivory tower solutions. No platforms built in a vacuum.
+At 100, ideas for supporting teams start rolling in left and right. Still, keep those zero degrees of separation from customers. No game of telephone. No ivory tower solutions. No platforms built in a vacuum.
 
-Start thinking of true back-office team around a headcount of 200. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
+Start thinking of true back-office teams well beyond a headcount of 100, when you can honestly call the internal engineering effort a rounding error. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
 
 ## The bottom line
 
