@@ -5,7 +5,7 @@ tag: blog
 ---
 
 There's a trap that growing product-focused companies fall into: you start confusing *glue teams* with *back-office teams*, and if you aren't careful, you'll build an org that optimizes for fluffy internal goals. But what's just as bad: in a desperate fear of internal goals, you can accidentally kill real value.
-
+ 
 Let me explain.
 
 ## Respect the hustle (while it's there)
@@ -50,6 +50,6 @@ Start thinking of true back-office teams well beyond a headcount of 100, when yo
 
 ## The bottom line
 
-Create glue teams when users are suffering - often earlier than you think. Create back-office teams when the ROI is undeniable - much later than you think.
+Create glue teams when users are suffering - often earlier than you think. Create back-office teams when the ROI starts feeling _unreasonably_ large - much later than you think.
 
 Keep building things people want.
