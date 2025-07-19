@@ -1,5 +1,5 @@
 ---
-title: Back-office vs. glue teams
+title: Glue teams vs. back-office teams
 description: "As your product-focused org scales, you'll hear calls for two kinds of horizontal teams. They look similar. They're not. Let me explain."
 tag: blog
 ---
