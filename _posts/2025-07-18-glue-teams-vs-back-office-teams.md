@@ -1,55 +1,45 @@
 ---
 title: Glue teams vs. back-office teams
-description: "As your product-focused org scales, you'll hear calls for two kinds of horizontal teams. They look similar. They're not. Let me explain."
+description: "As your product-focused org scales, you'll hear calls for two kinds of horizontal teams. They sound similar, but they aren't."
 tag: blog
 ---
 
-There's a trap that growing product-focused companies fall into: you start confusing *glue teams* with *back-office teams*, and if you aren't careful, you'll build an org that optimizes for fluffy internal goals. But what's just as bad: in a desperate fear of internal goals, you can accidentally kill real value.
- 
+There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. Only, in avoiding that outcome you mustn't kill all cross-cutting work.
+
 Let me explain.
 
-## Respect the hustle (while it's there)
+## Two types of teams, world apart
 
-In the early days of a startup, there's clarity. You've got a tight team. Everyone builds the product. Everyone's customer-obsessed. *Everyone's* scrambling for product-market fit.
+As you scale, you'll hear calls for two kinds of teams that span product areas. They sound similar, but they aren't.
 
-These are the golden days: the org chart is more like a flat circle with a post-it note saying "build something people want". Nobody's arguing about ownership, and when hordes of users want to pay the [SSO tax](https://sso.tax/)? One of you just *ships it*.
+**Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, paying customers never see them. They provide backend infrastructure, build developer tools, maintain component libraries, run data platforms.
 
-But then you grow.
+Some of this work becomes critical early on – if you run a data-intensive SaaS (like we're doing at [PostHog](https://posthog.com)), the data infra is critical to operations, and you won't get far without a clear owner there.
 
-You hit 30 people. Then 50. Then 100. And the org chart starts to creak. Areas need to be split up for ownership. Some bits get chopped up nice and clean, others become murky waters. Here's where the confusion begins.
+But here's the thing about back-office teams: they're always one layer removed from real impact. They make tools that help people who help users. There's that layer of indirection, and an inevitable loss of context. Blink, and that team just spent a week solving an elegant internal problem with minimal impact.
 
-## Two types of teams, worlds apart
+**Glue teams** serve users. Directly. These teams do [glue work](https://www.noidea.dog/glue) at the level of the product – they're product teams that just happen to cut horizontally across features instead of owning vertical slices.
 
-As you scale, you'll hear calls for two kinds of horizontal teams. They look similar. They're not.
+Think, auth. Not flashy, not a standalone product line – yet it keeps the product together in one piece. It makes or breaks enterprise deals, or a user's day. It may even bring revenue from the [SSO tax](https://sso.tax/), but that's only possible because of the core product. Billing? The ultimate glue. That's systems, UI, and accounting, all in one. The spice must flow.
 
-**Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, customers never see them. They build developer tools, maintain component libraries, run data platforms.
-
-The thing about back-office teams: they're always one layer removed from real impact. They make tools that help people who help users. They improve processes that improve productivity that (hopefully) improves the product. There's that layer of indirection. An inevitable loss of context. Blink, and that team just spent weeks solving an elegant internal problem with minimal impact.
-
-**Glue teams** serve users. Directly. They just happen to work horizontally.
-
-Auth? Glue. Not flashy. Not a standalone product line. But it keeps the product together in one piece. It makes or breaks entire deals by itself – or a user's day.
-
-Billing? The ultimate glue. Money, systems, UI, all in one.
-
-These aren't back-office functions. They're product teams that happen to cut across features instead of owning vertical slices. They talk to users. They own product metrics.
+The folks owning these areas should be talking to users, they should be owning product metrics.
 
 ## Resist the urge
 
-Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should.
+Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should. Often what you need is a glue team instead.
 
-When building something new, the space of *possible* moves is infinite. The set of moves needed for success? Surprisingly small. It's all about separating what matters from distractions – and distance from users is a recipe for pure distraction.
+I know. Engineers are complaining about CI. Internal tools could be better. Still, keep those zero degrees of separation from customers for as long as you can. The space of *possible* tasks is infinite, while the set of tasks leading to success with customers – so surprisingly small. Distance from users makes it hard to see what really matters, whether you're an engineer, designer, or founder!
 
-I know. Engineers are complaining about CI. Everyone's clamoring for better internal tools.
+Distributed ownership is the name of the game for those internal aspects. It only takes healthy agency: one person improves the dev environment as a side quest, someone else maintains the component library between feature work. It's not their full-time job, and it shouldn't be yet. For the hairiest problems, you agree to spin up a temporary project team to address that specifically.
 
-Tough love: at 50 people, distributed ownership solves this smoothly. Agency is all it takes: one person improves the dev environment as a side quest, someone else maintains the component library between feature work. It's not their full-time job, and it shouldn't be yet.
+The breaking point depends massively on your product. Deep tech needs back-office teams quick, actual research orgs even. In SaaS, this point is far out. Get to 50 engineers before actually thinking of it. Start back-office teams when you can honestly call their resources a rounding error compared to product development. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
 
-At 100, ideas for supporting teams start rolling in left and right. Still, keep those zero degrees of separation from customers. No game of telephone. No ivory tower solutions. No platforms built in a vacuum.
-
-Start thinking of true back-office teams well beyond a headcount of 100, when you can honestly call the internal engineering effort a rounding error. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
+Meanwhile, it's easy to set aside shared areas of the product and forget about them. That's precisely where you need glue teams. We're talking aspects customers hit all the time. Customers use your SDKs across 20 platforms? Without an SDK team, the quality of those SDKs plummets over time. Auth, billing? You already know the story.
 
 ## The bottom line
 
-Create glue teams when users are suffering - often earlier than you think. Create back-office teams when the ROI starts feeling _unreasonably_ large - much later than you think.
+Create glue teams when users are suffering - often earlier than you think. Create back-office teams when the ROI starts feeling *unreasonably* large - much later than you think.
 
-Keep building things people want.
+Keep building what people want!
+
+_Thanks to Yakko Majuri and Stay SaaSy for reading drafts of this post._
