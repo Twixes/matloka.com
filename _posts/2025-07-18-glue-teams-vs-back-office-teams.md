@@ -38,8 +38,8 @@ Meanwhile, it's easy to set aside shared areas of the product and forget about t
 
 ## The bottom line
 
-Create glue teams when users are suffering - often earlier than you think. Create back-office teams when the ROI starts feeling *unreasonably* large - much later than you think.
+Spin up glue teams when users run into pain in cross-cutting areas of the product - often earlier than you think. Spin up back-office teams when the ROI of such a team starts feeling *unreasonably* large - much later than you think.
 
-Keep building what people want!
+Keep building what people want.
 
-_Thanks to Yakko Majuri and Stay SaaSy for reading drafts of this post._
+> _Thanks to Yakko Majuri and Stay SaaSy for reading drafts of the post._
