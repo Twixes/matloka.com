@@ -13,15 +13,14 @@ layout: subpage
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: site.date_format }}
         </time>
+        – Michael Matloka
         <span class="tag tag--{{ site.data.tags[page.tag].color }}" title="{{ site.data.tags[page.tag].description }}">{{ page.tag }}</span>
     </div>
     <div class="post-content" itemprop="articleBody">{{ content }}</div>
     <h5 class="post-scriptum">
         Enjoyed this post?
-        Share it with a friend!<br />Alternatively,
-        <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">read a&nbsp;random Wikipedia article</a>
-        or <a href="https://www.reddit.com/r/aww/" target="_blank">look at cute animals on&nbsp;Reddit</a> – whatever
-        floats your&nbsp;boat.
+        Share it with a friend!<br />Don't know what to do next? Well. Try reading
+        <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">a&nbsp;random Wikipedia article</a>.
     </h5>
       <script src="https://giscus.app/client.js"
           data-repo="Twixes/matloka.com"

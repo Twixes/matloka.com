@@ -198,6 +198,7 @@ h5 {
     margin: 1em 0 0;
     font-size: var(--font-size-post-scriptum);
     font-weight: 600;
+    line-height: 1.4;
 }
 
 ul,
@@ -240,7 +241,7 @@ iframe {
     &.giscus-frame {
         background: none;
         animation: none;
-        margin-top: 2rem;
+        margin-top: 3rem;
     }
 }
 
@@ -502,7 +503,7 @@ article {
 }
 
 .post-scriptum {
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .anchorjs-link {
