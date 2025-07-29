@@ -5,34 +5,51 @@ layout: subpage
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <h1 itemprop="name headline">{{ page.title | escape }}</h1>
     <div class="meta">
-        {% if page.watch_time_min %}
-          {{ page.watch_time_min }} min watch
-        {% else %}
-          {{ content | number_of_words | divided_by:220.0 | ceil }} min read
-        {% endif %} by {{ page.author.name }} —
+        {% if page.watch_time_min %} {{ page.watch_time_min }} min watch {% else %} {{ content | number_of_words |
+        divided_by:220.0 | ceil }} min read {% endif %} by {{ page.author.name }} —
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
             {{ page.date | date: site.date_format }}
         </time>
-        <span class="tag tag--{{ site.data.tags[page.tag].color }}" title="{{ site.data.tags[page.tag].description }}">{{ page.tag }}</span>
+        <span class="tag tag--{{ site.data.tags[page.tag].color }}" title="{{ site.data.tags[page.tag].description }}"
+            >{{ page.tag }}</span
+        >
     </div>
     <div class="post-content" itemprop="articleBody">{{ content }}</div>
-    <h5 class="post-scriptum">
-        Enjoyed this post?
-        Share it with a friend!<br />Don't know what to do next? Well. Try reading
-        <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">a&nbsp;random Wikipedia article</a>.
-    </h5>
-      <script src="https://giscus.app/client.js"
-          data-repo="Twixes/matloka.com"
-          data-repo-id="MDEwOlJlcG9zaXRvcnkyNjIxODgwMjg="
-          data-category="Blog posts"
-          data-category-id="DIC_kwDOD6Cr_M4CUBqb"
-          data-mapping="title"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="https://matloka.com/assets/giscus.css"
-          crossorigin="anonymous"
-          async>
-  </script>
+    <aside>
+        <div class="aside-shadow"></div>
+        <div class="aside-shadow"></div>
+        <div class="aside-shadow"></div>
+        <form
+            action="https://buttondown.com/api/emails/embed-subscribe/MatlokaM"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.com/MatlokaM', 'popupwindow')"
+        >
+            <p>
+                <strong>You may also like: more bits and bytes like this in your inbox.</strong><br />
+                Subscribe, and that will happen on a cadence even Nostradamus could never predict.
+            </p>
+            <div class="newsletter-input-group">
+                <input type="email" name="email" id="bd-email" placeholder="your@email.com" />
+                <button type="submit" value="Subscribe">Subscribe to Michael's blog</button>
+            </div>
+            <p>See you around,</p>
+            <div class="comic">Michael</div>
+        </form>
+    </aside>
+    <script
+        src="https://giscus.app/client.js"
+        data-repo="Twixes/matloka.com"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNjIxODgwMjg="
+        data-category="Blog posts"
+        data-category-id="DIC_kwDOD6Cr_M4CUBqb"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://matloka.com/assets/giscus.css"
+        crossorigin="anonymous"
+        async
+    ></script>
 </article>

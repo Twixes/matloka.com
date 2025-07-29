@@ -8,7 +8,28 @@ image:
 
 <header>
     <h1>Hey<i>!</i><br />I'm <wbr /><span class="composite" content="Michael" title="Matloka">Michael</span>.</h1>
-    <h4>{{ site.tagline }}</h4>
+    <h4 id="tagline">•</h4>
+    <script>
+        const fortunes = [
+            'Always remove the French language pack.',
+            ':(){ :|:& };:',
+            'Intruder alert!',
+            'Works on my machine.',
+            'Do not hallucinate!',
+            "There's no place like ::1.",
+            "Good luck, I'm behind 7 proxies.",
+            'I use Arch btw.',
+            'Tab, tab, tab, tab.',
+            'This is fine.',
+            'Limited edition!',
+            'Best in class!',
+            'THE BLOG IS PROVIDED "AS IS".',
+            'Gartner Magic Quadrant Rascal.',
+        ]
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('tagline').textContent = fortunes[Math.floor(Math.random() * fortunes.length)]
+        })
+    </script>
     <div class="links">
         <a href="https://github.com/Twixes" target="_blank" title="Snoop on my GitHub profile"
             ><svg fill="none" height="1em" viewBox="0 0 36 36" width="1em" xmlns="http://www.w3.org/2000/svg">
