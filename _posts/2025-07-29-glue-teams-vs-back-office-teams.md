@@ -11,7 +11,7 @@ Let me explain.
 
 ## The hustle-to-scale pipeline
 
-In the early days of a startup, there's clarity. You've got a tight team. Everyone builds the product. Everyone's "customer-obsessed". *Everyone*'s scrambling for product-market fit. A customer wants to pay the [SSO tax](https://sso.tax/)? *Say no more.* That org chart is more like a circle with a post-it note of "build something people want".
+In the early days of a startup, there's clarity. You've got a tight team. Everyone builds the product. Everyone's "customer-obsessed". *Everyone*'s scrambling for product-market fit. A customer wants to pay the [SSO tax](https://sso.tax/)? *Say no more.* The org chart is a circle with a post-it note saying "build something people want".
 
 But then you grow. Areas need to be split up for ownership. Some bits get chopped up cleanly, others turn into murky waters. Here's where the confusion begins.
 
