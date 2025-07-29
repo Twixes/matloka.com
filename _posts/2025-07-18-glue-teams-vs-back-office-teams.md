@@ -4,42 +4,58 @@ description: "As your product-focused org scales, you'll hear calls for two kind
 tag: blog
 ---
 
-There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. Only, in avoiding that outcome you mustn't kill all cross-cutting work.
+There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. In avoiding that outcome, you mustn't kill crucial cross-cutting work.
 
 Let me explain.
 
-## Two types of teams, world apart
+## When hustle gets you to scale
+
+In the early days of a startup, there's clarity. You've got a tight team. Everyone builds the product. Everyone's customer-obsessed. *Everyone's* scrambling for product-market fit. The org chart is more like a circle with a post-it note saying "build something people want".
+
+But then you grow. Areas need to be split up for ownership. Some bits get chopped up cleanly, others turn into murky waters. Here's where the confusion begins.
+
+## Two types of teams, worlds apart
 
 As you scale, you'll hear calls for two kinds of teams that span product areas. They sound similar, but they aren't.
 
-**Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, paying customers never see them. They provide backend infrastructure, build developer tools, maintain component libraries, run data platforms.
-
-Some of this work becomes critical early on – if you run a data-intensive SaaS (like we're doing at [PostHog](https://posthog.com)), the data infra is critical to operations, and you won't get far without a clear owner there.
+**Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, paying customers never see them. They provide backend infrastructure, build developer tools, maintain component libraries, run data platforms. Neat stuff.
 
 But here's the thing about back-office teams: they're always one layer removed from real impact. They make tools that help people who help users. There's that layer of indirection, and an inevitable loss of context. Blink, and that team just spent a week solving an elegant internal problem with minimal impact.
 
-**Glue teams** serve users. Directly. These teams do [glue work](https://www.noidea.dog/glue) at the level of the product – they're product teams that just happen to cut horizontally across features instead of owning vertical slices.
+> *Some* back-office work is an early must-have – if you run a data-intensive SaaS (like we're doing at [PostHog](https://posthog.com)), you won't get far without a clear owner of data infra. Still, with so much of hosting outsourced to cloud providers, infra is leaner than ever. More so if you run on Vercel + Supabase.
 
-Think, auth. Not flashy, not a standalone product line – yet it keeps the product together in one piece. It makes or breaks enterprise deals, or a user's day. It may even bring revenue from the [SSO tax](https://sso.tax/), but that's only possible because of the core product. Billing? The ultimate glue. That's systems, UI, and accounting, all in one. The spice must flow.
+**Glue teams** serve users. Directly. These folks do [glue work](https://www.noidea.dog/glue) at the level of the product – they're product teams that just happen to cut horizontally across features instead of owning vertical slices.
+
+Think, auth. Not flashy, not a standalone product line – yet it keeps the product together in one piece. It makes or breaks enterprise deals, or a user's day.
+
+Billing? The ultimate glue. That's systems, UI, and accounting, all in one. The spice must flow.
 
 The folks owning these areas should be talking to users, they should be owning product metrics.
 
-## Resist the urge
+## Resist the calls
 
 Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should. Often what you need is a glue team instead.
 
-I know. Engineers are complaining about CI. Internal tools could be better. Still, keep those zero degrees of separation from customers for as long as you can. The space of *possible* tasks is infinite, while the set of tasks leading to success with customers – so surprisingly small. Distance from users makes it hard to see what really matters, whether you're an engineer, designer, or founder!
+I know. Engineers are complaining about CI. Internal tools could be better. Still, keep those zero degrees of separation from customers for as long as you can. The space of *possible* work is infinite, but the set of tasks needed for success – surprisingly narrow. Distance from users makes it hard to see which is which, whether you're an engineer, designer, or founder!
 
-Distributed ownership is the name of the game for those internal aspects. It only takes healthy agency: one person improves the dev environment as a side quest, someone else maintains the component library between feature work. It's not their full-time job, and it shouldn't be yet. For the hairiest problems, you agree to spin up a temporary project team to address that specifically.
+Distributed ownership is the name of the game for those internal aspects. It takes some healthy agency: one person improves the dev environment as a side quest, someone else maintains the component library between feature work. It's not their full-time job, and it shouldn't be yet. For the hairiest problems, you agree to spin up a **short-lived** project team to address that specifically.
 
-The breaking point depends massively on your product. Deep tech needs back-office teams quick, actual research orgs even. In SaaS, this point is far out. Get to 50 engineers before actually thinking of it. Start back-office teams when you can honestly call their resources a rounding error compared to product development. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
+Start a back-office team when you can honestly call its resources a rounding error compared to product development. Backend infra at 20 engineers, anything else at 50+. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
 
-Meanwhile, it's easy to set aside shared areas of the product and forget about them. That's precisely where you need glue teams. We're talking aspects customers hit all the time. Customers use your SDKs across 20 platforms? Without an SDK team, the quality of those SDKs plummets over time. Auth, billing? You already know the story.
+## Create glue
+
+Meanwhile, it's easy to set aside shared areas of the product and forget about them. Don’t mistake them for back-office functions. This is precisely where you need glue teams.
+
+We're talking aspects users hit all the time. Customers using your SDKs across 10 platforms? Without dedicated owners, the quality of those SDKs plummets over time. Paying users suffer, and not only them, as the mess is *also* making other teams less productive. Auth, billing? You already know the story.
+
+Those glue areas don't bring product-market fit by themselves, but neglecting them sure as hell can lose you *product-user fit*.
 
 ## The bottom line
 
-Spin up glue teams when users run into pain in cross-cutting areas of the product - often earlier than you think. Spin up back-office teams when the ROI of such a team starts feeling *unreasonably* large - much later than you think.
+Spin up back-office teams when the ROI of such a team starts feeling *unreasonably* large - much later than you think.
+Spin up glue teams when users run into pain in cross-cutting areas of the product - often earlier than you think.
+Keep building something people want this way.
 
-Keep building what people want.
+<br/>
 
-> _Thanks to Yakko Majuri and Stay SaaSy for reading drafts of the post._
+*Thanks to Yakko Majuri and Stay SaaSy for reading drafts of the post.*
