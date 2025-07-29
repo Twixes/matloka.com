@@ -7,7 +7,7 @@ layout: subpage
     <div class="meta">
         {% if page.watch_time_min %} {{ page.watch_time_min }} min watch {% else %} {{ content | number_of_words |
         divided_by:220.0 | ceil }} min read {% endif %} by {{ page.author.name }} —
-        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" style="white-space: nowrap;">
             {{ page.date | date: site.date_format }}
         </time>
         <span class="tag tag--{{ site.data.tags[page.tag].color }}" title="{{ site.data.tags[page.tag].description }}"
