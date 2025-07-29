@@ -2,6 +2,7 @@
 title: Glue teams vs. back-office teams
 description: "As your product-focused org scales, you'll hear calls for two kinds of horizontal teams. They sound similar, but they aren't."
 tag: blog
+image: /assets/glue-teams-vs-back-office-teams/banner.png
 ---
 
 There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. In avoiding that outcome, you mustn't kill crucial cross-cutting work.
