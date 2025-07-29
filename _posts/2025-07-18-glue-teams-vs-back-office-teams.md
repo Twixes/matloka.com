@@ -58,4 +58,4 @@ Keep building something people want this way.
 
 <br/>
 
-*Thanks to Yakko Majuri and Stay SaaSy for reading drafts of the post.*
+*Thanks to Yakko Majuri and the Stay SaaSy vigilantes for reading drafts of the post.*
