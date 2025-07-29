@@ -33,7 +33,7 @@ Billing? The ultimate glue. That's systems, UI, and accounting, all in one. The 
 
 The folks owning these areas should be talking to users, they should be owning product metrics.
 
-## Resist the calls
+## Resist the calls for nice-to-haves
 
 Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should.
 
@@ -43,7 +43,7 @@ Distributed ownership is the name of the game for those internal aspects. It tak
 
 Start a back-office team when you can honestly call its resources a rounding error compared to product development. Backend infra at 20 engineers, anything else at 50+. Till then – a little bit of chaos is valuable. It teaches what problems actually matter.
 
-## Create glue
+## Address the must-have gaps
 
 Meanwhile, it's easy to set aside shared areas of the product and forget about them. Don’t mistake them for back-office functions. This is precisely where you need glue teams.
 
