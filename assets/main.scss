@@ -578,7 +578,7 @@ aside {
         left: 0;
         right: 0;
         bottom: 0;
-        mix-blend-mode: multiply;
+        mix-blend-mode: var(--composite-blend-mode);
         pointer-events: none;
         transition: transform var(--transition-duration-long) cubic-bezier(0.4, 0, 0.2, 1);
 
