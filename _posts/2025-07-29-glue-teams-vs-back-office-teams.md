@@ -5,13 +5,13 @@ tag: blog
 image: /assets/glue-teams-vs-back-office-teams/banner.png
 ---
 
-There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. In avoiding that outcome, don't kill crucial cross-cutting work by accident either!
+There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. If *too* careful… value will slip through your fingers.
 
 Let me explain.
 
-## When hustle gets you to scale
+## The hustle-to-scale pipeline
 
-In the early days of a startup, there's clarity. You've got a tight team. Everyone builds the product. Everyone's customer-obsessed. *Everyone's* scrambling for product-market fit. The org chart is more like a circle with a post-it note saying "build something people want".
+In the early days of a startup, there's clarity. You've got a tight team. Everyone builds the product. Everyone's "customer-obsessed". *Everyone*'s scrambling for product-market fit. A customer wants to pay the [SSO tax](https://sso.tax/)? *Say no more.* That org chart is more like a circle with a post-it note of "build something people want".
 
 But then you grow. Areas need to be split up for ownership. Some bits get chopped up cleanly, others turn into murky waters. Here's where the confusion begins.
 
@@ -19,7 +19,7 @@ But then you grow. Areas need to be split up for ownership. Some bits get choppe
 
 As you scale, you'll hear calls for two kinds of teams that span product areas. They sound similar, but they aren't.
 
-**Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, paying customers never see them. They provide backend infrastructure, build developer tools, maintain component libraries, run data platforms. Neat stuff.
+**Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, paying customers never see them. They provide backend infrastructure, build developer tools, maintain component libraries, run data platforms. It's neat stuff.
 
 But here's the thing about back-office teams: they're always one layer removed from real impact. They make tools that help people who help users. There's that layer of indirection, and an inevitable loss of context. Blink, and that team just spent a week solving an elegant internal problem with minimal impact.
 

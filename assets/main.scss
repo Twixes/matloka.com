@@ -82,6 +82,7 @@ body {
     max-width: 60rem;
     text-rendering: optimizeLegibility;
     font-family: var(--font-family-body);
+    text-wrap: pretty;
 }
 
 .content-wrapper {
@@ -542,8 +543,8 @@ footer {
 }
 
 .comic {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    transform: translateX(88px) rotate(-6deg);
+    font-family: 'Comic Sans', 'Comic Sans MS', 'Chalkboard', 'ChalkboardSE-Regular', cursive;
+    transform: translateX(96px) rotate(-6deg);
     font-weight: 700;
     font-size: 17px; // Slightly smaller than body text's 18px due to Comic Sans sizing
     width: fit-content;
