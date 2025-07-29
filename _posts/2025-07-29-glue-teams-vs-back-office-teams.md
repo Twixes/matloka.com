@@ -35,7 +35,7 @@ The folks owning these areas should be talking to users, they should be owning p
 
 ## Resist the calls
 
-Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should. Often what you need is a glue team instead.
+Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should.
 
 I know. Engineers are complaining about CI. Internal tools could be better. Still, keep those zero degrees of separation from customers for as long as you can. The space of *possible* work is infinite, but the set of tasks needed for success – surprisingly narrow. Distance from users makes it hard to see which is which, whether you're an engineer, designer, or founder!
 
