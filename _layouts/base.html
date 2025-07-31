@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- It's dangerous to go alone! Take this. -->
-    <!-- 🗡 -->
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{% if page.title %}{{ page.title }} – Michael Matloka{% else %}{{ site.title }}{% endif %}</title>
-        {%- seo title=false -%}
-        <link rel="icon" href="/favicon.ico?2025-07-31" sizes="any" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg?2025-07-31" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png?2025-07-31" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.bunny.net/css?family=Poppins:700,700i,800,800i|Zilla+Slab:400,400i,500,500i,600,600i,700,700i,&subset=latin-ext&display=swap"
-        />
-        <link rel="stylesheet" href="{{ "/assets/main.css?2025-07-31" | relative_url }}"> {% if page.stylesheet %}
-        <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}" />
-        {% endif %} {%- feed_meta -%}
-        <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19/dist/lazyload.min.js"></script>
-        <script>
-            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Ie Ts Ms Ee Es Rs capture Ge calculateEventProperties Os register register_once register_for_session unregister unregister_for_session js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ds Fs createPersonProfile Ls Ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Cs debug I As getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-            posthog.init('phc_bRurqAQ2HGcq1TtIa7kJRFQcBoXLQvelhZXRsk9TT6Z', {
-                api_host: 'https://e.matloka.com',
-                defaults: '2025-05-24',
-                person_profiles: 'always',
-            })
-        </script>
-        </script>
-    </head>
-    <body onclick="">
-        <div class="content-wrapper">{{ content }}</div>
-        <footer>
-            <span
-                >© 2020-present Michael&nbsp;Matloka.
-                <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">Open source.</a>
-            </span>
-            <div class="light-dark-mode" title="System-wide light/dark mode preference is in use"></div>
-        </footer>
-        <script src="https://unpkg.com/popper.js@1"></script>
-        <script src="https://unpkg.com/tippy.js@4"></script>
-        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5/anchor.min.js"></script>
-        <script>
-            anchors.options = { placement: 'left', visible: 'hover', icon: '#' }
-            anchors.add('article h2')
-            ll = new LazyLoad({
-                callback_loaded(el) {
-                    el.addEventListener('click', () => {
-                        el.paused ? el.play() : el.pause() // Click to play/pause, no controls needed
-                    })
-                },
-            })
-            tippy('[title]:not(iframe)', {
-                content: (reference) => reference.getAttribute('title'),
-                duration: 100,
-                distance: 8,
-                followCursor: true,
-                allowHTML: true,
-                touch: false,
-            })
-            document.querySelectorAll('[title]').forEach((el) => el.removeAttribute('title'))
-        </script>
-    </body>
+  <!-- It's dangerous to go alone! Take this. -->
+  <!-- 🗡 -->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} – Michael Matloka{% else %}{{ site.title }}{% endif %}</title>
+    {%- seo title=false -%}
+    <link rel="icon" href="/favicon.ico?2025-07-31" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?2025-07-31" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?2025-07-31" />
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Poppins:700,700i,800,800i|Zilla+Slab:400,400i,500,500i,600,600i,700,700i,&subset=latin-ext&display=swap" />
+    <link rel="stylesheet" href="{{ "/assets/main.css?2025-08-01" | relative_url }}"> {% if page.stylesheet %}
+    <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}" />
+    {% endif %} {%- feed_meta -%}
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19/dist/lazyload.min.js"></script>
+    <script>
+      !function ( t, e ) { var o, n, p, r; e.__SV || ( window.posthog = e, e._i = [], e.init = function ( i, s, a ) { function g( t, e ) { var o = e.split( "." ); 2 == o.length && ( t = t[o[0]], e = o[1] ), t[e] = function () { t.push( [e].concat( Array.prototype.slice.call( arguments, 0 ) ) ) } } ( p = t.createElement( "script" ) ).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace( ".i.posthog.com", "-assets.i.posthog.com" ) + "/static/array.js", ( r = t.getElementsByTagName( "script" )[0] ).parentNode.insertBefore( p, r ); var u = e; for ( void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function ( t ) { var e = "posthog"; return "posthog" !== a && ( e += "." + a ), t || ( e += " (stub)" ), e }, u.people.toString = function () { return u.toString( 1 ) + ".people (stub)" }, o = "init Ie Ts Ms Ee Es Rs capture Ge calculateEventProperties Os register register_once register_for_session unregister unregister_for_session js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ds Fs createPersonProfile Ls Ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Cs debug I As getPageViewId captureTraceFeedback captureTraceMetric".split( " " ), n = 0; n < o.length; n++ )g( u, o[n] ); e._i.push( [i, s, a] ) }, e.__SV = 1 ) }( document, window.posthog || [] )
+      posthog.init( 'phc_bRurqAQ2HGcq1TtIa7kJRFQcBoXLQvelhZXRsk9TT6Z', {
+        api_host: 'https://e.matloka.com',
+        defaults: '2025-05-24',
+        person_profiles: 'always',
+      } )
+    </script>
+    </script>
+  </head>
+
+  <body onclick="">
+    <div class="content-wrapper">{{ content }}</div>
+    <footer>
+      <!-- logo.svg inlined, as Safari doesn't seem to properly mix colors in <img> SVGs -->
+      <svg class="logo" viewBox="0 0 63 27" fill="none" style="transform: scaleX(-1)" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 0L45 27H18V0Z" />
+        <path d="M9 0L36 27H9V0Z" />
+        <path d="M27 27L7.15256e-07 7.15256e-07L27 7.15256e-07L27 27Z" />
+        <path d="M36 0L63 27H36V0Z" />
+        <path d="M27 0L54 27H27V0Z" />
+        <path d="M45 27L18 7.15256e-07L45 7.15256e-07V27Z" />
+      </svg>
+      <span>
+        © 2020-present&nbsp;Michael&nbsp;Matloka.
+        <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">Open source.</a>
+      </span>
+      <div class="light-dark-mode" title="System-wide light/dark mode preference is in use"></div>
+    </footer>
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/anchor-js@5/anchor.min.js"></script>
+    <script>
+      anchors.options = { placement: 'left', visible: 'hover', icon: '#' }
+      anchors.add( 'article h2' )
+      ll = new LazyLoad( {
+        callback_loaded( el ) {
+          el.addEventListener( 'click', () => {
+            el.paused ? el.play() : el.pause() // Click to play/pause, no controls needed
+          } )
+        },
+      } )
+      tippy( '[title]:not(iframe)', {
+        content: ( reference ) => reference.getAttribute( 'title' ),
+        duration: 100,
+        distance: 8,
+        followCursor: true,
+        allowHTML: true,
+        touch: false,
+      } )
+      document.querySelectorAll( '[title]' ).forEach( ( el ) => el.removeAttribute( 'title' ) )
+    </script>
+  </body>
+
 </html>

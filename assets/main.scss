@@ -398,8 +398,18 @@ header {
 footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    opacity: 0.6;
+    gap: 0.5rem;
+    line-height: 1;
+    .logo {
+        height: calc(var(--logo-unit-size));
+        margin-left: calc(var(--logo-unit-size) / -3);
+    }
+    > :not(.logo) {
+        opacity: 0.6;
+    }
+    span {
+        flex-grow: 1;
+    }
     a {
         white-space: nowrap;
     }
