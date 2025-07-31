@@ -1,4 +1,4 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="scale(-1,1) translate(-64,0)">
 <style>
 .c {
 fill: #0ff;
@@ -41,6 +41,7 @@ fill: color(display-p3 1 1 0);
 </g>
 <g style="mix-blend-mode:multiply">
 <path d="M46 45L19 18L46 18V45Z" class="c"/>
+</g>
 </g>
 </g>
 </svg>
