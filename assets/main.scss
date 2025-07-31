@@ -520,7 +520,7 @@ footer {
 }
 
 .tag {
-    background: var(--foreground);
+    position: relative;
     color: var(--background);
     padding: 0.0625rem 0.25rem 0.125rem;
     border-radius: 0.25rem;
@@ -529,19 +529,59 @@ footer {
     font-size: 1rem;
     margin-left: 0.25rem;
     cursor: help;
+    z-index: 1;
+    & > div {
+        position: absolute;
+        inset: 0;
+        mix-blend-mode: normal;
+        z-index: -1;
+    }
+    & > div::before,
+    & > div::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 0.25rem;
+        mix-blend-mode: var(--composite-blend-mode);
+        transform: translate(0, 0);
+        transition: transform var(--transition-duration-short) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    &:hover {
+        & > div::before {
+            transform: translate(0.0625rem, 0.0625rem);
+        }
+        & > div::after {
+            transform: translate(-0.0625rem, -0.0625rem);
+        }
+    }
 }
 
 .tag--a {
-    background: var(--composite-color-a);
+    & > div::before {
+        background: var(--composite-color-2);
+    }
+    & > div::after {
+        background: var(--composite-color-3);
+    }
 }
 
 .tag--b {
-    background: var(--composite-color-b);
     color: var(--foreground);
+    & > div::before {
+        background: var(--composite-color-2);
+    }
+    & > div::after {
+        background: var(--composite-color-3);
+    }
 }
 
 .tag--c {
-    background: var(--composite-color-c);
+    & > div::before {
+        background: var(--composite-color-2);
+    }
+    & > div::after {
+        background: var(--composite-color-1);
+    }
 }
 
 .comic {

@@ -2,18 +2,22 @@
     {%- for post in site.posts -%}
     <li>
         <h2>
-            <a href="{{ post.url | relative_url }}" title="<i>{{ post.description }}</i>" data-tippy-placement="bottom">{{ post.title | escape }}</a>
+            <a href="{{ post.url | relative_url }}" title="<i>{{ post.description }}</i>" data-tippy-placement="bottom"
+                >{{ post.title | escape }}</a
+            >
         </h2>
         <div class="meta">
-            {% if post.watch_time_min %}
-              {{ post.watch_time_min }} min watch
-            {% else %}
-              {{ post.content | number_of_words | divided_by:220.0 | ceil }} min read
-            {% endif %} —
+            {% if post.watch_time_min %} {{ post.watch_time_min }} min watch {% else %} {{ post.content |
+            number_of_words | divided_by:220.0 | ceil }} min read {% endif %} —
             <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: site.date_format }}
             </time>
-            <span class="tag tag--{{ site.data.tags[post.tag].color }}" title="{{ site.data.tags[post.tag].description }}">{{ post.tag }}</span>
+            <span
+                class="tag tag--{{ site.data.tags[post.tag].color }}"
+                title="{{ site.data.tags[post.tag].description }}"
+                >{{ post.tag }}
+                <div></div
+            ></span>
         </div>
     </li>
     {%- endfor -%}
