@@ -13,7 +13,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?2025-07-31" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?2025-07-31" />
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Poppins:700,700i,800,800i|Zilla+Slab:400,400i,500,500i,600,600i,700,700i,&subset=latin-ext&display=swap" />
-    <link rel="stylesheet" href="{{ "/assets/main.css?2025-08-01" | relative_url }}"> {% if page.stylesheet %}
+    <link rel="stylesheet" href="{{ "/assets/main.css?2025-08-02" | relative_url }}"> {% if page.stylesheet %}
     <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}" />
     {% endif %} {%- feed_meta -%}
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19/dist/lazyload.min.js"></script>
@@ -32,7 +32,7 @@
     <div class="content-wrapper">{{ content }}</div>
     <footer>
       <!-- logo.svg inlined, as Safari doesn't seem to properly mix colors in <img> SVGs -->
-      <svg class="logo" viewBox="0 0 63 27" fill="none" style="transform: scaleX(-1)" xmlns="http://www.w3.org/2000/svg">
+      <svg class="logo" title="Beam me up!" viewBox="0 0 63 27" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <path d="M18 0L45 27H18V0Z" />
         <path d="M9 0L36 27H9V0Z" />
         <path d="M27 27L7.15256e-07 7.15256e-07L27 7.15256e-07L27 27Z" />
@@ -40,10 +40,11 @@
         <path d="M27 0L54 27H27V0Z" />
         <path d="M45 27L18 7.15256e-07L45 7.15256e-07V27Z" />
       </svg>
-      <span>
-        © 2020-present&nbsp;Michael&nbsp;Matloka.
+      <div style="flex-grow: 1">
+        <span>
+          © 2020-present Michael Matloka.</span>
         <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">Open source.</a>
-      </span>
+      </div>
       <div class="light-dark-mode" title="System-wide light/dark mode preference is in use"></div>
     </footer>
     <script src="https://unpkg.com/popper.js@1"></script>
