@@ -223,6 +223,7 @@ input {
     background: var(--background);
     color: var(--foreground);
     border: var(--border-thickness) solid var(--foreground);
+    border-radius: 0;
     box-shadow: calc(var(--border-thickness) + var(--shadow-distance) / 2)
         calc(var(--border-thickness) + var(--shadow-distance) / 2) var(--foreground);
 
@@ -637,10 +638,7 @@ aside {
     }
     .aside-shadow {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: calc(var(--border-thickness) * -1);
         mix-blend-mode: var(--composite-blend-mode);
         pointer-events: none;
         transition: transform var(--transition-duration-long) cubic-bezier(0.4, 0, 0.2, 1);
