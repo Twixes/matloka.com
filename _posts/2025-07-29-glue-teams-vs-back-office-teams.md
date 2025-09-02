@@ -5,7 +5,7 @@ tag: blog
 image: /assets/glue-teams-vs-back-office-teams/banner.png
 ---
 
-> *Since this post was initially published, it's also become an [edition of the Product for Engineers newsletter](https://newsletter.posthog.com/p/glue-teams-vs-back-office-teams) ran by my PostHog colleagues.*
+> *Since I initially published this post, it's also become an [edition of the Product for Engineers newsletter](https://newsletter.posthog.com/p/glue-teams-vs-back-office-teams) ran by my PostHog colleagues.*
 
 There's a trap that growing product-focused companies fall into: it's easy to confuse *glue teams* with *back-office teams*, and if you aren't careful, you can build an org that optimizes for fluffy internal goals more than actual value. If *too* careful… value will slip through your fingers.
 
