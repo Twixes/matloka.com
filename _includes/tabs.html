@@ -1,4 +1,16 @@
 <nav class="tabs">
-    <a href="/" class="tab{% if page.url == '/' %} tab--active{% endif %}">Blog</a>
-    <a href="/about" class="tab{% if page.url == '/about' or page.url == '/about/' %} tab--active{% endif %}">About</a>
+    <a href="/"
+       class="tab{% if page.url == '/' %} tab--active{% endif %}"
+       hx-get="/"
+       hx-target="main"
+       hx-select="main"
+       hx-swap="outerHTML"
+       hx-push-url="true">Blog</a>
+    <a href="/about"
+       class="tab{% if page.url == '/about' or page.url == '/about/' %} tab--active{% endif %}"
+       hx-get="/about"
+       hx-target="main"
+       hx-select="main"
+       hx-swap="outerHTML"
+       hx-push-url="true">About</a>
 </nav>
