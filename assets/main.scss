@@ -395,6 +395,37 @@ header {
     }
 }
 
+.tabs {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 2.5rem;
+}
+
+.tab {
+    font-size: var(--font-size-heading);
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    color: var(--foreground);
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    white-space: nowrap;
+    position: relative;
+    line-height: 1.2;
+    opacity: 0.4;
+    transition: opacity var(--transition-duration-short) ease;
+    margin-left: -0.05em; // Align letters with body area perfectly, like h1/h2
+
+    &:hover:not(&--active) {
+        opacity: 0.6;
+    }
+
+    &--active {
+        opacity: 1;
+        cursor: default;
+    }
+}
+
 footer {
     display: flex;
     align-items: center;
@@ -414,7 +445,8 @@ footer {
             cursor: n-resize; // Having cursor on :hover makes it immediately go back to normal once scrollTo() runs
         }
     }
-    span, a {
+    span,
+    a {
         white-space: nowrap;
     }
 }
@@ -519,7 +551,6 @@ footer {
 }
 
 .posts {
-    margin: 5rem 0 0;
     padding: 0;
     li {
         display: block;
@@ -731,11 +762,12 @@ aside {
     pre {
         padding: 0.75rem;
     }
+    .tabs {
+        margin-top: 1.25rem;
+        gap: 1.25rem;
+    }
     .links {
         margin: 1.25rem 0;
-    }
-    .posts {
-        margin-top: 4rem;
     }
     .posts li {
         margin-top: 2rem;
