@@ -24,9 +24,9 @@
     --composite-color-b: var(--green);
     --composite-color-c: var(--red);
     --composite-blend-mode: multiply;
-    --font-size-hero: 5.25rem;
+    --font-size-hero: 3.75rem;
     --font-size-title: 2.375rem;
-    --font-size-heading: 1.75rem;
+    --font-size-heading: 1.625rem;
     --font-size-body: 1.1875rem;
     --font-size-body-reduced: 1.125rem;
     --font-size-tooltip: 0.9375rem;
@@ -727,9 +727,9 @@ aside {
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
     // Mobile
     :root {
-        --font-size-hero: 3.5rem;
+        --font-size-hero: 2rem;
         --font-size-title: 1.625rem;
-        --font-size-heading: 1.375rem;
+        --font-size-heading: 1.25rem;
         --font-size-body: 1.0625rem;
         --font-size-body-reduced: 1rem;
         --logo-unit-size: 0.75rem;
