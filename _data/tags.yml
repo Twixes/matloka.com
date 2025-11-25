@@ -1,6 +1,9 @@
 blog:
     color: a
     description: Rambling on the keyboard
+blog - external:
+    color: a
+    description: Rambling on the keyboard, professionally
 talk:
     color: c
     description: Rambling on the stage

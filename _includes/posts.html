@@ -2,12 +2,18 @@
     {%- for post in site.posts -%}
     <li>
         <h2>
+            {%- if post.external_url -%}
+            <a href="{{ post.external_url }}" target="_blank" rel="noopener" title="<i>{{ post.description }}</i>" data-tippy-placement="bottom"
+                >{{ post.title | escape }} <span class="external-indicator">↗</span></a
+            >
+            {%- else -%}
             <a href="{{ post.url | relative_url }}" title="<i>{{ post.description }}</i>" data-tippy-placement="bottom"
                 >{{ post.title | escape }}</a
             >
+            {%- endif -%}
         </h2>
         <div class="meta">
-            {% if post.watch_time_min %} {{ post.watch_time_min }} min watch {% else %} {{ post.content |
+            {% if post.external_url %}{% assign domain = post.external_url | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first %}<a href="https://{{ domain }}" target="_blank" rel="noopener">{{ domain }}</a>{% elsif post.watch_time_min %} {{ post.watch_time_min }} min watch {% else %} {{ post.content |
             number_of_words | divided_by:220.0 | ceil }} min read {% endif %} —
             <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: site.date_format }}

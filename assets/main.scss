@@ -563,12 +563,18 @@ footer {
         margin-top: 0.25rem;
         font-size: var(--font-size-body-reduced);
     }
+    .external-indicator {
+        font-family: var(--font-family-body);
+    }
 }
 
 .meta {
     margin-top: 1rem;
     font-size: var(--font-size-body-reduced);
     font-weight: 600;
+    a {
+        color: inherit;
+    }
 }
 
 .tag {
