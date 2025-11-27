@@ -52,24 +52,30 @@
     <script src="https://unpkg.com/tippy.js@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/anchor-js@5/anchor.min.js"></script>
     <script>
-      anchors.options = { placement: 'left', visible: 'hover', icon: '#' }
-      anchors.add( 'article h2' )
-      ll = new LazyLoad( {
-        callback_loaded( el ) {
-          el.addEventListener( 'click', () => {
-            el.paused ? el.play() : el.pause() // Click to play/pause, no controls needed
-          } )
-        },
-      } )
-      tippy( '[title]:not(iframe)', {
-        content: ( reference ) => reference.getAttribute( 'title' ),
-        duration: 100,
-        distance: 8,
-        followCursor: true,
-        allowHTML: true,
-        touch: false,
-      } )
-      document.querySelectorAll( '[title]' ).forEach( ( el ) => el.removeAttribute( 'title' ) )
+        const init = () => {
+        anchors.options = { placement: 'left', visible: 'hover', icon: '#' }
+        anchors.add( 'article h2' )
+        ll = new LazyLoad( {
+          callback_loaded( el ) {
+            el.addEventListener( 'click', () => {
+              el.paused ? el.play() : el.pause() // Click to play/pause, no controls needed
+            } )
+          },
+        } )
+        tippy( '[title]:not(iframe)', {
+          content: ( reference ) => reference.getAttribute( 'title' ),
+          duration: 100,
+          distance: 8,
+          followCursor: true,
+          allowHTML: true,
+          touch: false,
+        } )
+        document.querySelectorAll( '[title]' ).forEach( ( el ) => el.removeAttribute( 'title' ) )
+      }
+      init()
+      htmx.onLoad(function (elt) {
+        init()
+      })
     </script>
   </body>
 
