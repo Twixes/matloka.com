@@ -23,11 +23,11 @@ As you scale, you'll hear calls for two kinds of teams that span product areas. 
 
 **Back-office teams** serve other teams. Period. Their customers are on the same payroll. Like the back office of a bank, paying customers never see them. They provide backend infrastructure, build developer tools, maintain component libraries, run data platforms. It's neat stuff.
 
-But here's the thing about back-office teams: they're always one layer removed from real impact. They make tools that help people who help users. There's that layer of indirection, and an inevitable loss of context. Blink, and that team just spent a week solving an elegant internal problem with minimal impact.
+Here's the thing about back-office teams: they're always one layer removed from real impact. They make tools that help people who help users. There's that layer of indirection, and an inevitable loss of context. Blink, and that team just spent a week solving an elegant internal problem with minimal impact.
 
 > *Some* back-office work is an early must-have – if you run a data-intensive SaaS (like we're doing at [PostHog](https://posthog.com)), you won't get far without a clear owner of data infra. Still, with so much of hosting outsourced to cloud providers, infra is leaner than ever. More so if you run on Vercel + Supabase.
 
-**Glue teams** serve users. Directly. These folks do [glue work](https://www.noidea.dog/glue) at the level of the product – they're product teams that just happen to cut horizontally across features instead of owning vertical slices.
+**Glue teams** serve users directly. These folks do [glue work](https://www.noidea.dog/glue) at the level of the product – they're product teams that just happen to cut horizontally across features instead of owning vertical slices.
 
 Think, auth. Not flashy, not a standalone product line – yet it keeps the product together in one piece. It makes or breaks enterprise deals, or a user's day.
 
@@ -37,7 +37,7 @@ The folks owning these areas should be talking to users, they should be owning p
 
 ## Resist the calls for nice-to-haves
 
-Here's the uncomfortable truth: you can get away without back-office teams much longer than you think, and you should.
+The truth: you can get away without back-office teams much longer than you think, and you should.
 
 I know. Engineers are complaining about CI. Internal tools could be better. Still, keep those zero degrees of separation from customers for as long as you can. The space of *possible* work is infinite, but the set of tasks needed for success – surprisingly narrow. Distance from users makes it hard to see which is which, whether you're an engineer, designer, or founder!
 
