@@ -9,7 +9,7 @@ permalink: /about
 
 It was at that moment I realized computers are much closer to LEGOs than magic.
 
-**These days, I assemble software at [PostHog](https://posthog.com/) (YC W20).** Currently: building the Feed – AI-powered identification, triage, and initial implementation of product development tasks. Previously: I've built core features of analytics, data ingestion, or permissioning; led the [Product Analytics](https://posthog.com/product-analytics) team; then started, led, and launched [PostHog AI](https://posthog.com/ai).
+**These days, I assemble software at [PostHog](https://posthog.com/) (YC W20).** Currently: building AI-powered identification, triage, and initial implementation of product development tasks. Previously: built core features of analytics, data ingestion, or permissioning; led the [Product Analytics](https://posthog.com/product-analytics) team; then started, led, and launched [PostHog AI](https://posthog.com/ai).
 
 I joined PostHog at seed in 2020, the day I completed my high school finals. In those pre-revenue times – no paid SaaS plan even – $1B seemed like a pipe dream. It turns out scouring the HN "Who is hiring?" thread _is_ worth it, if you can back it up with actually building!
 
@@ -19,7 +19,7 @@ I joined PostHog at seed in 2020, the day I completed my high school finals. In
 2. building the right solution for their problem
 3. productizing that solution
 
-**Currently focused on agents for actionable research.** Between the topics of LLM orchestration, context engineering, evals, or agentic user interfaces, it's still the early days of LLM-powered products. I've [learned a thing or two, or eight](https://posthog.com/blog/8-learnings-from-1-year-of-agents-posthog-ai) – but the landscape continues to move fast.
+**Broadly focused on agents for actionable research.** Between the topics of LLM orchestration, context engineering, evals, or agentic user interfaces, it's still the early days of LLM-powered products. [I've learned a thing or two, or eight](https://posthog.com/blog/8-learnings-from-1-year-of-agents-posthog-ai) – but the landscape continues to move fast.
 
 **There are too many things I'm passionate about outside of tech.** Juggling them is a challenge:
 
