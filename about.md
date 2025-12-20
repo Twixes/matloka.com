@@ -9,7 +9,7 @@ permalink: /about
 
 It was at that moment I realized computers are much closer to LEGOs than magic.
 
-**These days, I assemble software at [PostHog](https://posthog.com/) (YC W20).** Currently: building AI-powered identification, triage, and initial implementation of product development tasks. Previously: built core features of analytics, data ingestion, or permissioning; led the [Product Analytics](https://posthog.com/product-analytics) team; then started, led, and launched [PostHog AI](https://posthog.com/ai).
+**These days, I assemble software at [PostHog](https://posthog.com/) (YC W20).** Currently: building AI-powered identification, triage, and initial implementation of product development tasks. Previously: started, led, and launched [PostHog AI](https://posthog.com/ai); built core features of analytics, data ingestion, or permissioning; led the [Product Analytics](https://posthog.com/product-analytics) team; implemented the PostHog design system; and more.
 
 I joined PostHog at seed in 2020, the day I completed my high school finals. In those pre-revenue times – no paid SaaS plan even – $1B seemed like a pipe dream. It turns out scouring the HN "Who is hiring?" thread _is_ worth it, if you can back it up with actually building!
 
@@ -29,7 +29,7 @@ I joined PostHog at seed in 2020, the day I completed my high school finals. In
 * urbanism – just like architecture, only at a higher level of abstraction; build walkable cities for humans, not cars
 * cinema – there's no bad genre, there are only bad screenplays
 * music – soundtracks in particular; the piano is the superior instrument
-* cycling – not only the best way to get around any sane city (i.e. European), it's also fun
+* cycling – not only the best way to get around any sane city, it's also fun
 * industrial design – often undervalued, it rules our every day, whether it's the push/pull door, the device you're reading this on, the Google results page, or your notes app
 * astronomy – I was an astrophysics nerd before I realized software is cool too _and_ has real career prospects
 * progress studies – how did humanity's output skyrocket in the last two centuries, and how do we keep the cycle of technological progress going?
