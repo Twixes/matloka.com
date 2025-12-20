@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&subset=latin-ext&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ "/assets/main.css?2025-12-17" | relative_url }}"> {% if page.stylesheet %}
+    <link rel="stylesheet" href="{{ "/assets/main.css?2025-12-21" | relative_url }}"> {% if page.stylesheet %}
     <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}" />
     {% endif %} {%- feed_meta -%}
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19/dist/lazyload.min.js"></script>
@@ -46,7 +46,7 @@
       <div style="flex-grow: 1">
         <span>
           Designed and engineered in Warsaw.</span>
-        <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}">Open source.</a>
+        <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}" id="edit-this-page-link" hx-swap-oob="true">Open source.</a>
       </div>
       <div class="light-dark-mode" title="System-wide light/dark mode preference is in use"></div>
     </footer>

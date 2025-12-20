@@ -29,6 +29,7 @@
     --font-size-heading: 1.625rem;
     --font-size-body: 1.1875rem;
     --font-size-body-reduced: 1.125rem;
+    --font-size-tag: 1rem;
     --font-size-tooltip: 0.9375rem;
     --font-family-heading: 'Poppins', 'Futura', 'Avenir', 'Arial Black', sans-serif;
     --font-family-body: 'Zilla Slab', 'Roboto Slab', 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif;
@@ -388,7 +389,7 @@ header {
     h1 {
         font-size: var(--font-size-hero);
         font-weight: 800;
-        white-space: pre;
+        white-space: pre-wrap;
     }
     .logo {
         margin-top: 3.25rem;
@@ -413,13 +414,10 @@ header {
     position: relative;
     line-height: 1.2;
     opacity: 0.4;
-    transition: opacity var(--transition-duration-short) ease;
     margin-left: -0.05em; // Align letters with body area perfectly, like h1/h2
-
     &:hover:not(&--active) {
         opacity: 0.6;
     }
-
     &--active {
         opacity: 1;
         cursor: default;
@@ -431,6 +429,7 @@ footer {
     align-items: center;
     gap: 0.375rem;
     line-height: 1;
+    font-size: var(--font-size-tag);
     font-weight: 500;
     --logo-unit-size: 0.375rem;
     > * {
@@ -494,7 +493,6 @@ footer {
     margin: 2.5rem 0 0;
     font-size: 2.25rem;
     > a {
-        transition: transform var(--transition-duration-short) ease;
         display: flex;
         color: inherit;
     }
@@ -585,7 +583,7 @@ footer {
     border-radius: 0.25rem;
     font-style: italic;
     letter-spacing: 0.0125em;
-    font-size: 1rem;
+    font-size: var(--font-size-tag);
     margin-left: 0.25rem;
     cursor: help;
     z-index: 1;
@@ -734,11 +732,12 @@ aside {
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
     // Mobile
     :root {
-        --font-size-hero: 2rem;
+        --font-size-hero: 2.375rem;
         --font-size-title: 1.625rem;
         --font-size-heading: 1.25rem;
         --font-size-body: 1.0625rem;
         --font-size-body-reduced: 1rem;
+        --font-size-tag: 0.9375rem;
         --logo-unit-size: 0.75rem;
     }
     body {
@@ -750,11 +749,11 @@ aside {
     .content-wrapper {
         margin-bottom: 3rem;
     }
-    h1 {
-        margin-top: 2rem;
-    }
     header img {
         margin-top: 2rem;
+    }
+    header br {
+        display: none;
     }
     h4 {
         margin: 1rem 0;
@@ -770,7 +769,8 @@ aside {
         padding: 0.75rem;
     }
     .tabs {
-        margin-top: 1.25rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
         gap: 1.25rem;
     }
     .links {
