@@ -20,7 +20,7 @@ Like startups, most hackathon projects don't live long, but some DO change every
 
 <figure>
 <img src="/assets/internal-hackathon-playbook/london.jpg">
-<figcaption>*freeze frame* You're probably wondering how I got here</figcaption>
+<figcaption>*freeze frame* You're probably wondering how I got here (author: Marius Andra)</figcaption>
 </figure>
 
 ## 2. Lock in
@@ -54,7 +54,7 @@ E. Profit! Time to build. How and where - that's up to the teams, what matters i
 
 <figure>
 <img src="/assets/internal-hackathon-playbook/aruba.png">
-<figcaption>The PostHog team suffering from analysis paralysis – Aruba, 2023, colorized</figcaption>
+<figcaption>The PostHog team suffering from analysis paralysis – Mykonos, 2024, colorized (author: Marius Andra)</figcaption>
 </figure>
 
 ## 4. Ensure energy
@@ -97,7 +97,7 @@ The key bit here is to _plan_ for some shipping. **Everyone should know that the
 Details vary, but a shipping mindset can simply 10x the potential upside of the whole affair.
 
 <figure>
-<img src="https://image.cnbcfm.com/api/v1/image/106860121-1616780983446-106860121-1616772119794-02_close_up_view_of_ever_given_ship_suez_canal_26march2021_wv2.jpg">
+<img src="/assets/internal-hackathon-playbook/ship.jpg">
 <figcaption>Just not like this</figcaption>
 </figure>
 
