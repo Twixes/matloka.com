@@ -9,9 +9,11 @@ permalink: /about
 
 It was at that moment I realized computers are much closer to LEGOs than magic.
 
-**These days, I assemble software at [PostHog](https://posthog.com/) (YC W20).** Currently: building AI-powered identification, triage, and initial implementation of product development tasks. Previously: started, led, and launched [PostHog AI](https://posthog.com/ai); built core features of analytics, data ingestion, or permissioning; led the [Product Analytics](https://posthog.com/product-analytics) team; implemented the PostHog design system; and more.
+**These days, I'm assembling software at [PostHog](https://posthog.com/) (YC W20).** Building self-driving for software products – agents solving product problems and gaps automatically, with ready-to-merge pull requests as the output.
 
-I joined PostHog at seed in 2020, the day after I completed my final high school exam. In those pre-revenue times – no paid SaaS plan even – $1B seemed like a pipe dream. It turns out scouring the HN "Who is hiring?" thread _is_ worth it, if you can back it up with actually building!
+Previously here: Started, led, and launched [PostHog AI](https://posthog.com/ai), having worked with LLMs since GPT-3. Built the first iteration of [LLM Analytics](https://posthog.com/llm-analytics). Led the [Product Analytics](https://posthog.com/product-analytics) team – I've developed core parts of that product (funnels, trends, dashboards, and more). Migrated and scaled PostHog's early data ingestion. Designed foundational platform architecture (organizations, project-based permissioning). Shipped PostHog's first design system and then its complete redesign.
+
+I joined PostHog at seed in 2020, the day after completing my final high school exam. $1B seemed like a pipe dream back then - no revenue even. We've reached well over that. Turns out scouring the HN "Who is hiring?" thread _is_ worth it, if you can back it up with actually building!
 
 **As a product engineer, I believe in:**
 
@@ -19,7 +21,7 @@ I joined PostHog at seed in 2020, the day after I completed my final high schoo
 2. building the right solution for their problem
 3. productizing that solution
 
-**Broadly focused on agents for actionable research.** Between the topics of LLM orchestration, context engineering, evals, or agentic user interfaces, it's still the early days of LLM-powered products. [I've learned a thing or two, or eight](https://posthog.com/blog/8-learnings-from-1-year-of-agents-posthog-ai) – but the landscape continues to move fast.
+**Broadly focused on agents for actionable research.** It's still the early days of LLMs in the economy. How we orchestrate them, feed with context, evaluate, and expose to users – all up in the air. [I've learned a thing or eight so far](https://posthog.com/blog/8-learnings-from-1-year-of-agents-posthog-ai) – but technology has never moved this fast.
 
 **There are too many things I'm passionate about outside of tech.** Juggling them is a challenge:
 
