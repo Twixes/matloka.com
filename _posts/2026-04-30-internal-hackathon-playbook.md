@@ -20,7 +20,7 @@ Like startups, most hackathon projects don't live long, but some DO change every
 
 <figure>
 <img src="/assets/internal-hackathon-playbook/london.jpg">
-<figcaption>*freeze frame* You're probably wondering how I got here (author: Marius Andra)</figcaption>
+<figcaption>*freeze frame* You're probably wondering how I got here. <i>Credit: Marius Andra</i></figcaption>
 </figure>
 
 ## 2. Lock in
@@ -35,7 +35,7 @@ New: thanks to ~~vibecoding~~ agentic engineering, a 3-hour-ish timeline has bec
 
 <figure>
 <img src="/assets/internal-hackathon-playbook/mykonos.jpg">
-<figcaption>Not a bad sceneary for building</figcaption>
+<figcaption>Not a bad scenery for building</figcaption>
 </figure>
 
 ## 3. Run a market of ideas
@@ -48,13 +48,13 @@ B. People pitch their proposals in 30s or less, putting their post-its on a wall
 
 C. Now, the politics – have participants tear a post-it in half and write their name on both halves. Each person votes by putting their name on exactly _two_ projects they want to join most (and only one can be their own project). Savvy hackers convince others here. Pro ones have already done planted seeds way before. This situation is always dynamic though.
 
-D. Finally, in the second round, only projects with _some_ interest remain. Everyone must now choose only one project. The moderator is here to ensure no teams of one, and no behemoth teams above four members.
+D. Finally, in the second round, only projects with actual interest remain (i.e. at least 2 votes). Everyone must now choose only one project. The moderator is here to ensure no projects are just one person, and no teams are larger than four.
 
 E. Profit! Time to build. How and where - that's up to the teams, what matters is that everyone is in their optimal team.
 
 <figure>
 <img src="/assets/internal-hackathon-playbook/aruba.png">
-<figcaption>The PostHog team suffering from analysis paralysis – Mykonos, 2024, colorized (author: Marius Andra)</figcaption>
+<figcaption>The PostHog team suffering from analysis paralysis – Mykonos, 2024, colorized. <i>Credit: Marius Andra</i></figcaption>
 </figure>
 
 ## 4. Ensure energy
