@@ -4,6 +4,9 @@ title: About
 permalink: /about
 ---
 
+<section class="page-hero" aria-label="About">
+    {%- include tabs.html eyebrow="Thinking / being" -%}
+</section>
 
 **When I was 7, I always looked forward to the next new LEGO set to assemble.** But what I loved even more was building a new contraption out of all the bricks I had from _disassembling_ sets. Then one day, I deleted shell32.dll from the family Windows XP PC.
 
@@ -38,4 +41,4 @@ I joined PostHog at seed in 2020, the day after completing my final high school
 * VC – I'm looking for European success stories, both founders and headquarters (EU–INC LFG); but [VCs Congratulating Themselves](https://x.com/VCBrags) never gets old
 * LEGO – still! big fan of Icons, Ideas, Architecture
 
-**And I can't stop myself when the urge to build a side project hits**. Take a look at my [GitHub profile](https://github.com/Twixes) for the full collection.
+**And I can't stop myself when the urge to build a side project hits**. Take a look at my [Projects](/projects) for the full collection.

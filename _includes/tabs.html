@@ -1,16 +1,37 @@
-<nav class="tabs">
-    <a href="/"
-       class="tab{% if page.url == '/' %} tab--active{% endif %}"
-       hx-get="/"
-       hx-target="main"
-       hx-select="main"
-       hx-swap="outerHTML"
-       hx-push-url="true">Blog</a>
-    <a href="/about"
-       class="tab{% if page.url == '/about' or page.url == '/about/' %} tab--active{% endif %}"
-       hx-get="/about"
-       hx-target="main"
-       hx-select="main"
-       hx-swap="outerHTML"
-       hx-push-url="true">About</a>
+<nav class="tabs" aria-label="Primary sections">
+    <h2 class="tabs__heading">
+        <span class="tabs__item">
+            {% if page.url == '/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
+            <a href="/"
+               id="blog-title"
+               class="tab{% if page.url == '/' %} tab--active{% elsif page.url == '/about' or page.url == '/about/' %} tab--distant{% endif %}"
+               hx-get="/"
+               hx-target="main"
+               hx-select="main"
+               hx-swap="outerHTML"
+               hx-push-url="true">Blog</a>
+        </span>
+        <span class="tabs__item">
+            {% if page.url == '/projects' or page.url == '/projects/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
+            <a href="/projects"
+               id="projects-title"
+               class="tab{% if page.url == '/projects' or page.url == '/projects/' %} tab--active{% endif %}"
+               hx-get="/projects"
+               hx-target="main"
+               hx-select="main"
+               hx-swap="outerHTML"
+               hx-push-url="true">Projects</a>
+        </span>
+        <span class="tabs__item">
+            {% if page.url == '/about' or page.url == '/about/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
+            <a href="/about"
+               id="about-title"
+               class="tab{% if page.url == '/about' or page.url == '/about/' %} tab--active{% elsif page.url == '/' %} tab--distant{% endif %}"
+               hx-get="/about"
+               hx-target="main"
+               hx-select="main"
+               hx-swap="outerHTML"
+               hx-push-url="true">About</a>
+        </span>
+    </h2>
 </nav>

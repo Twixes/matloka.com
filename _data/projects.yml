@@ -1,0 +1,158 @@
+- name: PostHog
+  slug: posthog
+  kicker: Day job
+  status: $4M+ MRR
+  status_tooltip: Fair, not sure this fully counts
+  url: https://posthog.com
+  image:
+      url: https://posthog.com/images/og/default.png
+      alt: PostHog preview
+  what: >-
+      An open-source product OS for product engineers: analytics, feature flags, experiments, session replay, surveys, data warehouse, CDP, error tracking, and more.
+  why: >-
+      I joined at seed in 2020 and kept finding seams worth building across product analytics, ingestion, permissions, design systems, AI, LLM analytics, and now agents.
+  links:
+      - label: posthog.com
+        icon: website
+        url: https://posthog.com
+      - label: GitHub
+        icon: github
+        url: https://github.com/PostHog/posthog
+
+- name: SketchViz
+  slug: sketchviz
+  kicker: Commercial product
+  status: $350+ MRR
+  status_tooltip: Compounding growth!
+  url: https://sketchviz.app
+  image:
+      url: https://sketchviz.app/opengraph-image.png
+      alt: Sketchviz preview
+  what: >-
+      Turns rough SketchUp and Revit renders into polished architectural visuals.
+  why: >-
+      TODO: Add the personal reason I decided to build a commercial architectural visualization product.
+  links:
+      - label: sketchviz.app
+        icon: website
+        url: https://sketchviz.app
+
+- name: Backname
+  slug: backname
+  kicker: Infrastructure
+  status: 93 ★
+  url: https://backname.io/
+  image:
+      url: https://backname.io/banner.png
+      alt: Backname preview
+  what: >-
+      A DNS server where every IP address gets its own domain.
+  why: >-
+      TODO: Add the personal itch behind giving every IP address its own domain.
+  links:
+      - label: backname.io
+        icon: website
+        url: https://backname.io/
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/backname
+
+- name: PyPI Assistant
+  slug: pypi-assistant
+  kicker: Developer tool
+  status: 36 ★
+  url: https://marketplace.visualstudio.com/items?itemName=twixes.pypi-assistant
+  image:
+      url: https://repository-images.githubusercontent.com/263972665/27d75b94-9ec0-48d8-98de-4c1134819121
+      alt: PyPI Assistant preview
+  what: >-
+      A VS Code extension that makes Python dependency files easier to understand and edit.
+  why: >-
+      TODO: Add the Python dependency pain or editor workflow that made me want this to exist.
+  links:
+      - label: VSC Marketplace
+        icon: marketplace
+        url: https://marketplace.visualstudio.com/items?itemName=twixes.pypi-assistant
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/pypi-assistant
+
+- name: RFC123
+  slug: rfc123
+  kicker: Collaboration
+  status: 9 ★
+  url: https://rfc123.com
+  image:
+      url: https://opengraph.githubassets.com/e1b837f0182d9841a75ce25945834fb0f073178e8c0884aa5f3a6f7e8ac88520/Twixes/rfc123
+      alt: RFC123 preview
+  what: >-
+      A collaborative RFC review surface built around GitHub pull requests.
+  why: >-
+      TODO: Add the personal/team RFC workflow frustration that made me start this.
+  links:
+      - label: rfc123.com
+        icon: website
+        url: https://rfc123.com
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/rfc123
+
+- name: Somsiad
+  slug: somsiad
+  kicker: Community bot
+  status: 21 ★
+  url: https://somsiad.net
+  image:
+      url: https://repository-images.githubusercontent.com/143029390/c2561500-925c-11eb-9c8b-ce0723eb598f
+      alt: Somsiad preview
+  what: >-
+      A Polish Discord bot with music, moderation, reminders, polls, search integrations, activity stats, birthdays, and assorted server rituals.
+  why: >-
+      TODO: Add the community or server story behind why Somsiad became worth years of tinkering.
+  links:
+      - label: somsiad.net
+        icon: website
+        url: https://somsiad.net
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/somsiad
+
+- name: pip-requirements-js
+  slug: pip-requirements-js
+  kicker: Parser library
+  status: 10 ★
+  url: https://www.npmjs.com/package/pip-requirements-js
+  image:
+      url: https://opengraph.githubassets.com/4a2cd4e29b89141582c0beb5388c2e67cca055e8786073d2229fa8d25bdc88b3/Twixes/pip-requirements-js
+      alt: pip-requirements-js preview
+  what: >-
+      A TypeScript parser for pip requirements files, built to power PyPI Assistant.
+  why: >-
+      I needed a real parser to power PyPI Assistant, and the browser/editor world did not have the pip requirements parser I wanted.
+  links:
+      - label: npm
+        icon: package
+        url: https://www.npmjs.com/package/pip-requirements-js
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/pip-requirements-js
+
+- name: Hubmeter
+  slug: hubmeter
+  kicker: Analytics
+  status: 13 ★
+  url: https://hubmeter.io
+  image:
+      url: https://hubmeter.io/preview.png
+      alt: Hubmeter preview
+  what: >-
+      A GitHub activity visualizer that answers when someone actually codes, reviews, and ships.
+  why: >-
+      I wanted to answer a frivolous but revealing question: when do people actually code, review, and ship on GitHub?
+  links:
+      - label: hubmeter.io
+        icon: website
+        url: https://hubmeter.io
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/hubmeter

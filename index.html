@@ -9,6 +9,8 @@ image:
 {%- include header.html -%}
 
 <main>
-{%- include tabs.html -%}
+<section class="page-hero" aria-label="Blog">
+    {%- include tabs.html eyebrow="Rambling / posting" -%}
+</section>
 {%- if site.posts.size > 0 -%} {%- include posts.html -%} {%- endif -%}
 </main>
