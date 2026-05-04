@@ -8,9 +8,9 @@
       url: https://posthog.com/images/og/default.png
       alt: PostHog preview
   what: >-
-      An open-source product OS for product engineers: analytics, feature flags, experiments, session replay, surveys, data warehouse, CDP, error tracking, and more.
+      Open-source product OS for product engineers: analytics, feature flags, experiments, session replay, surveys, data warehouse, CDP, error tracking, and more.
   why: >-
-      I joined at seed in 2020 and kept finding seams worth building across product analytics, ingestion, permissions, design systems, AI, LLM analytics, and now agents.
+      I joined at seed in 2020 and kept finding things to build across product analytics, data processing, design, and now agents. All to help developers build successful products, as charts go up and to the right.
   links:
       - label: posthog.com
         icon: website
@@ -21,7 +21,7 @@
 
 - name: SketchViz
   slug: sketchviz
-  kicker: Commercial product
+  kicker: Architecture AI
   status: $350+ MRR
   status_tooltip: Compounding growth!
   url: https://sketchviz.app
@@ -29,7 +29,7 @@
       url: https://sketchviz.app/opengraph-image.png
       alt: Sketchviz preview
   what: >-
-      Turns rough SketchUp and Revit renders into polished architectural visuals.
+       Platform for next-gen architectural visualization with visual AI: turn rough SketchUp and Revit renders into polished realistics visuals with 10x less effort.
   why: >-
       TODO: Add the personal reason I decided to build a commercial architectural visualization product.
   links:
@@ -39,14 +39,14 @@
 
 - name: Backname
   slug: backname
-  kicker: Infrastructure
+  kicker: Networking service
   status: 93 ★
   url: https://backname.io/
   image:
       url: https://backname.io/banner.png
       alt: Backname preview
   what: >-
-      A DNS server where every IP address gets its own domain.
+      DNS server where every IP address gets its own domain.
   why: >-
       TODO: Add the personal itch behind giving every IP address its own domain.
   links:
@@ -59,14 +59,14 @@
 
 - name: PyPI Assistant
   slug: pypi-assistant
-  kicker: Developer tool
+  kicker: VS Code extension
   status: 36 ★
   url: https://marketplace.visualstudio.com/items?itemName=twixes.pypi-assistant
   image:
       url: https://repository-images.githubusercontent.com/263972665/27d75b94-9ec0-48d8-98de-4c1134819121
       alt: PyPI Assistant preview
   what: >-
-      A VS Code extension that makes Python dependency files easier to understand and edit.
+      VS Code extension that makes Python dependency files easier to understand and edit.
   why: >-
       TODO: Add the Python dependency pain or editor workflow that made me want this to exist.
   links:
@@ -77,38 +77,18 @@
         icon: github
         url: https://github.com/Twixes/pypi-assistant
 
-- name: RFC123
-  slug: rfc123
-  kicker: Collaboration
-  status: 9 ★
-  url: https://rfc123.com
-  image:
-      url: https://opengraph.githubassets.com/e1b837f0182d9841a75ce25945834fb0f073178e8c0884aa5f3a6f7e8ac88520/Twixes/rfc123
-      alt: RFC123 preview
-  what: >-
-      A collaborative RFC review surface built around GitHub pull requests.
-  why: >-
-      TODO: Add the personal/team RFC workflow frustration that made me start this.
-  links:
-      - label: rfc123.com
-        icon: website
-        url: https://rfc123.com
-      - label: GitHub
-        icon: github
-        url: https://github.com/Twixes/rfc123
-
 - name: Somsiad
   slug: somsiad
-  kicker: Community bot
+  kicker: Discord bot
   status: 21 ★
   url: https://somsiad.net
   image:
       url: https://repository-images.githubusercontent.com/143029390/c2561500-925c-11eb-9c8b-ce0723eb598f
       alt: Somsiad preview
   what: >-
-      A Polish Discord bot with music, moderation, reminders, polls, search integrations, activity stats, birthdays, and assorted server rituals.
+      Polish Discord bot with music, moderation, reminders, polls, search integrations, activity stats, birthday celebrations, AI, and more.
   why: >-
-      TODO: Add the community or server story behind why Somsiad became worth years of tinkering.
+      It started as a way to give friends some tools, and some fun. It grew from there into thousands of users - but it's still about friends.
   links:
       - label: somsiad.net
         icon: website
@@ -116,6 +96,26 @@
       - label: GitHub
         icon: github
         url: https://github.com/Twixes/somsiad
+
+- name: Hubmeter
+  slug: hubmeter
+  kicker: Analytics for fun
+  status: 13 ★
+  url: https://hubmeter.io
+  image:
+      url: https://hubmeter.io/preview.png
+      alt: Hubmeter preview
+  what: >-
+      GitHub activity visualizer that answers when are we actually coding, reviewing, shipping.
+  why: >-
+      I wanted to answer a frivolous but revealing question: when do people actually code, review, and ship on GitHub?
+  links:
+      - label: hubmeter.io
+        icon: website
+        url: https://hubmeter.io
+      - label: GitHub
+        icon: github
+        url: https://github.com/Twixes/hubmeter
 
 - name: pip-requirements-js
   slug: pip-requirements-js
@@ -126,7 +126,7 @@
       url: https://opengraph.githubassets.com/4a2cd4e29b89141582c0beb5388c2e67cca055e8786073d2229fa8d25bdc88b3/Twixes/pip-requirements-js
       alt: pip-requirements-js preview
   what: >-
-      A TypeScript parser for pip requirements files, built to power PyPI Assistant.
+      TypeScript parser for pip requirements files, built to power PyPI Assistant.
   why: >-
       I needed a real parser to power PyPI Assistant, and the browser/editor world did not have the pip requirements parser I wanted.
   links:
@@ -137,22 +137,22 @@
         icon: github
         url: https://github.com/Twixes/pip-requirements-js
 
-- name: Hubmeter
-  slug: hubmeter
-  kicker: Analytics
-  status: 13 ★
-  url: https://hubmeter.io
+- name: RFC123
+  slug: rfc123
+  kicker: Collaboration SaaS
+  status: 9 ★
+  url: https://rfc123.com
   image:
-      url: https://hubmeter.io/preview.png
-      alt: Hubmeter preview
+      url: https://opengraph.githubassets.com/e1b837f0182d9841a75ce25945834fb0f073178e8c0884aa5f3a6f7e8ac88520/Twixes/rfc123
+      alt: RFC123 preview
   what: >-
-      A GitHub activity visualizer that answers when someone actually codes, reviews, and ships.
+      Collaborative RFC review surface built around GitHub pull requests.
   why: >-
-      I wanted to answer a frivolous but revealing question: when do people actually code, review, and ship on GitHub?
+      TODO: Add the personal/team RFC workflow frustration that made me start this.
   links:
-      - label: hubmeter.io
+      - label: rfc123.com
         icon: website
-        url: https://hubmeter.io
+        url: https://rfc123.com
       - label: GitHub
         icon: github
-        url: https://github.com/Twixes/hubmeter
+        url: https://github.com/Twixes/rfc123
