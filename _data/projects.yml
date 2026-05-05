@@ -1,7 +1,7 @@
 - name: PostHog
   slug: posthog
   kicker: Day job
-  status: $4M+ MRR
+  status: $x,000,000 MRR
   status_tooltip: Fair, not sure this fully counts
   url: https://posthog.com
   image:
@@ -22,7 +22,7 @@
 - name: SketchViz
   slug: sketchviz
   kicker: Architecture AI
-  status: $350+ MRR
+  status: $350 MRR
   status_tooltip: Compounding growth!
   url: https://sketchviz.app
   image:
