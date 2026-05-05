@@ -1,10 +1,30 @@
+{% assign tabs_cur = -1 %}
+{% if page.url == '/' %}
+    {% assign tabs_cur = 0 %}
+{% elsif page.url == '/projects' or page.url == '/projects/' %}
+    {% assign tabs_cur = 1 %}
+{% elsif page.url == '/photos' or page.url == '/photos/' %}
+    {% assign tabs_cur = 2 %}
+{% elsif page.url == '/about' or page.url == '/about/' %}
+    {% assign tabs_cur = 3 %}
+{% endif %}
+
+{% assign raw = tabs_cur | minus: 0 %}
+{% if raw < 0 %}{% assign tabs_d_blog = raw | times: -1 %}{% else %}{% assign tabs_d_blog = raw %}{% endif %}
+{% assign raw = tabs_cur | minus: 1 %}
+{% if raw < 0 %}{% assign tabs_d_projects = raw | times: -1 %}{% else %}{% assign tabs_d_projects = raw %}{% endif %}
+{% assign raw = tabs_cur | minus: 2 %}
+{% if raw < 0 %}{% assign tabs_d_photos = raw | times: -1 %}{% else %}{% assign tabs_d_photos = raw %}{% endif %}
+{% assign raw = tabs_cur | minus: 3 %}
+{% if raw < 0 %}{% assign tabs_d_about = raw | times: -1 %}{% else %}{% assign tabs_d_about = raw %}{% endif %}
+
 <nav class="tabs" aria-label="Primary sections">
     <h2 class="tabs__heading">
         <span class="tabs__item">
             {% if page.url == '/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
             <a href="/"
                id="blog-title"
-               class="tab{% if page.url == '/' %} tab--active{% elsif page.url == '/about' or page.url == '/about/' %} tab--distant{% endif %}"
+               class="tab{% if tabs_d_blog == 0 %} tab--active{% else %} tab--dist-{{ tabs_d_blog }}{% endif %}"
                hx-get="/"
                hx-target="main"
                hx-select="main"
@@ -15,7 +35,7 @@
             {% if page.url == '/projects' or page.url == '/projects/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
             <a href="/projects"
                id="projects-title"
-               class="tab{% if page.url == '/projects' or page.url == '/projects/' %} tab--active{% endif %}"
+               class="tab{% if tabs_d_projects == 0 %} tab--active{% else %} tab--dist-{{ tabs_d_projects }}{% endif %}"
                hx-get="/projects"
                hx-target="main"
                hx-select="main"
@@ -23,10 +43,21 @@
                hx-push-url="true">Projects</a>
         </span>
         <span class="tabs__item">
+            {% if page.url == '/photos' or page.url == '/photos/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
+            <a href="/photos"
+               id="photos-title"
+               class="tab{% if tabs_d_photos == 0 %} tab--active{% else %} tab--dist-{{ tabs_d_photos }}{% endif %}"
+               hx-get="/photos"
+               hx-target="main"
+               hx-select="main"
+               hx-swap="outerHTML"
+               hx-push-url="true">Photos</a>
+        </span>
+        <span class="tabs__item">
             {% if page.url == '/about' or page.url == '/about/' %}<span class="eyebrow tabs__eyebrow">{{ include.eyebrow }}</span>{% endif %}
             <a href="/about"
                id="about-title"
-               class="tab{% if page.url == '/about' or page.url == '/about/' %} tab--active{% elsif page.url == '/' %} tab--distant{% endif %}"
+               class="tab{% if tabs_d_about == 0 %} tab--active{% else %} tab--dist-{{ tabs_d_about }}{% endif %}"
                hx-get="/about"
                hx-target="main"
                hx-select="main"

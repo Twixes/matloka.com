@@ -22,11 +22,26 @@ Common flags:
 - `--drafts` - Include draft posts from `_drafts/` directory
 - `--livereload` - Auto-reload browser on file changes
 
+### Unsplash `/photos` locally
+
+CI merges `UNSPLASH_ACCESS_KEY` with `_config.yml` via a temp YAML file (see `.github/workflows/jekyll.yml`). To mirror that locally:
+
+```bash
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+export UNSPLASH_ACCESS_KEY='your-access-key'
+base="$(mktemp "${TMPDIR:-/tmp}/matloka-unsplash.XXXXXX")"
+tmp="${base}.yml"
+mv "$base" "$tmp"
+ruby -ryaml -e 'print({"unsplash"=>{"username"=>"matlokam","access_key"=>ENV.fetch("UNSPLASH_ACCESS_KEY","")}}.to_yaml)' >"$tmp"
+trap 'rm -f "$tmp"' EXIT
+bundle exec jekyll serve --config "_config.yml,$tmp"
+```
+
 ### Building
 ```bash
 bundle exec jekyll build
 ```
-This generates the static site in the `_site/` directory.
+This generates the static site in the `_site/` directory. Use the same `--config "_config.yml,$tmp"` pattern as above if you need `/photos` with a key.
 
 ## Architecture
 

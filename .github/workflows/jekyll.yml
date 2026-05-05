@@ -44,10 +44,22 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+          LANG: en_US.UTF-8
+          LC_ALL: en_US.UTF-8
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        run: |
+          set -euo pipefail
+          CONFIG_FILES="_config.yml"
+          if [ -n "${UNSPLASH_ACCESS_KEY:-}" ]; then
+            TMP="$(mktemp --suffix=.yml)"
+            ruby -ryaml -e 'print({"unsplash"=>{"username"=>"matlokam","access_key"=>ENV.fetch("UNSPLASH_ACCESS_KEY","")}}.to_yaml)' >"$TMP"
+            CONFIG_FILES="_config.yml,$TMP"
+            trap 'rm -f "$TMP"' EXIT
+          fi
+          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --config "$CONFIG_FILES"
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3

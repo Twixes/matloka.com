@@ -35,3 +35,7 @@ kramdown:
     syntax_highlighter_opts:
         block:
             line_numbers: false
+
+# Unsplash portfolio (/photos)
+unsplash:
+    username: matlokam

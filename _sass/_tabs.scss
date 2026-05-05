@@ -36,9 +36,17 @@
     position: relative;
     line-height: 1.2;
     opacity: 0.4;
-    &--distant {
-        opacity: 0.25;
+
+    &--dist-1 {
+        opacity: 0.45;
     }
+    &--dist-2 {
+        opacity: 0.3;
+    }
+    &--dist-3 {
+        opacity: 0.2;
+    }
+
     &:hover:not(&--active) {
         opacity: 0.6;
     }
