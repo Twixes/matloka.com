@@ -3,6 +3,10 @@ layout: about
 title: Projects
 description: "Products, devtools, and useful infrastructure by Michael Matloka."
 permalink: /projects
+image:
+    path: /assets/banner.png
+    height: 640
+    width: 1280
 ---
 
 <section class="page-hero" aria-label="Projects">
@@ -34,13 +38,13 @@ permalink: /projects
                 <h3><a href="{{ project.url }}" target="_blank" title="Go to {{ primary_link.label }} ↗" aria-label="Go to {{ primary_link.label }} ↗">{{ project.name }}</a></h3>
                 <dl class="project-copy">
                     <div class="project-copy__item project-copy__item--what">
-                        <!--dt>What</dt-->
+                        <dt>What</dt>
                         <dd>{{ project.what }}</dd>
                     </div>
-                    <!--div class="project-copy__item project-copy__item--why{% if project.why contains 'TODO:' %} project-copy__item--placeholder{% endif %}">
+                    <div class="project-copy__item project-copy__item--why{% if project.why contains 'TODO:' %} project-copy__item--placeholder{% endif %}">
                         <dt>Why</dt>
                         <dd>{{ project.why }}</dd>
-                    </div-->
+                    </div>
                 </dl>
                 <div class="project-links">
                     {% for link in project.links %}

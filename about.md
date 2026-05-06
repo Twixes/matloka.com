@@ -2,6 +2,10 @@
 layout: about
 title: About
 permalink: /about
+image:
+    path: /assets/banner.png
+    height: 640
+    width: 1280
 ---
 
 <section class="page-hero" aria-label="About">

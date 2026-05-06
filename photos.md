@@ -3,6 +3,10 @@ layout: about
 title: Photos
 description: "Photography portfolio — shots published on Unsplash."
 permalink: /photos
+image:
+    path: /assets/banner.png
+    height: 640
+    width: 1280
 ---
 
 <section class="page-hero" aria-label="Photos">
