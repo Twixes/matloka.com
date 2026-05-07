@@ -38,12 +38,7 @@ image:
                 <h3><a href="{{ project.url }}" target="_blank" title="Go to {{ primary_link.label }} ↗" aria-label="Go to {{ primary_link.label }} ↗">{{ project.name }}</a></h3>
                 <dl class="project-copy">
                     <div class="project-copy__item project-copy__item--what">
-                        <dt>What</dt>
-                        <dd>{{ project.what }}</dd>
-                    </div>
-                    <div class="project-copy__item project-copy__item--why{% if project.why contains 'TODO:' %} project-copy__item--placeholder{% endif %}">
-                        <dt>Why</dt>
-                        <dd>{{ project.why }}</dd>
+                        {{ project.what }}
                     </div>
                 </dl>
                 <div class="project-links">
