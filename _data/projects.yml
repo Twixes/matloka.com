@@ -43,7 +43,7 @@
   status: 93 ★
   url: https://backname.io/
   image:
-      url: https://backname.io/banner.png
+      url: /assets/projects/backname.png
       alt: Backname preview
   what: >-
       DNS server where every IP address gets its own domain.
@@ -123,7 +123,7 @@
   status: 10 ★
   url: https://www.npmjs.com/package/pip-requirements-js
   image:
-      url: https://opengraph.githubassets.com/4a2cd4e29b89141582c0beb5388c2e67cca055e8786073d2229fa8d25bdc88b3/Twixes/pip-requirements-js
+      url: /assets/projects/pip-requirements-js.png
       alt: pip-requirements-js preview
   what: >-
       TypeScript parser for pip requirements files, built to power PyPI Assistant.
@@ -143,7 +143,7 @@
   status: 9 ★
   url: https://rfc123.com
   image:
-      url: https://opengraph.githubassets.com/e1b837f0182d9841a75ce25945834fb0f073178e8c0884aa5f3a6f7e8ac88520/Twixes/rfc123
+      url: /assets/projects/rfc123.png
       alt: RFC123 preview
   what: >-
       Collaborative RFC review surface built around GitHub pull requests.
