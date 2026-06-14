@@ -1,9 +1,6 @@
-.photo-section {
-    margin-top: 2.5rem;
-}
-
 .photos-root {
     min-height: 4rem;
+    margin-top: 1rem;
 
     &:has(> .photos-status) {
         min-height: 40rem;
@@ -43,6 +40,12 @@
     gap: 0.625rem;
 }
 
+// Dimmed instantly while a hover takeover is showing, so the enlarged photo
+// stands out. Driven purely by CSS: the overlay lives on <body>, so match from there.
+body:has(.photo-overlay.is-visible) .photo-masonry {
+    opacity: 0.25;
+}
+
 .photo-item {
     margin: 0;
     min-width: 0;
@@ -59,46 +62,88 @@
         outline: 0.125rem solid var(--magenta);
         outline-offset: 0.125rem;
     }
+}
 
-    &:hover .photo-item__meta,
-    &:focus-visible .photo-item__meta {
-        opacity: 1;
+// Hover takeover: a fixed overlay filling the whole viewport, showing the hovered photo
+// enlarged. The viewport is the concern, not the content column, so landscape photos can use
+// the full width. No backdrop — only the photo takes over. It ignores the pointer, so mouse
+// navigation across the grid underneath keeps firing mouseenter/mouseleave and the takeover
+// swaps photo as you move. No transitions: it appears and disappears instantly.
+.photo-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    &.is-visible {
+        display: flex;
     }
 }
 
-.photo-item__meta {
+// The frame is the photo's contain box — the largest box of the photo's aspect ratio that fits
+// the viewport minus a margin. JS sizes it (see sizeFrame) so the takeover size depends only on
+// aspect ratio, not the loaded image's resolution — the cached preview and the hi-res swap render
+// identically — and it's the positioning context for the location chip.
+.photo-overlay__frame {
+    position: relative;
+}
+
+.photo-overlay__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // Override the global `img` caps (max-height: min(75vh, 40rem)) so the photo fills the frame.
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    margin: 0;
+}
+
+// Location chip overlaid on the bottom-right corner of the photo, inset by its margin.
+// Always shown while the takeover is up; until the location loads it holds a skeleton placeholder.
+.photo-overlay__bar {
     position: absolute;
     right: 0;
     bottom: 0;
-    z-index: 1;
-    margin: 0 0.35rem 0.35rem 0;
-    padding: 0.35rem 0.5rem;
-    max-width: calc(100% - 0.75rem);
+    margin: 0.75rem;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.125rem;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity var(--transition-duration-short) ease;
-    background: #000;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: 70%;
+    padding: 0.4rem 0.65rem;
     box-sizing: border-box;
+    background: var(--foreground);
 }
 
-.photo-item__meta-line {
-    font-family: var(--font-family-heading);
+.photo-overlay__bar-text {
+    font-family: var(--font-family-body);
     font-size: var(--font-size-tag);
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
-    color: #fff;
+    color: var(--background);
     text-align: right;
-    max-width: 100%;
     overflow-wrap: anywhere;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .photo-item__meta {
-        transition: none;
+.photo-overlay__bar-skeleton {
+    display: none;
+    width: 11rem;
+    max-width: 40vw;
+    height: 0.8rem;
+    background: var(--background);
+    opacity: 0.35;
+}
+
+.photo-overlay__bar.is-skeleton {
+    .photo-overlay__bar-text {
+        display: none;
+    }
+
+    .photo-overlay__bar-skeleton {
+        display: block;
     }
 }
 
@@ -110,18 +155,10 @@
     max-height: none;
 }
 
-.photos-more {
-    margin: 1.25rem 0 0;
-    display: flex;
-    justify-content: center;
-
-    button:disabled {
-        opacity: 0.55;
-        cursor: wait;
-        transform: none;
-        box-shadow: calc(var(--border-thickness) + var(--shadow-distance) / 2)
-            calc(var(--border-thickness) + var(--shadow-distance) / 2) var(--foreground);
-    }
+// Invisible trigger for infinite scroll; observed by IntersectionObserver.
+.photos-sentinel {
+    width: 100%;
+    height: 1px;
 }
 
 @media screen and (min-width: 50rem) {

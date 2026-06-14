@@ -1,10 +1,175 @@
 ;(function () {
     var PER_PAGE_DEFAULT = 24
+    var LOCATION_DELAY_MS = 250
+    var OVERLAY_MAX_DIM = 3000
     var resizeTimer
+    var overlayEl = null
+    var overlayFrame = null
+    var overlayImg = null
+    var overlayBar = null
+    var overlayBarText = null
+    var overlayBarSkeleton = null
+    var hoverCapable = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    // The list endpoint omits location, so it's fetched per photo via GET /photos/:id on hover.
+    var locationCache = {}
+    var locationTimer = null
+    var currentPhotoId = null
+    var currentAspect = 1
+    // Tracks which photos' viewport-sized hi-res URL has already decoded, so re-hovers skip the swap.
+    var hiResLoaded = {}
 
     function text(str) {
         if (str == null) return ''
         return String(str)
+    }
+
+    function getOverlay() {
+        if (overlayEl) return overlayEl
+        overlayEl = document.createElement('div')
+        overlayEl.className = 'photo-overlay'
+        overlayEl.setAttribute('aria-hidden', 'true')
+        // The frame shrink-wraps to the rendered photo, so the chip inside it can be anchored
+        // to the photo's real corner in pure CSS.
+        overlayFrame = document.createElement('div')
+        overlayFrame.className = 'photo-overlay__frame'
+        overlayImg = document.createElement('img')
+        overlayImg.className = 'photo-overlay__img'
+        overlayImg.alt = ''
+        overlayImg.decoding = 'async'
+        overlayFrame.appendChild(overlayImg)
+        overlayBar = document.createElement('div')
+        overlayBar.className = 'photo-overlay__bar'
+        overlayBarSkeleton = document.createElement('span')
+        overlayBarSkeleton.className = 'photo-overlay__bar-skeleton'
+        overlayBar.appendChild(overlayBarSkeleton)
+        overlayBarText = document.createElement('span')
+        overlayBarText.className = 'photo-overlay__bar-text'
+        overlayBar.appendChild(overlayBarText)
+        overlayFrame.appendChild(overlayBar)
+        overlayEl.appendChild(overlayFrame)
+        document.body.appendChild(overlayEl)
+        return overlayEl
+    }
+
+    function showOverlay(photo, accessKey) {
+        var urls = photo.urls || {}
+        var lowSrc = urls.regular || urls.small || ''
+        if (!lowSrc) return
+        var photoId = photo.id
+        var hi = overlaySrc(photo)
+        var el = getOverlay()
+        // Size the frame to the photo's contain box so the takeover size depends only on aspect
+        // ratio, not the loaded resolution (cached preview and hi-res swap render identically).
+        currentAspect = photo.width && photo.height ? photo.width / photo.height : 1
+        sizeFrame()
+        // Show the (already grid-cached) regular image instantly, then swap to the crisp one once
+        // it decodes — unless we've loaded that hi-res before, in which case use it straight away.
+        overlayImg.src = hi && hiResLoaded[photoId] === hi ? hi : lowSrc
+        currentPhotoId = photoId
+        loadLocation(photoId, accessKey)
+        el.classList.add('is-visible')
+        if (hi && overlayImg.src !== hi) upgradeToHiRes(photoId, hi)
+    }
+
+    /** Size the frame to the largest box of the current photo's aspect ratio that fits the viewport
+     *  minus a margin. Computed in JS for cross-browser reliability (Safari mishandles the equivalent
+     *  nested calc()/var() in CSS). Pure layout reads + two writes; only runs on show and resize. */
+    function sizeFrame() {
+        if (!overlayFrame) return
+        var margin = 2 * remPx()
+        var bw = (window.innerWidth || document.documentElement.clientWidth) - 2 * margin
+        var bh = (window.innerHeight || document.documentElement.clientHeight) - 2 * margin
+        overlayFrame.style.width = Math.max(0, Math.min(bw, bh * currentAspect)) + 'px'
+        overlayFrame.style.height = Math.max(0, Math.min(bw / currentAspect, bh)) + 'px'
+    }
+
+    var remCache = null
+    function remPx() {
+        if (remCache == null) remCache = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
+        return remCache
+    }
+
+    /** A viewport-sized, DPR-aware image URL via Unsplash's raw (Imgix) endpoint, for the takeover. */
+    function overlaySrc(photo) {
+        var urls = photo.urls || {}
+        if (!urls.raw) return urls.full || urls.regular || urls.small || ''
+        var dpr = Math.min(window.devicePixelRatio || 1, 2)
+        var vw = window.innerWidth || document.documentElement.clientWidth
+        var vh = window.innerHeight || document.documentElement.clientHeight
+        var w = Math.min(Math.round(vw * dpr), OVERLAY_MAX_DIM)
+        var h = Math.min(Math.round(vh * dpr), OVERLAY_MAX_DIM)
+        var sep = urls.raw.indexOf('?') >= 0 ? '&' : '?'
+        // fit=max scales to fit within w×h preserving aspect, never upscaling beyond the original.
+        return urls.raw + sep + 'w=' + w + '&h=' + h + '&fit=max&auto=format&q=85'
+    }
+
+    function upgradeToHiRes(photoId, hi) {
+        // Build the hi-res as a detached element and fully DECODE it before it touches the DOM.
+        // Swapping `src` on the visible <img> would re-decode in place, blanking it for a frame
+        // (the flash); replacing it with an already-decoded node paints with no gap.
+        var next = new Image()
+        next.className = 'photo-overlay__img'
+        next.alt = ''
+        next.decoding = 'async'
+        next.src = hi
+        var apply = function () {
+            hiResLoaded[photoId] = hi
+            // Only swap if the user is still hovering this same photo.
+            if (currentPhotoId === photoId && isOverlayVisible() && overlayImg) {
+                overlayImg.replaceWith(next)
+                overlayImg = next
+            }
+        }
+        if (next.decode) next.decode().then(apply, function () {})
+        else next.onload = apply
+    }
+
+    function hideOverlay() {
+        clearTimeout(locationTimer)
+        currentPhotoId = null
+        if (overlayEl) overlayEl.classList.remove('is-visible')
+    }
+
+    function isOverlayVisible() {
+        return overlayEl && overlayEl.classList.contains('is-visible')
+    }
+
+    /** Show the cached location if known, otherwise the skeleton bar + fetch after a hover delay. */
+    function loadLocation(photoId, accessKey) {
+        clearTimeout(locationTimer)
+        if (Object.prototype.hasOwnProperty.call(locationCache, photoId)) {
+            setLocation(locationCache[photoId])
+            return
+        }
+        setLocation(null)
+        locationTimer = setTimeout(function () {
+            fetchLocation(photoId, accessKey)
+        }, LOCATION_DELAY_MS)
+    }
+
+    /** Pass a location string to show it (empty string hides the bar), or null for the loading skeleton. */
+    function setLocation(str) {
+        var loading = str == null
+        overlayBar.classList.toggle('is-skeleton', loading)
+        overlayBarText.textContent = loading ? '' : text(str)
+        overlayBar.style.display = loading || str ? '' : 'none'
+    }
+
+    function fetchLocation(photoId, accessKey) {
+        if (!photoId || !accessKey) return
+        fetch('https://api.unsplash.com/photos/' + encodeURIComponent(photoId), {
+            headers: { Authorization: 'Client-ID ' + accessKey },
+        })
+            .then(function (res) {
+                return res.ok ? res.json() : null
+            })
+            .then(function (data) {
+                var loc = data ? formatPhotoLocation(data.location) : ''
+                locationCache[photoId] = loc
+                // Only apply if the user is still hovering this same photo.
+                if (currentPhotoId === photoId && isOverlayVisible()) setLocation(loc)
+            })
+            .catch(function () {})
     }
 
     /** Matches breakpoints in _sass/_photos.scss: 1 / 2 / 3 columns. */
@@ -21,23 +186,10 @@
     }
 
     function formatPhotoLocation(loc) {
-        if (!loc || typeof loc !== 'object') return ''
-        if (loc.title) return String(loc.title).trim()
-        var bits = []
-        if (loc.name) bits.push(String(loc.name).trim())
-        if (loc.city) bits.push(String(loc.city).trim())
-        if (loc.country) bits.push(String(loc.country).trim())
-        var seen = {}
-        var out = []
-        bits.forEach(function (b) {
-            if (!b) return
-            var k = b.toLowerCase()
-            if (!seen[k]) {
-                seen[k] = true
-                out.push(b)
-            }
-        })
-        return out.join(', ')
+        // Unsplash's `name` is already a composed, human-readable label that includes the
+        // city and country — e.g. "Montreal, Quebec, Canada" — so it's all we need.
+        if (!loc || typeof loc !== 'object' || !loc.name) return ''
+        return String(loc.name).trim()
     }
 
     function renderPhoto(photo, accessKey) {
@@ -68,6 +220,15 @@
             triggerDownload(downloadLoc, accessKey)
         })
 
+        if (hoverCapable) {
+            link.addEventListener('mouseenter', function () {
+                showOverlay(photo, accessKey)
+            })
+            link.addEventListener('mouseleave', function () {
+                hideOverlay()
+            })
+        }
+
         var img = document.createElement('img')
         img.className = 'photo-item__img'
         img.src = src
@@ -82,18 +243,6 @@
         }
 
         link.appendChild(img)
-
-        var locationStr = formatPhotoLocation(photo.location)
-        if (locationStr) {
-            var meta = document.createElement('span')
-            meta.className = 'photo-item__meta'
-            meta.setAttribute('aria-hidden', 'true')
-            var locEl = document.createElement('span')
-            locEl.className = 'photo-item__meta-line'
-            locEl.textContent = locationStr
-            meta.appendChild(locEl)
-            link.appendChild(meta)
-        }
 
         article.appendChild(link)
         return article
@@ -141,8 +290,8 @@
         if (!masonry) {
             masonry = document.createElement('div')
             masonry.className = 'photo-masonry'
-            var more = root.querySelector('.photos-more')
-            if (more) root.insertBefore(masonry, more)
+            var sentinel = root.querySelector('.photos-sentinel')
+            if (sentinel) root.insertBefore(masonry, sentinel)
             else root.appendChild(masonry)
         }
         return masonry
@@ -188,30 +337,51 @@
         }
     }
 
-    function removeLoadMore(root) {
-        var prev = root.querySelector('.photos-more')
-        if (prev) prev.remove()
+    function teardownInfiniteScroll(root) {
+        if (root.__photosObserver) {
+            root.__photosObserver.disconnect()
+            root.__photosObserver = null
+        }
+        var sentinel = root.querySelector('.photos-sentinel')
+        if (sentinel) sentinel.remove()
     }
 
-    function attachLoadMore(root, accessKey, username, perPage, nextPage) {
-        removeLoadMore(root)
-        var wrap = document.createElement('div')
-        wrap.className = 'photos-more'
-        var btn = document.createElement('button')
-        btn.type = 'button'
-        btn.textContent = 'Load more'
-        btn.addEventListener('click', function () {
-            btn.disabled = true
-            fetchPage(root, accessKey, username, perPage, nextPage, true)
-                .then(function () {
-                    btn.disabled = false
-                })
-                .catch(function () {
-                    btn.disabled = false
-                })
-        })
-        wrap.appendChild(btn)
-        root.appendChild(wrap)
+    /** Watch a sentinel at the end of the grid and pull the next page as it nears the viewport. */
+    function setupInfiniteScroll(root, accessKey, username, perPage) {
+        if (typeof IntersectionObserver === 'undefined') return
+        if (root.__photosObserver) return
+        var sentinel = document.createElement('div')
+        sentinel.className = 'photos-sentinel'
+        sentinel.setAttribute('aria-hidden', 'true')
+        root.appendChild(sentinel)
+        var observer = new IntersectionObserver(
+            function (entries) {
+                if (entries[0].isIntersecting) loadNextPage(root, accessKey, username, perPage)
+            },
+            { rootMargin: '800px 0px' }
+        )
+        observer.observe(sentinel)
+        root.__photosObserver = observer
+    }
+
+    function loadNextPage(root, accessKey, username, perPage) {
+        if (root.__loadingMore || !root.__hasMore) return
+        root.__loadingMore = true
+        fetchPage(root, accessKey, username, perPage, root.__nextPage, true)
+            .then(function () {
+                root.__loadingMore = false
+                // Re-arm so a still-visible sentinel (tall viewport) keeps loading until it scrolls off.
+                if (root.__hasMore && root.__photosObserver) {
+                    var s = root.querySelector('.photos-sentinel')
+                    if (s) {
+                        root.__photosObserver.unobserve(s)
+                        root.__photosObserver.observe(s)
+                    }
+                }
+            })
+            .catch(function () {
+                root.__loadingMore = false
+            })
     }
 
     function fetchPage(root, accessKey, username, perPage, page, append) {
@@ -240,13 +410,14 @@
             return res.json()
         }).then(function (photos) {
             if (!append) {
+                teardownInfiniteScroll(root)
                 root.innerHTML = ''
                 root.__unsplashPhotos = []
-            } else {
-                removeLoadMore(root)
             }
 
             if (!photos || !photos.length) {
+                root.__hasMore = false
+                teardownInfiniteScroll(root)
                 if (!append) {
                     showError(root, 'No public photos found for this Unsplash user.')
                 }
@@ -261,9 +432,10 @@
 
             renderGallery(root, root.__unsplashPhotos, accessKey)
 
-            if (photos.length >= perPage) {
-                attachLoadMore(root, accessKey, username, perPage, page + 1)
-            }
+            root.__nextPage = page + 1
+            root.__hasMore = photos.length >= perPage
+            if (root.__hasMore) setupInfiniteScroll(root, accessKey, username, perPage)
+            else teardownInfiniteScroll(root)
         })
     }
 
@@ -279,7 +451,10 @@
         }, 120)
     }
 
-    window.addEventListener('resize', scheduleReflowFromResize)
+    window.addEventListener('resize', function () {
+        if (isOverlayVisible()) sizeFrame()
+        scheduleReflowFromResize()
+    })
 
     function loadPhotos() {
         var root = document.getElementById('photos-root')
