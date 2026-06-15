@@ -7,7 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    gap: 0.25rem 0.75rem;
+    gap: 1.5rem 0.75rem;
     margin: 0;
     padding-top: 1rem;
     font-size: var(--font-size-title);
@@ -59,8 +59,5 @@
 @media screen and (max-aspect-ratio: 3/2) and (max-width: 40rem) {
     .tabs {
         margin: 0;
-    }
-    .tabs__heading {
-        gap: 0.125rem 0.75rem;
     }
 }

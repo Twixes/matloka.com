@@ -12,6 +12,10 @@ image:
     {%- include tabs.html eyebrow="Thinking / being" -%}
 </section>
 
+<div class="about-portrait">
+    <img src="{{ '/assets/about/me.jpg' | relative_url }}" alt="Michael Matloka" width="760" height="760">
+</div>
+
 **When I was 7, I always looked forward to the next new LEGO set to assemble.** But what I loved even more was building a new contraption out of all the bricks I had from _disassembling_ sets. Then one day, I deleted shell32.dll from the family Windows XP PC.
 
 It was at that moment I realized computers are much closer to LEGOs than magic.
