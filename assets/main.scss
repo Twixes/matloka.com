@@ -570,6 +570,42 @@ footer {
     margin-top: 2rem;
 }
 
+// A tilted, matted print of me floated into the top-right of the page. It shares
+// the project cards' hard-edged vocabulary (2px frame, offset CMYK shadow) but is
+// deliberately distinct: a white photo mat, a casual clockwise tilt, and it
+// straightens upright on hover. The body copy flows along its left edge.
+.about-portrait {
+    // Polaroid proportions, measured against the photo: 5% mat on the top and
+    // sides, 20% along the bottom. Driven off the photo width with content-box
+    // sizing, since CSS padding % resolves against the parent, not self.
+    --photo-w: clamp(10rem, 27%, 14.5rem);
+    box-sizing: content-box;
+    float: right;
+    width: var(--photo-w);
+    // Nudged down so the tilt's raised left corner sits level with the text
+    margin: 1.5rem 0 1rem 2rem;
+    padding: calc(var(--photo-w) * 0.05) calc(var(--photo-w) * 0.05) calc(var(--photo-w) * 0.2);
+    background: var(--background);
+    border: var(--border-thickness) solid var(--foreground);
+    box-shadow: calc(var(--border-thickness) + var(--shadow-distance))
+            calc(var(--border-thickness) + var(--shadow-distance)) 0 calc(var(--border-thickness) * -1) var(--foreground),
+        calc(var(--border-thickness) + var(--shadow-distance) * 2.5)
+            calc(var(--border-thickness) + var(--shadow-distance) * 2.5) 0 calc(var(--border-thickness) * -1)
+            var(--composite-color-1);
+    transform: rotate(2.5deg);
+    transition: transform var(--transition-duration-short) cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+        transform: rotate(0) scale(1.04);
+    }
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        margin: 0;
+    }
+}
+
 .project-section {
     margin-top: 2.5rem;
     h2 {
@@ -1071,6 +1107,12 @@ aside {
     }
     .page-hero {
         margin-top: 2rem;
+    }
+    .about-portrait {
+        // Too narrow to float — centre the framed print above the text
+        --photo-w: clamp(10rem, 52%, 13rem);
+        float: none;
+        margin: 1.5rem auto 2rem;
     }
     .project-card__body {
         padding: 0.875rem;

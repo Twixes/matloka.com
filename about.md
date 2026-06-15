@@ -12,9 +12,14 @@ image:
     {%- include tabs.html eyebrow="Thinking / being" -%}
 </section>
 
-**When I was 7, I always looked forward to the next new LEGO set to assemble.** But what I loved even more was building a new contraption out of all the bricks I had from _disassembling_ sets. Then one day, I deleted shell32.dll from the family Windows XP PC.
+**When I was 7, I always looked forward to the next LEGO set to assemble.**  
+But what I loved even more was building a new contraption out of all the bricks I had from _disassembling_ sets. Then one day, I deleted shell32.dll from the family Windows XP PC.
 
 It was at that moment I realized computers are much closer to LEGOs than magic.
+
+<div class="about-portrait">
+    <img src="{{ '/assets/about/me.jpg' | relative_url }}" alt="Michael Matloka" width="760" height="760">
+</div>
 
 **These days, I'm assembling software at [PostHog](https://posthog.com/) (YC W20).** Building self-driving for software products – agents solving product problems and gaps automatically, with ready-to-merge pull requests as the output.
 
