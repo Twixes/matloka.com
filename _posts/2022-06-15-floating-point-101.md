@@ -116,8 +116,8 @@ See for yourself how this all comes together using the calculator below! Toggle
 number comes out, or type in a number to see what it looks like in your computer's memory:
 
 <figure id="calculator">
-<iframe src="https://cdpn.io/pen/debug/xxpKxZw" height="172" title="IEEE 754 Floating Point Calculator" frameborder="0"></iframe>
-    <figcaption><i>widget 1</i> — A handy calculator. <a href="https://codepen.io/Twixes/pen/xxpKxZw?editors=0110" target="_blank">Play with this tool's code on CodePen!</a></figcaption>
+{% include floating-point-101/calculator.html %}
+    <figcaption><i>widget 1</i> — A handy calculator. <a href="https://github.com/Twixes/matloka.com/tree/master/assets/floating-point-101" target="_blank">View this tool's code on GitHub!</a></figcaption>
 </figure>
 
 ## The Precision
@@ -311,9 +311,9 @@ of the value in binary!
 
 > See how 0.2 is stored in binary by trying `0.2` in [the calculator](#calculator).  
 > The display shows the number's standard decimal representation, but the significand is extraordinarily precise
-> (specifically, it's shown with extra 5 digits of decimal precision thanks to being parsed with
-> [`decimal.js`](https://mikemcl.github.io/decimal.js/) instead of as a double), so that you can see how far the
-> floating-point value is from the original by pasting the decomposed form into a much more precise calculator.
+> (specifically, it's shown to 21 decimal places using integer arithmetic instead of double-precision arithmetic),
+> so that you can see how far the floating-point value is from the original by pasting the decomposed form into a
+> much more precise calculator.
 > [Try this out in Wolfram Alpha](https://www.wolframalpha.com/input?i=1.600000000000000088818+*+2%5E%281020-1023%29),
 > which is what I've done above.
 
