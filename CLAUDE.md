@@ -90,7 +90,7 @@ Key settings in `_config.yml`:
 
 ### Static Assets
 
-Assets like images and audio files live in the `/assets/` directory. Cache-busting is managed manually via query parameters (e.g., `?2025-07-31`).
+Assets like images and audio files live in the `/assets/` directory. Cache-busting is automatic: `_plugins/asset_hashes.rb` adds content-hash query parameters after the build. Use plain asset URLs without dates or manual versions; see README.md for details.
 
 ## Content Guidelines
 

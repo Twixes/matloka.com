@@ -43,6 +43,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Test asset cache invalidation
+        run: bundle exec ruby test/asset_hashes_test.rb
       - name: Build with Jekyll
         env:
           JEKYLL_ENV: production

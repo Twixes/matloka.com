@@ -70,7 +70,7 @@ image: /assets/path/to/banner.png  # optional social card image
 
 **Tags system:** Defined in `_data/tags.yml` with color and description metadata. Currently supports `blog` and `talk` tags.
 
-**Styling:** The site uses custom CSS (linked as `/assets/main.css` with cache-busting query params). Syntax highlighting is configured via Kramdown with `_sass/_syntax.scss`.
+**Styling:** The site uses custom CSS (linked as `/assets/main.css` with automatic content-hash query params). Syntax highlighting is configured via Kramdown with `_sass/_syntax.scss`.
 
 **Analytics:** PostHog is integrated in `base.html` for tracking.
 
@@ -90,7 +90,7 @@ Key settings in `_config.yml`:
 
 ### Static Assets
 
-Assets like images and audio files live in the `/assets/` directory. Cache-busting is managed manually via query parameters (e.g., `?2025-07-31`).
+Assets like images and audio files live in the `/assets/` directory. Use plain asset URLs: `_plugins/asset_hashes.rb` automatically adds content hashes after Jekyll builds, including references in HTML, JS, and compiled CSS. Do not add dates or manual version parameters. Page URLs stay clean; GitHub Pages controls HTML HTTP caching. See README.md for details and `bundle exec ruby test/asset_hashes_test.rb` for regression tests.
 
 ## Content Guidelines
 
