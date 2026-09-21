@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{ '/assets/floating-point-101/calculator.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/floating-point-101/calculator.css?2026-09-21' | relative_url }}">
 <div class="float-calculator" aria-label="IEEE 754 Floating Point Calculator">
-    <div class="float-calculator__input-row">
+    <div class="input-row">
         <input type="text" value="10" aria-label="Floating-point value" autocomplete="off" spellcheck="false">
         <span class="precision">double precision</span>
     </div>
@@ -9,12 +9,27 @@
         <span class="special-value" hidden></span>
     </div>
     <div class="bit-scroll" tabindex="0" role="group" aria-label="64 bits; scroll horizontally on small screens">
-        <div class="bit-array" role="group" aria-label="Toggle individual bits"></div>
+        <div class="bit-array" role="group" aria-label="Toggle individual bits">
+            {% for bit in (0..63) %}
+            {% if bit == 0 %}
+                {% assign field = 'sign' %}
+            {% elsif bit < 12 %}
+                {% assign field = 'exponent' %}
+            {% else %}
+                {% assign field = 'significand-fraction' %}
+            {% endif %}
+            <button type="button" class="bit {{ field }}" aria-label="Bit {{ bit }} ({{ field | replace: '-fraction', '' }})" aria-pressed="false">0</button>
+            {% endfor %}
+        </div>
     </div>
     <div class="legend" aria-hidden="true">
         <span class="sign">sign</span><span class="exponent">exponent</span><span class="significand-fraction">significand/mantissa</span>
     </div>
-    <div class="suggestions"><i>try these:</i></div>
+    <div class="suggestions">
+        <i>try these:</i>
+        {% assign examples = '1,0.2,Infinity,NaN,-0,0.3333333333333333,8e-323' | split: ',' %}
+        {% for value in examples %}<button type="button" data-value="{{ value }}">{{ value }}</button>{% endfor %}
+    </div>
     <noscript>Enable JavaScript to use the calculator.</noscript>
 </div>
-<script src="{{ '/assets/floating-point-101/calculator.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/floating-point-101/calculator.js?2026-09-21' | relative_url }}" defer></script>

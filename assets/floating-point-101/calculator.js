@@ -2,37 +2,22 @@
 ;(() => {
     const calculator = document.querySelector('.float-calculator')
     const input = calculator.querySelector('input')
-    const bitArray = calculator.querySelector('.bit-array')
+    const buttons = calculator.querySelectorAll('.bit')
     const significand = calculator.querySelector('button.significand')
     // Explicit big-endian byte order keeps bit positions independent of the machine.
     const view = new DataView(new ArrayBuffer(8))
     let binary = false
 
     const format = (value) => (Object.is(value, -0) ? '-0' : String(value))
-    const buttons = Array.from({ length: 64 }, (_, index) => {
-        const button = document.createElement('button')
-        const field = index === 0 ? 'sign' : index < 12 ? 'exponent' : 'significand'
-        button.type = 'button'
-        button.className = `bit bit--${field}`
-        button.setAttribute('aria-label', `Bit ${index} (${field})`)
-        button.addEventListener('click', () => {
-            const byte = Math.floor(index / 8)
-            view.setUint8(byte, view.getUint8(byte) ^ (1 << (7 - (index % 8))))
-            render()
-        })
-        bitArray.append(button)
-        return button
-    })
 
     function render(updateInput = true) {
         const value = view.getFloat64(0)
         if (updateInput) input.value = format(value)
-        const bits = Array.from({ length: 8 }, (_, index) => view.getUint8(index).toString(2).padStart(8, '0')).join('')
+        const bits = view.getBigUint64(0).toString(2).padStart(64, '0')
         const exponent = parseInt(bits.slice(1, 12), 2)
         const fraction = bits.slice(12)
         buttons.forEach((button, index) => {
             button.textContent = bits[index]
-            button.classList.toggle('bit--1', bits[index] === '1')
             button.setAttribute('aria-pressed', String(bits[index] === '1'))
         })
         calculator.querySelector('.formula').hidden = exponent === 2047
@@ -66,18 +51,18 @@
         binary = !binary
         render(false)
     })
-    const suggestions = calculator.querySelector('.suggestions')
-    for (const value of [1, 0.2, Infinity, NaN, -0, 0.3333333333333333, 8e-323]) {
-        const button = document.createElement('button')
-        button.type = 'button'
-        button.className = 'shortcut'
-        button.textContent = format(value)
+    buttons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            view.setFloat64(0, value)
+            view.setBigUint64(0, view.getBigUint64(0) ^ (1n << BigInt(63 - index)))
             render()
         })
-        suggestions.append(button)
-    }
-    view.setFloat64(0, 10)
+    })
+    calculator.querySelectorAll('[data-value]').forEach((button) => {
+        button.addEventListener('click', () => {
+            view.setFloat64(0, Number(button.dataset.value))
+            render()
+        })
+    })
+    view.setFloat64(0, Number(input.value))
     render()
 })()
