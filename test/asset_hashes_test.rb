@@ -107,6 +107,13 @@ class AssetHashesTest < Minitest::Test
     assert_includes read('feed.xml'), "/assets/image.png?v=#{hash_for('assets/image.png')}&quot;"
   end
 
+  def test_versions_assets_in_exported_htm_presentations_but_keeps_page_links_clean
+    write('slides/engine/main.css', 'body {}')
+    write('slides/index.htm', '<link href="engine/main.css"><a href="index.htm">Slides</a>')
+    run_hashes
+    assert_equal "<link href=\"engine/main.css?v=#{hash_for('slides/engine/main.css')}\"><a href=\"index.htm\">Slides</a>", read('slides/index.htm')
+  end
+
   def test_jekyll_hashes_compiled_sass_and_rebuilds_when_an_import_changes
     source = File.join(@directory, 'source')
     destination = File.join(@directory, 'output')

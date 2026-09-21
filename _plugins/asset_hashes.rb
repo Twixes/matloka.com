@@ -5,8 +5,8 @@ require 'uri'
 # the bytes we actually serve. No filters or manual version bumps are needed.
 module AssetHashes
   class Build
-    TEXT_EXTENSIONS = %w[.html .css .js .mjs .svg .json .xml].freeze
-    PAGE_EXTENSIONS = %w[.html .xml].freeze
+    TEXT_EXTENSIONS = %w[.html .htm .css .js .mjs .svg .json .xml].freeze
+    PAGE_EXTENSIONS = %w[.html .htm .xml].freeze
     URL_TOKEN = %r{[^\s"'`<>()\\,]+}.freeze
     # Only URL-shaped literals, not prose such as "normalize.css v8.0" in a
     # license comment. Entity quotes cover HTML embedded in the Atom feed.
