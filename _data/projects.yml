@@ -6,7 +6,7 @@
   closed_source_tooltip: Viktor isn't open-source
   url: https://viktor.com
   image:
-      url: https://viktor.com/assets/og/home-ai-employee.png
+      url: /assets/projects/viktor.png
       alt: Viktor preview
   what: >-
       An AI employee that lives in Slack or MS Teams, connects to <em>all</em> the tools, and does real knowledge work: shipping internal apps, running ads, reconciling the books, etc.
