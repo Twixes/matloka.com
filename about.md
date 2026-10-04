@@ -21,7 +21,7 @@ It was at that moment I realized computers are much closer to LEGOs than magic.
     <img src="{{ '/assets/about/me.jpg' | relative_url }}" alt="Michael Matloka" width="760" height="760">
 </div>
 
-**These days, I'm assembling software at [Viktor](https://viktor.com/).** Building an AI employee that lives in Slack (or MS Teams), connects to _all_ the tools, and does real knowledge work – shipping internal apps, running ad campaigns, reconciling the books.
+**These days, I'm assembling software at [Viktor](https://viktor.com/).** Building an AI employee that lives in Slack (or MS Teams), connects to _all_ the tools, and does real knowledge work.
 
 Previously at [PostHog](https://posthog.com/) (YC W20): Worked on self-driving for software products – agents solving product problems and gaps automatically, with ready-to-merge pull requests as the output. Started, led, and launched [PostHog AI](https://posthog.com/ai), having worked with LLMs since GPT-3. Built the first iteration of [LLM Analytics](https://posthog.com/llm-analytics). Led the [Product Analytics](https://posthog.com/product-analytics) team – I've developed core parts of that product (funnels, trends, dashboards, and more). Migrated and scaled PostHog's early data ingestion. Designed foundational platform architecture (organizations, project-based permissioning). Shipped PostHog's first design system and then its complete redesign.
 
