@@ -21,11 +21,11 @@ It was at that moment I realized computers are much closer to LEGOs than magic.
     <img src="{{ '/assets/about/me.jpg' | relative_url }}" alt="Michael Matloka" width="760" height="760">
 </div>
 
-**These days, I'm assembling software at [PostHog](https://posthog.com/) (YC W20).** Building self-driving for software products – agents solving product problems and gaps automatically, with ready-to-merge pull requests as the output.
+**These days, I'm assembling software at [Viktor](https://viktor.com/).** Building an AI employee that lives in Slack (or MS Teams), connects to _all_ the tools, and does real knowledge work.
 
-Previously here: Started, led, and launched [PostHog AI](https://posthog.com/ai), having worked with LLMs since GPT-3. Built the first iteration of [LLM Analytics](https://posthog.com/llm-analytics). Led the [Product Analytics](https://posthog.com/product-analytics) team – I've developed core parts of that product (funnels, trends, dashboards, and more). Migrated and scaled PostHog's early data ingestion. Designed foundational platform architecture (organizations, project-based permissioning). Shipped PostHog's first design system and then its complete redesign.
+Previously at [PostHog](https://posthog.com/) (YC W20): Worked on self-driving for software products – agents solving product problems and gaps automatically, with ready-to-merge pull requests as the output. Started, led, and launched [PostHog AI](https://posthog.com/ai), having worked with LLMs since GPT-3. Built the first iteration of [LLM Analytics](https://posthog.com/llm-analytics). Led the [Product Analytics](https://posthog.com/product-analytics) team – I've developed core parts of that product (funnels, trends, dashboards, and more). Migrated and scaled PostHog's early data ingestion. Designed foundational platform architecture (organizations, project-based permissioning). Shipped PostHog's first design system and then its complete redesign.
 
-I joined PostHog at seed in 2020, the day after completing my final high school exam. $1B seemed like a pipe dream back then - no revenue even. We've reached well over that. Turns out scouring the HN "Who is hiring?" thread _is_ worth it, if you can back it up with actually building!
+I joined PostHog at seed in 2020, the day after completing my final high school exam. $1B seemed like a pipe dream back then - no revenue even. We reached well over that. Turns out scouring the HN "Who is hiring?" thread _is_ worth it, if you can back it up with actually building!
 
 **As a product engineer, I believe in:**
 

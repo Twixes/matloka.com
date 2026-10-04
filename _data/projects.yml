@@ -1,29 +1,28 @@
-- name: PostHog
-  slug: posthog
+- name: Viktor
+  slug: viktor
   kicker: Day job
-  status: $x,000,000 MRR
+  status: $4,000,000+ MRR
   status_tooltip: Fair, not sure this fully counts
-  url: https://posthog.com
+  closed_source_tooltip: Viktor isn't open-source
+  url: https://viktor.com
   image:
-      url: https://posthog.com/images/og/default.png
-      alt: PostHog preview
+      url: https://viktor.com/assets/og/home-ai-employee.png
+      alt: Viktor preview
   what: >-
-      Open-source product OS for product engineers: analytics, feature flags, experiments, session replay, surveys, data warehouse, CDP, error tracking, and more.
+      An AI employee that lives in Slack or MS Teams, connects to <em>all</em> the tools, and does real knowledge work: shipping internal apps, running ads, reconciling the books, etc.
   why: >-
-      I joined at seed in 2020 and kept finding things to build across product analytics, data processing, design, and now agents. All to help developers build successful products, as charts go up and to the right.
+      TODO: Add the personal reason I joined Viktor.
   links:
-      - label: posthog.com
+      - label: viktor.com
         icon: website
-        url: https://posthog.com
-      - label: GitHub
-        icon: github
-        url: https://github.com/PostHog/posthog
+        url: https://viktor.com
 
 - name: SketchViz
   slug: sketchviz
   kicker: Architecture AI
   status: $350 MRR
   status_tooltip: Compounding growth!
+  closed_source_tooltip: SketchViz uniquely isn't open-source! Its userbase simply doesn't even know GitHub exists
   url: https://sketchviz.app
   image:
       url: https://sketchviz.app/opengraph-image.png
@@ -156,3 +155,24 @@
       - label: GitHub
         icon: github
         url: https://github.com/Twixes/rfc123
+
+- name: PostHog
+  slug: posthog
+  kicker: Past day job
+  status: $x,000,000 MRR
+  status_tooltip: Fair, not sure this fully counts
+  url: https://posthog.com
+  image:
+      url: https://posthog.com/images/og/default.png
+      alt: PostHog preview
+  what: >-
+      Open-source product OS for product engineers: analytics, feature flags, experiments, session replay, surveys, data warehouse, CDP, error tracking, and more.
+  why: >-
+      I joined at seed in 2020 and kept finding things to build across product analytics, data processing, design, and finally agents. All to help developers build successful products, as charts go up and to the right.
+  links:
+      - label: posthog.com
+        icon: website
+        url: https://posthog.com
+      - label: GitHub
+        icon: github
+        url: https://github.com/PostHog/posthog
