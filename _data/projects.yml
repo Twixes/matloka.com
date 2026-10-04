@@ -20,7 +20,7 @@
 - name: SketchViz
   slug: sketchviz
   kicker: Architecture AI
-  status: $350 MRR
+  status: $x00 MRR
   status_tooltip: Compounding growth!
   closed_source_tooltip: SketchViz uniquely isn't open-source! Its userbase simply doesn't even know GitHub exists
   url: https://sketchviz.app
