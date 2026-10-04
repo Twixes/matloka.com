@@ -58,7 +58,7 @@ image:
                     </a>
                     {% else %}
                     <span class="button project-link project-link--disabled"
-                          title="{{ project.name }} uniquely isn't open-source! Its userbase simply doesn't even know GitHub exists"
+                          title="{{ project.closed_source_tooltip }}"
                           aria-disabled="true">
                         <span class="project-link__icon">{% include project-link-icon.html icon='lock' %}</span>
                         <span>GitHub</span>
